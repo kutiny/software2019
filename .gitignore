@@ -4,4 +4,7 @@
 # Ignore Gradle build output directory
 build
 
+#visual studio code config
+.vscode
+
 *.class
