@@ -6,6 +6,7 @@ build
 
 #visual studio code config
 .vscode
+.classpath
 
 *.class
 

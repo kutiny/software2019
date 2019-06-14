@@ -1,0 +1,12 @@
+language: java
+jdk: oraclejdk8
+
+notifications:
+
+  email:
+    - alex08lta@gmail.com
+    - juanfernandez@alumnos.unc.edu.ar
+    - aixa.carrizo1704@gmail.com
+
+script:
+  - ./gradlew build
