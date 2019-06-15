@@ -2,14 +2,14 @@ language: java
 jdk: oraclejdk8
 
 before_install:
-  - chmod +x gradlew
+    - chmod +x gradlew
 
 notifications:
 
-  email:
-    - alex08lta@gmail.com
-    - juanfernandez@alumnos.unc.edu.ar
-    - aixa.carrizo1704@gmail.com
+    email:
+        - alex08lta@gmail.com
+        - juanfernandez@alumnos.unc.edu.ar
+        - aixa.carrizo1704@gmail.com
 
 script:
-  - ./gradlew build
+    - ./gradlew build
