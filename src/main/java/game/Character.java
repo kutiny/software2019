@@ -1,6 +1,6 @@
-package src.main.game;
+package src.main.java.game;
 
-public class UserCharacter {
+public class Character {
 	private String name;
 	private String gender;
 	private int experience;
@@ -8,7 +8,7 @@ public class UserCharacter {
 	private int level;
 	private Enemy activeEnemy;
 
-	public UserCharacter(){
+	public Character(){
 		this.level = 1;
 		this.experience = 0;
 		this.activeEnemy = null;
@@ -53,6 +53,10 @@ public class UserCharacter {
 		}else {
 			throw new IllegalArgumentException("El daño recibido no puede ser negativo.");
 		}
+	}
+
+	public int getLevel(){
+		return this.level;
 	}
 	
 }

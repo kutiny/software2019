@@ -1,4 +1,4 @@
-package src.main.game;
+package src.main.java.game;
 
 public class EnemyType1 extends Enemy {
 
@@ -12,7 +12,7 @@ public class EnemyType1 extends Enemy {
 		if( Math.random() * this.failProb < 0.5) {
 			damage = 0;
 		}else{
-			damage=(int) Math.round(this.dps*(1+(this.critProb*Math.random())));
+			damage=(int) Math.round(this.dps*(1+(this.critProb * Math.random())));
 		}
 		character.receiveDamage(damage);
 	}
