@@ -1,4 +1,4 @@
-package src.game;
+package src.main.game;
 
 public abstract class Skill {
   private String skillName;

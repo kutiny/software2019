@@ -1,4 +1,4 @@
-package src.game;
+package src.main.game;
 
 public class EnemyType1 extends Enemy {
 
