@@ -3,12 +3,12 @@ package src.main.java.game;
 import java.util.ArrayList;
 
 public abstract class CharacterClass {
-  private String className;
-  private ArrayList<Skill> skills;
-  private Skill activeSkill;
-  private int maxHealth;
-  private int armor;
-  private int magicResist;
+  protected String className;
+  protected ArrayList<Skill> skills;
+  protected Skill activeSkill;
+  protected int maxHealth;
+  protected int armor;
+  protected int magicResist;
 
   public abstract void fight();
   
