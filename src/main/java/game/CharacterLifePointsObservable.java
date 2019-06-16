@@ -8,7 +8,7 @@ public class CharacterLifePointsObservable implements Observable {
   private ArrayList<Observer> observersList;
 
   public CharacterLifePointsObservable(){
-    this.observersList = new ArrayList();
+    this.observersList = new ArrayList<>();
   }
 
   public void subscribe(Observer obj){
@@ -26,7 +26,19 @@ public class CharacterLifePointsObservable implements Observable {
 
   public void next(Object value){
     for(Observer o : this.observersList){
-      o.notifyHandler(value);
+      try {
+        o.notifyHandler(value);
+      }catch(NullPointerException e){
+        return;
+      }
     }
+  }
+
+  public ArrayList<Observer> getObserversList(){
+    return this.observersList;
+  }
+
+  public void setObserversList(ArrayList<Observer> observersList){
+    this.observersList = observersList;
   }
 }

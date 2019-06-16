@@ -11,7 +11,6 @@ public class Character {
 	public Character(){
 		this.level = 1;
 		this.experience = 0;
-		this.activeEnemy = null;
 	}
 
 	public void move(String direction){
