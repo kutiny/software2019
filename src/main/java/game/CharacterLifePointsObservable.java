@@ -28,7 +28,7 @@ public class CharacterLifePointsObservable implements Observable {
     for(Observer o : this.observersList){
       try {
         o.notifyHandler(value);
-      }catch(NullPointerException e){
+      }catch(Exception e){
         return;
       }
     }
