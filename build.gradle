@@ -23,5 +23,12 @@ test {
     maxHeapSize = '1G'
 }
 
+pmd {
+    ignoreFailures = true
+    sourceSets = [sourceSets.main]
+    reportsDir = file("$project.buildDir/reports/pmd")
+    
+}
+
 // Define the main class for the application
 mainClassName = 'src.game.App'
