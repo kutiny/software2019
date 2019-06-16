@@ -4,7 +4,7 @@ public class WarriorSkill3 extends Skill {
 
   public WarriorSkill3(){
     this.skillName = "Chop";
-    this.critPropability = 0.015;
+    this.critProbability = 0.015;
     this.failProbability = 0.75;
     this.damagePoints = 104;
   }
