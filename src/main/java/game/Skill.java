@@ -1,10 +1,10 @@
 package src.main.java.game;
 
 public abstract class Skill {
-  private String skillName;
-  private float critProbability;
-  private float failProbability;
-  private int damagePoints;
+  protected String skillName;
+  protected float critProbability;
+  protected float failProbability;
+  protected int damagePoints;
   
   public abstract void use();
 
