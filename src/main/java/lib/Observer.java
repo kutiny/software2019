@@ -1,4 +1,4 @@
-package helpers;
+package src.main.java.lib;
 
 public interface Observer {
   
