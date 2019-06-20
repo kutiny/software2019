@@ -1,6 +1,4 @@
-package helpers;
-
-import helpers.Observer;
+package src.main.java.lib;
 
 public interface Observable {
   

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'pmd'
 }
 
 repositories {
@@ -20,6 +21,13 @@ dependencies {
 test {
     useJUnit()
     maxHeapSize = '1G'
+}
+
+pmd {
+    ignoreFailures = true
+    sourceSets = [sourceSets.main]
+    reportsDir = file("$project.buildDir/reports/pmd")
+    
 }
 
 // Define the main class for the application

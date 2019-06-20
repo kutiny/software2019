@@ -12,11 +12,11 @@ public abstract class CharacterClass {
 
   public abstract void fight();
   
-  public void setSkill(Skill skill){
+  public void setActiveSkill(Skill skill){
     this.activeSkill = skill;
   }
 
-  public Skill getSkill(){
+  public Skill getActiveSkill(){
     return this.activeSkill;
   }
 
@@ -40,7 +40,7 @@ public abstract class CharacterClass {
     this.magicResist = mr;
   }
 
-  public int getMagiResist(){
+  public int getMagicResist(){
     return this.magicResist;
   }
 

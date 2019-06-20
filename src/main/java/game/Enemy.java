@@ -27,10 +27,62 @@ public abstract class Enemy {
 	public void levelUp() {
 		level++;
 	}
-	public int getMagicResist(){
+
+	public String getEnemyName(){
+		return this.enemyName;
+	}
+
+	public void setEnemyName(String enemyName){
+		this.enemyName = enemyName;
+	}
+
+	public int getLevel() {
+		return this.level;
+	}
+	public int getHp() {
+		return this.hp;
+	}
+	public int getDps() {
+		return this.dps;
+	}
+	public int getArmor() {
+		return this.armor;
+	}
+	public int getCritProb() {
+		return this.critProb;
+	}
+	public int getFailProb() {
+		return this.failProb;
+	}
+	public int getMagicResist() {
 		return this.magicResist;
 	}
-	public void setMagicResist(int mr) {
-		this.magicResist=mr;
+	public int getExpKilled() {
+		return this.expKilled;
+	}
+
+	public void setLevel(int level){
+		this.level = level;
+	}
+	public void setHp(int hp){
+		this.hp = hp;
+	}
+	public void setDps(int dps){
+		this.dps = dps;
+	}
+	public void setArmor(int armor){
+		this.armor = armor;
+	}
+	public void setCritProb(int critProb){
+		this.critProb = critProb;
+	}
+	public void setFailProb(int failProb){
+		this.failProb = failProb;
+	}
+	public void setMagicResist(int magicResist){
+		this.magicResist = magicResist;
+	}
+	public void setExpKilled(int expKilled){
+		this.expKilled = expKilled;
 	}
 }
