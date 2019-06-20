@@ -1,5 +1,5 @@
 package game;
-import src.main.java.game.Character; 
+import game.Character;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
