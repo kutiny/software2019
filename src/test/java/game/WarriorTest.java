@@ -1,6 +1,6 @@
 package game;
 
-import src.main.java.game.Warrior;
+import game.Warrior;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
