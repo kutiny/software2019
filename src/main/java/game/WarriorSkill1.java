@@ -1,4 +1,4 @@
-package src.main.java.game;
+package game;
 
 public class WarriorSkill1 extends Skill {
 

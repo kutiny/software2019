@@ -1,4 +1,4 @@
-package src.main.java.game;
+package game;
 
 public class Character {
 	private String name;

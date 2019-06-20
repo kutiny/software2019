@@ -1,4 +1,4 @@
-package src.main.java.game;
+package game;
 
 public class Warrior extends CharacterClass {
   public Warrior(){
