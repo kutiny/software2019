@@ -14,4 +14,4 @@ notifications:
         - aixa.carrizo1704@gmail.com
 
 script:
-    - ./gradlew build
+    - ./gradlew clean build
