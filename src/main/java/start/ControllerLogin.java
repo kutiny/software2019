@@ -54,7 +54,7 @@ public class ControllerLogin implements Initializable {
             stage.show();
             ( (Node) (event.getSource() ) ).getScene().getWindow().hide();
         }
-        catch(IOException e){
+        catch(Exception e){
             System.out.println("La cague");
         }
     }
