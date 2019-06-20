@@ -13,4 +13,6 @@ build
 .project 
 
 bin
+#idea folder
+.idea/
 
