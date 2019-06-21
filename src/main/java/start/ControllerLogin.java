@@ -38,13 +38,7 @@ public class ControllerLogin implements Initializable {
     private void firstClick(ActionEvent event){
         label.setText("has clickiado perro");
         System.out.println("Has hecho click");
-//        try {
-//        	AnchorPane pane = FXMLLoader.load(getClass().getResource("Game.fxml"));
-//        	rootPane.getC
-//
-//        }catch(Exception e) {
-//        	return;
-//        }
+
         try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
@@ -54,8 +48,8 @@ public class ControllerLogin implements Initializable {
             stage.show();
             ( (Node) (event.getSource() ) ).getScene().getWindow().hide();
         }
-        catch(Exception e){
-            System.out.println("La cague");
+        catch(IOException e){
+            return;
         }
     }
 

@@ -20,12 +20,19 @@ public class Start extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    	try {
+    		Parent root = FXMLLoader.load(getClass().getResource("/start/Login.fxml"));
 
-        Scene scene = new Scene(root);
+            Scene scene = new Scene(root);
 
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(scene);
+            stage.show();
+    		
+    	}catch(Exception e) {
+    		System.out.print(e.getMessage());
+    		return;
+    	}
+        
 
 
 //        Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
