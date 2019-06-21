@@ -10,7 +10,7 @@ public abstract class CharacterClass {
   protected int armor;
   protected int magicResist;
 
-  public abstract void fight();
+  public abstract int fight();
   
   public void setActiveSkill(Skill skill){
     this.activeSkill = skill;

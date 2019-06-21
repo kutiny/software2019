@@ -7,18 +7,20 @@ public class Character {
 	private int hp;
 	private int level;
 	private Enemy activeEnemy;
+	private CharacterClass charaClass;
 
 	public Character(){
 		this.level = 1;
 		this.experience = 0;
+		this.activeEnemy=null;
 	}
 
 	public void move(String direction){
 
 	}
 
-	public void fight(){
-
+	public int fight(){
+		return charaClass.fight();
 	}
 
 	public void rest(){

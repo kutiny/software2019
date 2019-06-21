@@ -9,7 +9,17 @@ public class WarriorSkill1 extends Skill {
     this.damagePoints = 42;
   }
 
-  public void use(){
-
+  @Override
+  public int use() {
+  	// TODO Auto-generated method stub
+  	if( (this.failProbability+Math.random())<0.5) {
+  		return 0;
+  	}
+  	else if ((this.critProbability+ Math.random())<0.5) {
+  		return (this.damagePoints*2);
+  	}
+  	else {
+  		return this.damagePoints;
+  	}
   }
-}
+  }

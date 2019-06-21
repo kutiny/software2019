@@ -15,7 +15,7 @@ public class Archer extends CharacterClass {
 
 	  }
 
-	  public void fight(){
-	    this.activeSkill.use();
+	  public int fight(){
+	    return this.activeSkill.use();
 	  }
 	}

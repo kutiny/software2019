@@ -10,8 +10,16 @@ public MageSkill3() {
 
 
 @Override
-public void use() {
+public int use() {
 	// TODO Auto-generated method stub
-	
+	if( (this.failProbability+Math.random())<0.5) {
+		return 0;
+	}
+	else if ((this.critProbability+ Math.random())<0.5) {
+		return (this.damagePoints*2);
+	}
+	else {
+		return this.damagePoints;
+	}
 }
 }

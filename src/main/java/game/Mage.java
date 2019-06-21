@@ -10,12 +10,12 @@ public class Mage extends CharacterClass {
 		  this.skills.add(new MageSkill3());
 		  activeSkill=null;
 		  maxHealth=200;
-		  armor=150;
-		  magicResist=100;
+		  armor=100;
+		  magicResist=200;
 
 	  }
 
-	  public void fight(){
-	    this.activeSkill.use();
+	  public int fight(){
+	    return this.activeSkill.use();
 	  }
 	}

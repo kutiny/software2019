@@ -6,6 +6,6 @@ public abstract class Skill {
   protected double failProbability;
   protected int damagePoints;
   
-  public abstract void use();
+  public abstract int use();
 
 }
