@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+import javafx.scene.text.Text;
 
 public class ControllerGame {
 
@@ -26,6 +27,13 @@ public class ControllerGame {
 
     @FXML
     private TextArea Map;
+    
+    @FXML
+    private Text CharacterName;
+
+    @FXML
+    private Text characterClass;
+
 
     @FXML
     void handleMoveDown(ActionEvent event) {
@@ -76,6 +84,12 @@ public class ControllerGame {
     void handleMoveUp(ActionEvent event) {
         Map.setText(model.moverse());
 
+    }
+    
+    public void setNombreAndClase(String nombre, String clase) {
+    	CharacterName.setText(nombre);
+    	characterClass.setText(clase);
+    	
     }
 
 }
