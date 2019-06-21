@@ -1,6 +1,6 @@
-package src.main.java.game;
-import src.main.java.lib.Observable;
-import src.main.java.lib.Observer;
+package game;
+import lib.Observable;
+import lib.Observer;
 import java.util.ArrayList;
 
 public class CharacterLifePointsObservable implements Observable {
