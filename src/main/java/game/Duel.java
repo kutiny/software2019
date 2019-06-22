@@ -11,8 +11,19 @@ public class Duel {
 		this.isCharacterNext = true;
 	}
 	
-	public void characterAttack() {
-		this.isCharacterNext = false;	
+	public boolean characterAttack(Skill skill) throws IllegalStateException {
+		if(this.isCharacterNext) {
+			this.isCharacterNext = false;
+			if(this.enemy.receiveDamage(0)) {
+				return true;
+			}else {
+				this.enemy.fight(this.character);
+				this.isCharacterNext = true;
+				return false;
+			}
+		}else {
+			throw new IllegalStateException("No puedes atacar durante el turno del enemigo");
+		}
 	}
 	
 }

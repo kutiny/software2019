@@ -9,6 +9,7 @@ public abstract class CharacterClass {
   protected int maxHealth;
   protected int armor;
   protected int magicResist;
+  protected Damage damage;
 
   public abstract void fight();
   

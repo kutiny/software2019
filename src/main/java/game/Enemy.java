@@ -6,24 +6,26 @@ public abstract class Enemy {
 	protected int hp;
 	protected int dps;
 	protected int armor;
-	protected int critProb;
-	protected int failProb;
+	protected double critProb;
+	protected double failProb;
 	protected int magicResist;
 	protected int expKilled;
+	private Damage damage;
 	
-	public Enemy(String name, int lv, int hp, int dps, int armor, int critProb, int failProb, int magicResist, int expKilled) {
+	public Enemy(String name, int lv, int hp, Damage damage, int armor, double critProb, double failProb, int magicResist, int expKilled) {
 		this.enemyName = name;
 		this.level = lv;
 		this.critProb = critProb;
 		this.magicResist = magicResist;
 		this.expKilled = expKilled;
 		this.hp = hp;
-		this.dps = dps;
+		this.damage = damage;
 		this.armor = armor;
 		this.failProb = failProb;
 	}
 	
 	public abstract void fight(Character character);
+	
 	public void levelUp() {
 		level++;
 	}
@@ -48,41 +50,27 @@ public abstract class Enemy {
 	public int getArmor() {
 		return this.armor;
 	}
-	public int getCritProb() {
+	public double getCritProb() {
 		return this.critProb;
 	}
-	public int getFailProb() {
+	public double getFailProb() {
 		return this.failProb;
 	}
 	public int getMagicResist() {
 		return this.magicResist;
 	}
-	public int getExpKilled() {
-		return this.expKilled;
+	
+	public void setMagicResist(int mr) {
+		this.magicResist=mr;
 	}
-
-	public void setLevel(int level){
-		this.level = level;
-	}
-	public void setHp(int hp){
-		this.hp = hp;
-	}
-	public void setDps(int dps){
-		this.dps = dps;
-	}
-	public void setArmor(int armor){
-		this.armor = armor;
-	}
-	public void setCritProb(int critProb){
-		this.critProb = critProb;
-	}
-	public void setFailProb(int failProb){
-		this.failProb = failProb;
-	}
-	public void setMagicResist(int magicResist){
-		this.magicResist = magicResist;
-	}
-	public void setExpKilled(int expKilled){
-		this.expKilled = expKilled;
+	
+	public boolean receiveDamage(int damage) {
+		if(this.hp > damage) {
+			this.hp -= damage;
+			return false;
+		}else {
+			this.hp = 0;
+			return true;
+		}
 	}
 }

@@ -46,7 +46,7 @@ public class Character {
 		if(dm >= 0) {
 			this.setHp(this.getHp() - dm);		
 		}else {
-			throw new IllegalArgumentException("El daÃ±o recibido no puede ser negativo.");
+			throw new IllegalArgumentException("El daño recibido no puede ser negativo.");
 		}
 	}
 
