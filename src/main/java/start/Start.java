@@ -22,14 +22,15 @@ public class Start extends Application {
     public void start(Stage stage) throws Exception {
     	try {
     		Parent root = FXMLLoader.load(getClass().getResource("/start/Login.fxml"));
-
             Scene scene = new Scene(root);
 
             stage.setScene(scene);
+            stage.setTitle("Tales of Euphona");
             stage.show();
-    		
+ 
     	}catch(Exception e) {
     		System.out.print(e.getMessage());
+    		System.out.print("Falla");
     		return;
     	}
         
