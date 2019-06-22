@@ -56,7 +56,7 @@ public class ControllerLogin implements Initializable{
     			if(nombre.getText().trim().length() < 4 ) {
     				errorNombreCorto.setVisible(true);
         			errorNombreLargo.setVisible(false);
-    			}else if(nombre.getText().trim().length() > 10 ) {
+    			}else if(nombre.getText().trim().length() > 9 ) {
     				errorNombreCorto.setVisible(false);
         			errorNombreLargo.setVisible(true);
     			}else {
