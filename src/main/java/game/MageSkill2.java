@@ -5,22 +5,23 @@ public MageSkill2() {
 	  this.skillName = "Wildfire";
 	  this.critProbability = 0.30;
 	  this.failProbability = 0.25;
-	  this.damagePoints = 58;
+	  this.damage= new Damage(new DamageType("magical"), 58, 58);
 	  }
 
 
 @Override
-public int use() {
+public Damage use() {
 	// TODO Auto-generated method stub
 	if( (this.failProbability+Math.random())<0.5) {
-		return 0;
+		damage.setDamagePoints(0);
 	}
-	else if ((this.critProbability+ Math.random())<0.5) {
-		return (this.damagePoints*2);
+	else if (this.critProbability+Math.random()<0.5) {
+		damage.setDamagePoints(damage.getBasicDamagePoints()*2);
 	}
 	else {
-		return this.damagePoints;
+		damage.setDamagePoints(damage.getBasicDamagePoints());
 	}
+	return damage;
 }
 }
 

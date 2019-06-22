@@ -11,7 +11,7 @@ public abstract class CharacterClass {
   protected int magicResist;
   protected Damage damage;
 
-  public abstract int fight();
+  public abstract Damage fight();
   
   public void setActiveSkill(Skill skill){
     this.activeSkill = skill;

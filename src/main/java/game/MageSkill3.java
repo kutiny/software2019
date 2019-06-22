@@ -5,21 +5,22 @@ public MageSkill3() {
 	  this.skillName = "Lightning Storm";
 	  this.critProbability = 0.10;
 	  this.failProbability = 0.05;
-	  this.damagePoints = 55;
+	  this.damage= new Damage(new DamageType("magical"), 55, 55);
 	  }
 
 
 @Override
-public int use() {
+public Damage use() {
 	// TODO Auto-generated method stub
 	if( (this.failProbability+Math.random())<0.5) {
-		return 0;
+		damage.setDamagePoints(0);
 	}
-	else if ((this.critProbability+ Math.random())<0.5) {
-		return (this.damagePoints*2);
+	else if (this.critProbability+Math.random()<0.5) {
+		damage.setDamagePoints(damage.getBasicDamagePoints()*2);
 	}
 	else {
-		return this.damagePoints;
+		damage.setDamagePoints(damage.getBasicDamagePoints());
 	}
+	return damage;
 }
 }

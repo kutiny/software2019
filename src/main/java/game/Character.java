@@ -19,7 +19,7 @@ public class Character {
 
 	}
 
-	public int fight(){
+	public Damage fight(){
 		return charaClass.fight();
 	}
 

@@ -16,7 +16,7 @@ public class Mage extends CharacterClass {
 
 	  }
 
-	  public int fight(){
+	  public Damage fight(){
 	    return this.activeSkill.use();
 	  }
 	}
