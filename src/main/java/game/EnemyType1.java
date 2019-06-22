@@ -14,7 +14,7 @@ public class EnemyType1 extends Enemy {
 		if( Math.random() * this.failProb < MEDIUMPROBABILITY) {
 			damage = 0;
 		}else{
-			damage=(int) Math.round(this.dps*(1+(this.critProb * Math.random())));
+			damage=(int) Math.round(this.dps * (1 + (this.critProb * Math.random())));
 		}
 		character.receiveDamage(damage);
 	}
