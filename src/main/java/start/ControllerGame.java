@@ -74,7 +74,7 @@ public class ControllerGame {
 
     @FXML
     void handleMoveUp(ActionEvent event) {
-        Map.setText(model.moverse());
+        Map.setText(model.moveUp());
 
     }
 
