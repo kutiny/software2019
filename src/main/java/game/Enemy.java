@@ -25,6 +25,7 @@ public abstract class Enemy {
 	}
 	
 	public abstract void fight(Character character);
+	
 	public void levelUp() {
 		level++;
 	}
@@ -58,32 +59,18 @@ public abstract class Enemy {
 	public int getMagicResist() {
 		return this.magicResist;
 	}
-	public int getExpKilled() {
-		return this.expKilled;
+	
+	public void setMagicResist(int mr) {
+		this.magicResist=mr;
 	}
-
-	public void setLevel(int level){
-		this.level = level;
-	}
-	public void setHp(int hp){
-		this.hp = hp;
-	}
-	public void setDps(int dps){
-		this.dps = dps;
-	}
-	public void setArmor(int armor){
-		this.armor = armor;
-	}
-	public void setCritProb(int critProb){
-		this.critProb = critProb;
-	}
-	public void setFailProb(int failProb){
-		this.failProb = failProb;
-	}
-	public void setMagicResist(int magicResist){
-		this.magicResist = magicResist;
-	}
-	public void setExpKilled(int expKilled){
-		this.expKilled = expKilled;
+	
+	public boolean receiveDamage(int damage) {
+		if(this.hp > damage) {
+			this.hp -= damage;
+			return false;
+		}else {
+			this.hp = 0;
+			return true;
+		}
 	}
 }
