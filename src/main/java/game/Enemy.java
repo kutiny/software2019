@@ -6,19 +6,20 @@ public abstract class Enemy {
 	protected int hp;
 	protected int dps;
 	protected int armor;
-	protected int critProb;
-	protected int failProb;
+	protected double critProb;
+	protected double failProb;
 	protected int magicResist;
 	protected int expKilled;
+	private Damage damage;
 	
-	public Enemy(String name, int lv, int hp, int dps, int armor, int critProb, int failProb, int magicResist, int expKilled) {
+	public Enemy(String name, int lv, int hp, Damage damage, int armor, double critProb, double failProb, int magicResist, int expKilled) {
 		this.enemyName = name;
 		this.level = lv;
 		this.critProb = critProb;
 		this.magicResist = magicResist;
 		this.expKilled = expKilled;
 		this.hp = hp;
-		this.dps = dps;
+		this.damage = damage;
 		this.armor = armor;
 		this.failProb = failProb;
 	}
@@ -48,10 +49,10 @@ public abstract class Enemy {
 	public int getArmor() {
 		return this.armor;
 	}
-	public int getCritProb() {
+	public double getCritProb() {
 		return this.critProb;
 	}
-	public int getFailProb() {
+	public double getFailProb() {
 		return this.failProb;
 	}
 	public int getMagicResist() {
