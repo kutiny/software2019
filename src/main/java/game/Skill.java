@@ -4,7 +4,7 @@ public abstract class Skill {
   protected String skillName;
   protected double critProbability;
   protected double failProbability;
-  protected int damagePoints;
+  protected Damage damage;
   
   public abstract int use();
 
