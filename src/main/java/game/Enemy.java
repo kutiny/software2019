@@ -69,5 +69,13 @@ public abstract class Enemy {
 			return false;
 		}
 	}
+	@SuppressWarnings("unlikely-arg-type")
+	public int calculateRecievedDamage(Damage damage) {
+		if ((damage.getDamageType()).equals("physical")){
+			return (damage.getDamagePoints()/(this.armor/100));
+		}
+		else
+			return damage.getDamagePoints()/(this.magicResist/100);
+	}
 
 }

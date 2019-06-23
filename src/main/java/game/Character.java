@@ -49,6 +49,8 @@ public class Character {
 
 	}
 	
+	
+	
 	public boolean receiveDamage(int dm){
 		if(dm < 0) {
 			throw new IllegalArgumentException("El daño recibido no puede ser negativo.");

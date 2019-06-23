@@ -12,6 +12,7 @@ public abstract class CharacterClass {
   protected Damage damage;
 
   public abstract Damage fight();
+  public abstract int calculateRecievedDamage(Damage damage);
   
   public void setActiveSkill(Skill skill){
     this.activeSkill = skill;
@@ -45,5 +46,8 @@ public abstract class CharacterClass {
     return this.magicResist;
   }
 
+  
+  
+  
 }
 

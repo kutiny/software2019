@@ -6,7 +6,7 @@ public class WarriorSkill1 extends Skill {
     this.skillName = "Slash";
     this.critProbability = 0.1;
     this.failProbability = 0.1;
-    this.damage = new Damage(new DamageType("Physical"), 42, 42);
+    this.damage = new Damage(new DamageType("physical"), 42, 42);
   }
 
   @Override

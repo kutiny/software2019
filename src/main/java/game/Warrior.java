@@ -19,4 +19,14 @@ public class Warrior extends CharacterClass {
   public Damage fight(){
     return this.activeSkill.use();
   }
+
+@SuppressWarnings("unlikely-arg-type")
+@Override
+public int calculateRecievedDamage(Damage damage) {
+	if ((damage.getDamageType()).equals("physical")){
+		return (damage.getDamagePoints()/(this.armor/100));
+	}
+	else
+		return damage.getDamagePoints()/(this.magicResist/100);
+}
 }
