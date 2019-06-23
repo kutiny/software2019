@@ -50,6 +50,9 @@ public class Map {
 				this.positions[i][j] = new MapPosition(true);
 			}
 		}
+
+
+
 		
 		this.positions[0][0].setExplorable(false);
 		this.positions[0][1].setExplorable(false);
@@ -65,7 +68,7 @@ public class Map {
 		this.positions[1][5].setExplorable(false);
 		this.positions[1][14].setExplorable(false);
 		this.positions[1][3].setEnemy(new EnemyType2()); //typ2
-		this.positions[1][3].setTrap(new Trap());
+		this.positions[1][4].setTrap(new Trap());
 		this.positions[1][8].setTrap(new Trap());
 		
 		this.positions[2][0].setExplorable(false);
