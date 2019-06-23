@@ -1,18 +1,18 @@
 package game;
 
-public class EnemyType1 extends Enemy {
+public class EnemyType3 extends Enemy {
 
 	static double MEDIUMPROBABILITY = 0.5;
 
-	public EnemyType1() {
-		super("Enemy1", 1, 100, new Damage(new DamageType("physical"), 12, 12), 1, 0.0, 0.3, 1, 100);
+	public EnemyType3() {
+		super("Enemy1", 1, 100, new Damage(new DamageType("physical"), 50, 50), 1, 0.0, 0.3, 1, 100);
 	}
 	
 	@Override
-		public Damage fight(Character character) {
+	public Damage fight(Character character) {
 			// TODO Auto-generated method stub
 			if( (this.failProb+Math.random())<0.5) {
-				this.damage.setDamagePoints(0);
+				damage.setDamagePoints(0);
 			}
 			else if (this.critProb+Math.random()<0.5) {
 				damage.setDamagePoints(damage.getBasicDamagePoints()*2);
@@ -21,7 +21,7 @@ public class EnemyType1 extends Enemy {
 				damage.setDamagePoints(damage.getBasicDamagePoints());
 			}
 			return damage;
-		}
+	}
 	
 
 }

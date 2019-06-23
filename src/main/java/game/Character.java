@@ -24,7 +24,12 @@ public class Character {
 	}
 
 	public void rest(){
-
+		if(Math.random()<0.5) {
+			this.hp+=(Math.random()*this.hp/2);
+		}
+		else if (Math.random()>0.25){
+			this.hp-=(Math.random()*this.hp/2);
+		}
 	}
 
 	public void runAway(){
@@ -44,11 +49,16 @@ public class Character {
 
 	}
 	
-	public void receiveDamage(int dm){
-		if(dm >= 0) {
-			this.setHp(this.getHp() - dm);		
-		}else {
+	public boolean receiveDamage(int dm){
+		if(dm < 0) {
 			throw new IllegalArgumentException("El daño recibido no puede ser negativo.");
+		}
+		if(this.hp > dm) {
+			this.hp -= dm;
+			return true;
+		}else {
+			this.hp = 0;
+			return false;
 		}
 	}
 
@@ -92,5 +102,6 @@ public class Character {
 	public void setExperience(int experience){
 		this.experience = experience;
 	}
+	
 
 }
