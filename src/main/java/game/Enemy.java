@@ -74,12 +74,6 @@ public abstract class Enemy implements Observer{
 		}
 	}
 	
-	public void notifyHandler(Object value) throws IllegalArgumentException {
-		if(value instanceof Integer) {
-			this.setLevel((int)value);			
-		}else {
-			throw new IllegalArgumentException();
-		}
-	}
+	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
 
 }
