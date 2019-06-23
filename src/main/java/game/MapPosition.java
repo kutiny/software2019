@@ -22,4 +22,8 @@ public class MapPosition {
 	public void setExplorable(boolean explorable) {
 		this.explorable = explorable;
 	}
+	
+	public void setTrap(Trap t) {
+		this.trap = t;
+	}
 }
