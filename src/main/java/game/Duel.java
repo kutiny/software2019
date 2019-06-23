@@ -12,6 +12,9 @@ public class Duel {
 		this.isCharacterNext = true;
 
 	}
+	public Character getCharacter() {
+		return this.character;
+	}
 	
 	public boolean characterAttack(Skill skill) throws IllegalStateException {
 		if(this.isCharacterNext) {
