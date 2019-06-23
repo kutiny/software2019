@@ -54,12 +54,12 @@
             <Font name="Monospaced Regular" size="30.0" />
          </font>
       </TextArea>
-      <Text layoutX="32.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aleisas" wrappingWidth="208.13671875">
+      <Text fx:id="CharacterName" layoutX="32.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aleisas" wrappingWidth="350.0">
          <font>
             <Font size="61.0" />
          </font>
       </Text>
-      <Text layoutX="32.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maga" wrappingWidth="208.13671875">
+      <Text fx:id="characterClass" layoutX="32.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maga" wrappingWidth="208.13671875">
          <font>
             <Font size="20.0" />
          </font>

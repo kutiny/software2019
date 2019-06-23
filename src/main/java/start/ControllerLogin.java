@@ -1,61 +1,100 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package start;
+
+import start.ControllerGame;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.*;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.Node;
 import javafx.stage.Stage;
 
-/**
- *
- * @author alexi
- */
-public class ControllerLogin implements Initializable {
+public class ControllerLogin implements Initializable{
 
     @FXML
-    private Label label;
+    private TextField nombre;
+	
+    @FXML
+    private ComboBox<String> clase;
+    
+    @FXML
+    private Label error;
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private Label errorNombreCorto;
+
+    @FXML
+    private Label errorClase;
+
+    @FXML
+    private Label errorNombreLargo;
+
+    @FXML
+    void handleStart(ActionEvent event) {
+    	//Se comprueba si hay algun problema con el nombre y/o clase
+    	if(nombre.getText().trim().length() < 4 || nombre.getText().trim().length() > 10 || clase.getValue() == null) {
+    		error.setVisible(true);
+    		if(clase.getValue() == null) {
+    			errorClase.setVisible(true);
+    			if(nombre.getText().trim().length() < 4 ) {
+    				errorNombreCorto.setVisible(true);
+        			errorNombreLargo.setVisible(false);
+    			}else if(nombre.getText().trim().length() > 9 ) {
+    				errorNombreCorto.setVisible(false);
+        			errorNombreLargo.setVisible(true);
+    			}else {
+    				errorNombreCorto.setVisible(false);
+        			errorNombreLargo.setVisible(false);
+    			}
+    		}else if(nombre.getText().length() < 4) {
+    			errorClase.setVisible(false);
+    			errorNombreCorto.setVisible(true);
+    			errorNombreLargo.setVisible(false);
+    		}else{
+    			errorClase.setVisible(false);
+    			errorNombreCorto.setVisible(false);
+    			errorNombreLargo.setVisible(true);
+    		}
+    	}else {
+    		try{
+    			Stage stage = new Stage();
+	            FXMLLoader loader = new FXMLLoader();
+	            Parent root = loader.load(getClass().getResource("Game.fxml").openStream());
+	            ControllerGame controllNewWindows = (ControllerGame)loader.getController();
+	            controllNewWindows.setNombreAndClase(nombre.getText().trim() , clase.getValue());
+	            
+	            Scene escena = new Scene(root);
+	            stage.setScene(escena);
+	            stage.setTitle("Tales of Euphona");
+	            stage.show();
+	            ( (Node) (event.getSource() ) ).getScene().getWindow().hide();
+	        }catch(IOException e){
+	           return;		
+    		}
+    	}
     }
-
-    @FXML
-    private void firstClick(ActionEvent event){
-        label.setText("has clickiado perro");
-        System.out.println("Has hecho click");
-
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
-
-            Scene escena = new Scene(root);
-            stage.setScene(escena);
-            stage.show();
-            ( (Node) (event.getSource() ) ).getScene().getWindow().hide();
-        }
-        catch(IOException e){
-            return;
-        }
-    }
-
+    
+    ObservableList<String> list = FXCollections.observableArrayList("Mago", "Maga", "Guerrero", "Guerrera", "Arquero", "Arquera");
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    	clase.setItems(list);
     }
-
 }
