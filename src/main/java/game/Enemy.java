@@ -23,7 +23,7 @@ public abstract class Enemy {
 		this.failProb = failProb;
 	}
 	
-	public abstract Damage fight(Character character);
+	public abstract Damage fight();
 	
 	public void levelUp() {
 		level++;
@@ -58,6 +58,9 @@ public abstract class Enemy {
 	
 	public void setMagicResist(int mr) {
 		this.magicResist=mr;
+	}
+	public int getExpKilled() {
+		return this.expKilled;
 	}
 	
 	public boolean receiveDamage(int damage) {

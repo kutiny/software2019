@@ -1,9 +1,5 @@
 package game;
 
-import game.Character;
-import game.Damage;
-import game.DamageType;
-import game.Enemy;
 
 public class EnemyType2 extends Enemy {
 
@@ -14,7 +10,7 @@ public class EnemyType2 extends Enemy {
 	}
 	
 	@Override
-	public Damage fight(Character character) {
+	public Damage fight() {
 			// TODO Auto-generated method stub
 			if( (this.failProb+Math.random())<0.5) {
 				damage.setDamagePoints(0);

@@ -9,7 +9,7 @@ public class EnemyType1 extends Enemy {
 	}
 	
 	@Override
-		public Damage fight(Character character) {
+		public Damage fight() {
 			// TODO Auto-generated method stub
 			if( (this.failProb+Math.random())<0.5) {
 				this.damage.setDamagePoints(0);

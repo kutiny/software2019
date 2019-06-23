@@ -104,6 +104,10 @@ public class Character {
 	public void setExperience(int experience){
 		this.experience = experience;
 	}
+	public CharacterClass getCharaClass(){
+		return this.charaClass;
+	}
+	
 	
 
 }
