@@ -107,7 +107,7 @@ public class Character {
 	}
 	
 	public void trapDamage(){
-		int damage = (int) Math.ceil(0.05 * this.hp);
+		int damage = (int) Math.ceil(0.1 * this.hp);
 		this.hp = (damage > this.hp + 1) ? 1 : this.hp - damage;
 	}
 

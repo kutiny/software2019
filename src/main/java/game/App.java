@@ -1,6 +1,8 @@
 package game;
 
 public class App {
+	private String history;
+	private String map;
   
   // Constructor
   public static void main(String[] args){
@@ -25,4 +27,14 @@ public class App {
 	  System.out.println("Enemy2 Level:" + en2.getLevel());
 	  System.out.println("Enemy3 Level:" + en3.getLevel());
   }
+//  
+//  public String gethistory() {
+//	  return this.history;
+//  }
+//  
+//  public void moveUp() {
+//	  //m.moveUp();
+//	  if(m.position())
+//  }
+  
 }
