@@ -4,13 +4,12 @@ public abstract class Enemy {
 	protected String enemyName;
 	protected int level;
 	protected int hp;
-	protected int dps;
 	protected int armor;
 	protected double critProb;
 	protected double failProb;
 	protected int magicResist;
 	protected int expKilled;
-	private Damage damage;
+	protected Damage damage;
 	
 	public Enemy(String name, int lv, int hp, Damage damage, int armor, double critProb, double failProb, int magicResist, int expKilled) {
 		this.enemyName = name;
@@ -24,7 +23,7 @@ public abstract class Enemy {
 		this.failProb = failProb;
 	}
 	
-	public abstract void fight(Character character);
+	public abstract Damage fight(Character character);
 	
 	public void levelUp() {
 		level++;
@@ -43,9 +42,6 @@ public abstract class Enemy {
 	}
 	public int getHp() {
 		return this.hp;
-	}
-	public int getDps() {
-		return this.dps;
 	}
 	public int getArmor() {
 		return this.armor;
@@ -67,10 +63,11 @@ public abstract class Enemy {
 	public boolean receiveDamage(int damage) {
 		if(this.hp > damage) {
 			this.hp -= damage;
-			return false;
+			return true;
 		}else {
 			this.hp = 0;
-			return true;
+			return false;
 		}
 	}
+
 }

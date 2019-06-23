@@ -1,4 +1,4 @@
-package src.main.java.lib;
+package lib;
 
 public interface Observable {
   

@@ -6,10 +6,21 @@ public class WarriorSkill2 extends Skill {
     this.skillName = "Double Slash";
     this.critProbability = 0.05;
     this.failProbability = 0.5;
-    this.damage = new Damage(new DamageType("Physical"), 71);
+    this.damage = new Damage(new DamageType("Physical"), 71, 71);
   }
 
-  public void use(){
-
-  }
-}
+  @Override
+  public Damage use() {
+		// TODO Auto-generated method stub
+		if( (this.failProbability+Math.random())<0.5) {
+			damage.setDamagePoints(0);
+		}
+		else if (this.critProbability+Math.random()<0.5) {
+			damage.setDamagePoints(damage.getBasicDamagePoints()*2);
+		}
+		else {
+			damage.setDamagePoints(damage.getBasicDamagePoints());
+		}
+		return damage;
+	}
+	}
