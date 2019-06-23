@@ -1,6 +1,8 @@
 package game;
 
-public abstract class Enemy {
+import lib.Observer;
+
+public abstract class Enemy implements Observer{
 	protected String enemyName;
 	protected int level;
 	protected int hp;
@@ -36,7 +38,9 @@ public abstract class Enemy {
 	public void setEnemyName(String enemyName){
 		this.enemyName = enemyName;
 	}
-
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	public int getLevel() {
 		return this.level;
 	}
@@ -69,5 +73,7 @@ public abstract class Enemy {
 			return false;
 		}
 	}
+	
+	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
 
 }

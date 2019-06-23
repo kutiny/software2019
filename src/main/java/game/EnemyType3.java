@@ -10,18 +10,24 @@ public class EnemyType3 extends Enemy {
 	
 	@Override
 	public Damage fight(Character character) {
-			// TODO Auto-generated method stub
-			if( (this.failProb+Math.random())<0.5) {
-				damage.setDamagePoints(0);
-			}
-			else if (this.critProb+Math.random()<0.5) {
-				damage.setDamagePoints(damage.getBasicDamagePoints()*2);
-			}
-			else {
-				damage.setDamagePoints(damage.getBasicDamagePoints());
-			}
-			return damage;
+		if( (this.failProb+Math.random())<0.5) {
+			damage.setDamagePoints(0);
+		}
+		else if (this.critProb+Math.random()<0.5) {
+			damage.setDamagePoints(damage.getBasicDamagePoints()*2);
+		}
+		else {
+			damage.setDamagePoints(damage.getBasicDamagePoints());
+		}
+		return damage;
 	}
 	
+	public void notifyHandler(Object value) throws IllegalArgumentException {
+		if(value instanceof Integer) {
+			this.setLevel((int)value);			
+		}else {
+			throw new IllegalArgumentException();
+		}
+	}
 
 }

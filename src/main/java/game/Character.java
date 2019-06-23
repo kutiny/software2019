@@ -6,13 +6,15 @@ public class Character {
 	private int experience;
 	private int hp;
 	private int level;
+	public CharacterLevelObservable levelObservable;
 	private Enemy activeEnemy;
 	private CharacterClass charaClass;
 
 	public Character(){
-		this.level = 1;
+		this.levelObservable = new CharacterLevelObservable();
 		this.experience = 0;
-		this.activeEnemy=null;
+		this.activeEnemy = null;
+		this.setLevel(1);
 	}
 
 	public void move(String direction){
@@ -77,6 +79,7 @@ public class Character {
 
 	public void setLevel(int level){
 		this.level = level;
+		this.levelObservable.next(this.level);
 	}
 
 	public String getName(){

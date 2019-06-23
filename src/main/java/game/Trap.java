@@ -7,11 +7,11 @@ public class Trap {
 		this.active = true;
 	}
 	
-	public boolean status() {
+	public boolean getActive() {
 		return this.active;
 	}
 
-	public void deactivate() {
+	public void setDeactivated() {
 		this.active = false;
 	}
 }
