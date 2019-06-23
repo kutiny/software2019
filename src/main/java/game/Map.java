@@ -49,9 +49,7 @@ public class Map {
 			for(int j = 0 ; j < ROWS ; j++) {
 				this.positions[i][j] = new MapPosition(true);
 			}
-		}
-		//REEMPLAZAR NULL POR DAMAGE
-		
+		}		
 		this.positions[0][0].setExplorable(false);
 		this.positions[0][1].setExplorable(false);
 		this.positions[0][2].setExplorable(false);
@@ -65,7 +63,7 @@ public class Map {
 		this.positions[1][2].setExplorable(false);
 		this.positions[1][5].setExplorable(false);
 		this.positions[1][14].setExplorable(false);
-		this.positions[1][3].setEnemy(new EnemyType1()); //typ2
+		this.positions[1][3].setEnemy(new EnemyType2()); //typ2
 		this.positions[1][3].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
 		this.positions[1][8].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
 		
@@ -75,14 +73,14 @@ public class Map {
 		this.positions[2][9].setExplorable(false);
 		this.positions[2][14].setExplorable(false);
 		this.positions[2][11].setEnemy(new EnemyType1()); //typ1 y trampa
-		this.positions[2][13].setEnemy(new EnemyType1()); //typ3
+		this.positions[2][13].setEnemy(new EnemyType3()); //typ3
 		
 		this.positions[3][5].setExplorable(false);
 		this.positions[3][2].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
 		
-		this.positions[4][6].setEnemy(new EnemyType1()); //typ3
-		this.positions[4][10].setEnemy(new EnemyType1()); //typ3 y trampa
-		this.positions[4][14].setEnemy(new EnemyType1()); //typ2
+		this.positions[4][6].setEnemy(new EnemyType3()); //typ3
+		this.positions[4][10].setEnemy(new EnemyType3()); //typ3 y trampa
+		this.positions[4][14].setEnemy(new EnemyType2()); //typ2
 		
 		this.positions[5][0].setExplorable(false);
 		this.positions[5][5].setExplorable(false);
@@ -98,14 +96,14 @@ public class Map {
 		this.positions[6][12].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
 		
 		this.positions[7][14].setExplorable(false);
-		this.positions[7][10].setEnemy(new EnemyType1()); //typ2
+		this.positions[7][10].setEnemy(new EnemyType2()); //typ2
 		
 		this.positions[8][6].setExplorable(false);
 		this.positions[8][12].setExplorable(false);
 		this.positions[8][13].setExplorable(false);
 		this.positions[8][14].setExplorable(false);
-		this.positions[8][1].setEnemy(new EnemyType1()); //typ3
-		this.positions[8][8].setEnemy(new EnemyType1()); //typ2
+		this.positions[8][1].setEnemy(new EnemyType3()); //typ3
+		this.positions[8][8].setEnemy(new EnemyType2()); //typ2
 		
 		this.positions[9][6].setExplorable(false);
 		this.positions[9][4].setEnemy(new EnemyType1()); //typ2
