@@ -46,6 +46,10 @@ public class Character {
 		}else {
 			throw new IllegalArgumentException("La experiencia no puede ser negativa.");
 		}
+		if(exp>=1000*(this.level*0.5)) {
+			exp+=1000*this.level;
+			this.levelUp();
+		}
 
 	}
 	
