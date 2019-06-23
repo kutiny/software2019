@@ -8,10 +8,10 @@ public class Map {
 	private int yPos;
 	
 	public Map() {
-		
 		this.positions = new MapPosition[COLUMNS][ROWS];
-		
-		
+		this.initializeMap();
+		this.xPos = 5;
+		this.yPos = 8;
 	}
 	
 	public int getXPos() {
@@ -38,8 +38,16 @@ public class Map {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < COLUMNS ; i++) {
 			for(int j = 0 ; j < ROWS ; j++) {
-				sb.append(this.positions[i][j]);
+				if(i == this.xPos && j == this.yPos) {
+					sb.append("X");
+				}else {
+					sb.append(this.positions[i][j]);					
+				}
+				if(j < ROWS) {
+					sb.append(" ");
+				}
 			}
+			sb.append("\n");
 		}
 		return sb.toString();
 	}
