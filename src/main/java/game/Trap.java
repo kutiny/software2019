@@ -1,17 +1,17 @@
 package game;
 
 public class Trap {
-	private Damage damage;
+	private boolean active;
 	
-	public Trap(Damage damage) {
-		this.damage = damage;
+	public Trap() {
+		this.active = true;
 	}
 	
-	public DamageType getDamageType(){
-		return this.damage.getDamageType();
+	public boolean status() {
+		return this.active;
 	}
-	
-	public int getDamageAmmount() {
-		return this.damage.getDamagePoints();
+
+	public void deactivate() {
+		this.active = false;
 	}
 }

@@ -103,5 +103,9 @@ public class Character {
 		this.experience = experience;
 	}
 	
+	public void trapDamage(){
+		int damage = (int) Math.ceil(0.05 * this.hp);
+		this.hp = (damage > this.hp + 1) ? 1 : this.hp - damage;
+	}
 
 }

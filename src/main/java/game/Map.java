@@ -49,14 +49,15 @@ public class Map {
 			for(int j = 0 ; j < ROWS ; j++) {
 				this.positions[i][j] = new MapPosition(true);
 			}
-		}		
+		}
+		
 		this.positions[0][0].setExplorable(false);
 		this.positions[0][1].setExplorable(false);
 		this.positions[0][2].setExplorable(false);
 		this.positions[0][5].setExplorable(false);
 		this.positions[0][14].setExplorable(false);
 		this.positions[0][12].setEnemy(new EnemyType1()); //typ2
-		this.positions[0][8].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
+		this.positions[0][8].setTrap(new Trap());
 		
 		this.positions[1][0].setExplorable(false);
 		this.positions[1][1].setExplorable(false);
@@ -64,8 +65,8 @@ public class Map {
 		this.positions[1][5].setExplorable(false);
 		this.positions[1][14].setExplorable(false);
 		this.positions[1][3].setEnemy(new EnemyType2()); //typ2
-		this.positions[1][3].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
-		this.positions[1][8].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
+		this.positions[1][3].setTrap(new Trap());
+		this.positions[1][8].setTrap(new Trap());
 		
 		this.positions[2][0].setExplorable(false);
 		this.positions[2][5].setExplorable(false);
@@ -76,7 +77,7 @@ public class Map {
 		this.positions[2][13].setEnemy(new EnemyType3()); //typ3
 		
 		this.positions[3][5].setExplorable(false);
-		this.positions[3][2].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
+		this.positions[3][2].setTrap(new Trap());
 		
 		this.positions[4][6].setEnemy(new EnemyType3()); //typ3
 		this.positions[4][10].setEnemy(new EnemyType3()); //typ3 y trampa
@@ -93,7 +94,7 @@ public class Map {
 		this.positions[6][5].setExplorable(false);
 		this.positions[6][14].setExplorable(false);
 		this.positions[6][7].setEnemy(new EnemyType1()); //typ1
-		this.positions[6][12].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
+		this.positions[6][12].setTrap(new Trap());
 		
 		this.positions[7][14].setExplorable(false);
 		this.positions[7][10].setEnemy(new EnemyType2()); //typ2
@@ -109,8 +110,8 @@ public class Map {
 		this.positions[9][4].setEnemy(new EnemyType1()); //typ2
 		
 		this.positions[10][14].setEnemy(new EnemyType1()); //typ2
-		this.positions[10][12].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
-		this.positions[10][13].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
+		this.positions[10][12].setTrap(new Trap());
+		this.positions[10][13].setTrap(new Trap());
 		
 		this.positions[11][2].setEnemy(new EnemyType1()); //typ3 y trampa
 		this.positions[11][6].setEnemy(new EnemyType1()); //typ2 y trampa
@@ -123,7 +124,7 @@ public class Map {
 		this.positions[12][8].setExplorable(false);
 		this.positions[12][14].setExplorable(false);
 		this.positions[12][1].setEnemy(new EnemyType1()); //typ1 y trampa
-		this.positions[12][13].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
+		this.positions[12][13].setTrap(new Trap());
 		
 		this.positions[13][3].setExplorable(false);
 		this.positions[13][14].setExplorable(false);
@@ -137,7 +138,7 @@ public class Map {
 		this.positions[14][13].setExplorable(false);
 		this.positions[14][14].setExplorable(false);
 		this.positions[14][7].setEnemy(new EnemyType1()); //typ3
-		this.positions[14][2].setTrap(new Trap(new Damage(new DamageType("physical"), 10, 10)));
+		this.positions[14][2].setTrap(new Trap());
 	}
 
 }
