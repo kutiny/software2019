@@ -26,4 +26,19 @@ public class MapPosition {
 	public void setTrap(Trap t) {
 		this.trap = t;
 	}
+	
+	@Override
+	public String toString() {
+		String celda;
+		if(!this.explorable)
+			celda = "M";
+		else {
+			if(!this.explored) {
+				celda = "+";				
+			}else {
+				celda = "0";
+			}
+		}
+		return celda;
+	}
 }

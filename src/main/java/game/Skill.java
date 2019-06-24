@@ -5,6 +5,7 @@ public abstract class Skill {
   protected double critProbability;
   protected double failProbability;
   protected Damage damage;
+  protected static final double MEDIUMPROB = 0.5;
   
   public abstract Damage use();
 

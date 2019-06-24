@@ -9,18 +9,19 @@ public class WarriorSkill2 extends Skill {
     this.damage = new Damage(new DamageType("physical"), 71, 71);
   }
 
-  @Override
-  public Damage use() {
+
+  	@Override
+  	public Damage use() {
 		// TODO Auto-generated method stub
-		if( (this.failProbability+Math.random())<0.5) {
-			damage.setDamagePoints(0);
+		if( (this.failProbability + Math.random()) < MEDIUMPROB) {
+			damage.setDamageAmmount(0);
 		}
-		else if (this.critProbability+Math.random()<0.5) {
-			damage.setDamagePoints(damage.getBasicDamagePoints()*2);
+		else if (this.critProbability + Math.random() < MEDIUMPROB) {
+			damage.setDamageAmmount(damage.getBasicDamageAmmount()*2);
 		}
 		else {
-			damage.setDamagePoints(damage.getBasicDamagePoints());
+			damage.setDamageAmmount(damage.getBasicDamageAmmount());
 		}
 		return damage;
 	}
-	}
+}

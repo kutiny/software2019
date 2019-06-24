@@ -1,6 +1,9 @@
 package game;
 
-public abstract class Enemy {
+import lib.Observer;
+
+public abstract class Enemy implements Observer{
+	protected static final double MEDIUMPROB = 0.5;
 	protected String enemyName;
 	protected int level;
 	protected int hp;
@@ -36,7 +39,9 @@ public abstract class Enemy {
 	public void setEnemyName(String enemyName){
 		this.enemyName = enemyName;
 	}
-
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	public int getLevel() {
 		return this.level;
 	}
@@ -57,7 +62,7 @@ public abstract class Enemy {
 	}
 	
 	public void setMagicResist(int mr) {
-		this.magicResist=mr;
+		this.magicResist = mr;
 	}
 	public int getExpKilled() {
 		return this.expKilled;
@@ -72,13 +77,18 @@ public abstract class Enemy {
 			return false;
 		}
 	}
+
 	@SuppressWarnings("unlikely-arg-type")
 	public int calculateRecievedDamage(Damage damage) {
 		if ((damage.getDamageType()).equals("physical")){
-			return (damage.getDamagePoints()/(this.armor/100));
+			return (damage.getDamageAmmount()/(this.armor/100));
 		}
 		else
-			return damage.getDamagePoints()/(this.magicResist/100);
+			return damage.getDamageAmmount()/(this.magicResist/100);
 	}
+
+	
+	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
+
 
 }

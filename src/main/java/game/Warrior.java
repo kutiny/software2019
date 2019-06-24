@@ -9,7 +9,6 @@ public class Warrior extends CharacterClass {
 	  this.skills.add(new WarriorSkill1());
 	  this.skills.add(new WarriorSkill2());
 	  this.skills.add(new WarriorSkill3());
-	  activeSkill=null;
 	  maxHealth=200;
 	  armor=200;
 	  magicResist=100;
@@ -24,9 +23,9 @@ public class Warrior extends CharacterClass {
 @Override
 public int calculateRecievedDamage(Damage damage) {
 	if ((damage.getDamageType()).equals("physical")){
-		return (damage.getDamagePoints()/(this.armor/100));
+		return (damage.getDamageAmmount()/(this.armor/100));
 	}
 	else
-		return damage.getDamagePoints()/(this.magicResist/100);
+		return damage.getDamageAmmount()/(this.magicResist/100);
 }
 }

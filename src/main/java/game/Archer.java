@@ -9,7 +9,6 @@ public class Archer extends CharacterClass {
 		  this.skills.add(new ArcherSkill1());
 		  this.skills.add(new ArcherSkill2());
 		  this.skills.add(new ArcherSkill3());
-		  activeSkill=null;
 		  maxHealth=200;
 		  armor=150;
 		  magicResist=100;

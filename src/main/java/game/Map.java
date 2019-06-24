@@ -8,10 +8,10 @@ public class Map {
 	private int yPos;
 	
 	public Map() {
-		
 		this.positions = new MapPosition[COLUMNS][ROWS];
-		
-		
+		this.initializeMap();
+		this.xPos = 5;
+		this.yPos = 8;
 	}
 	
 	public int getXPos() {
@@ -38,8 +38,16 @@ public class Map {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < COLUMNS ; i++) {
 			for(int j = 0 ; j < ROWS ; j++) {
-				sb.append(this.positions[i][j]);
+				if(i == this.xPos && j == this.yPos) {
+					sb.append("X");
+				}else {
+					sb.append(this.positions[i][j]);					
+				}
+				if(j < ROWS) {
+					sb.append(" ");
+				}
 			}
+			sb.append("\n");
 		}
 		return sb.toString();
 	}
@@ -50,6 +58,9 @@ public class Map {
 				this.positions[i][j] = new MapPosition(true);
 			}
 		}
+
+
+
 		
 		this.positions[0][0].setExplorable(false);
 		this.positions[0][1].setExplorable(false);
@@ -65,7 +76,7 @@ public class Map {
 		this.positions[1][5].setExplorable(false);
 		this.positions[1][14].setExplorable(false);
 		this.positions[1][3].setEnemy(new EnemyType2());
-		this.positions[1][3].setTrap(new Trap());
+		this.positions[1][4].setTrap(new Trap());
 		this.positions[1][8].setTrap(new Trap());
 		
 		this.positions[2][0].setExplorable(false);

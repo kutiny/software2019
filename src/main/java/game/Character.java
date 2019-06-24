@@ -1,18 +1,22 @@
 package game;
 
 public class Character {
+	private static final double MEDIUMPROB = 0.5;
 	private String name;
 	private String gender;
 	private int experience;
 	private int hp;
+	private int maxHp;
 	private int level;
+	public transient CharacterLevelObservable levelObservable;
 	private Enemy activeEnemy;
 	private CharacterClass charaClass;
 
 	public Character(){
-		this.level = 1;
+		this.levelObservable = new CharacterLevelObservable();
 		this.experience = 0;
-		this.activeEnemy=null;
+		this.level = 1;
+		this.maxHp = 100;
 	}
 
 	public void move(String direction){
@@ -24,11 +28,20 @@ public class Character {
 	}
 
 	public void rest(){
-		if(Math.random()<0.5) {
-			this.hp+=(Math.random()*this.hp/2);
+		double rand = Math.random();
+		if(rand > MEDIUMPROB) {
+			int toAddHp = (int) Math.floor(Math.random() * this.hp / 2);
+			if(this.hp + toAddHp > this.maxHp)
+				this.hp = this.maxHp;
+			else
+				this.hp += toAddHp;
 		}
-		else if (Math.random()>0.25){
-			this.hp-=(Math.random()*this.hp/2);
+		else if (rand > MEDIUMPROB / 2){
+			int toDecreaseHp = (int) Math.floor(Math.random() * this.hp / 2);
+			if(this.hp - toDecreaseHp <= 0)
+				this.hp = 1;
+			else
+				this.hp -= toDecreaseHp;
 		}
 	}
 
@@ -83,6 +96,7 @@ public class Character {
 
 	public void setLevel(int level){
 		this.level = level;
+		this.levelObservable.next(this.level);
 	}
 
 	public String getName(){
@@ -113,8 +127,16 @@ public class Character {
 	}
 	
 	
+	public void setMaxHp(int hp) {
+		this.maxHp = hp;
+	}
+	
+	public int getMaxHp() {
+		return this.maxHp;
+	}
+	
 	public void trapDamage(){
-		int damage = (int) Math.ceil(0.05 * this.hp);
+		int damage = (int) Math.ceil(0.1 * this.hp);
 		this.hp = (damage > this.hp + 1) ? 1 : this.hp - damage;
 	}
 
