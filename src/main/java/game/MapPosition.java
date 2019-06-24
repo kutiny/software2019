@@ -27,6 +27,14 @@ public class MapPosition {
 		this.trap = t;
 	}
 	
+	public Enemy getEnemy() {
+		return this.enemy;
+	}
+	
+	public Trap getTrap() {
+		return this.trap;
+	}
+	
 	@Override
 	public String toString() {
 		String ceil = "";

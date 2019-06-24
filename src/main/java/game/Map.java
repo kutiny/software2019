@@ -22,9 +22,31 @@ public class Map {
 		return this.yPos;
 	}
 	
+	public MapPosition getPosition(int x , int y) {
+		return this.positions[x][y];
+	}
+	
 	public void moveCharacterUp() {
 		if(this.yPos > 1) {
 			this.setCharacterPosition(this.xPos, this.yPos - 1);
+		}
+	}
+	
+	public void moveCharacterDown() {
+		if(this.yPos < 13) {
+			this.setCharacterPosition(this.xPos, this.yPos + 1);
+		}
+	}
+	
+	public void moveCharacterLeft() {
+		if(this.xPos > 1) {
+			this.setCharacterPosition(this.xPos - 1, this.yPos);
+		}
+	}
+	
+	public void moveCharacterRight() {
+		if(this.xPos < 13) {
+			this.setCharacterPosition(this.xPos + 1, this.yPos);
 		}
 	}
 	
@@ -32,6 +54,7 @@ public class Map {
 		this.xPos = x;
 		this.yPos = y;
 	}
+
 	
 	@Override
 	public String toString() {
@@ -151,5 +174,6 @@ public class Map {
 		this.positions[14][7].setEnemy(new EnemyType3());
 		this.positions[14][2].setTrap(new Trap());
 	}
+	
 
 }
