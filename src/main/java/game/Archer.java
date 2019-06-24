@@ -23,9 +23,9 @@ public class Archer extends CharacterClass {
 	@Override
 	public int calculateRecievedDamage(Damage damage) {
 		if ((damage.getDamageType()).equals("physical")){
-			return (damage.getDamagePoints()/(this.armor/100));
+			return (damage.getDamageAmmount()/(this.armor/100));
 		}
 		else
-			return damage.getDamagePoints()/(this.magicResist/100);
+			return damage.getDamageAmmount()/(this.magicResist/100);
 	}
 }
