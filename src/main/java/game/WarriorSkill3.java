@@ -12,13 +12,13 @@ public class WarriorSkill3 extends Skill {
 	@Override
 	public Damage use() {
 		if( (this.failProbability + Math.random()) < MEDIUMPROB) {
-			damage.setDamagePoints(0);
+			damage.setDamageAmmount(0);
 		}
 		else if (this.critProbability + Math.random() < MEDIUMPROB) {
-			damage.setDamagePoints(damage.getBasicDamagePoints() * 2);
+			damage.setDamageAmmount(damage.getBasicDamageAmmount() * 2);
 		}
 		else {
-			damage.setDamagePoints(damage.getBasicDamagePoints());
+			damage.setDamageAmmount(damage.getBasicDamageAmmount());
 		}
 		return damage;
 	}

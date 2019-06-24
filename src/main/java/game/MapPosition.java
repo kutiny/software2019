@@ -29,15 +29,16 @@ public class MapPosition {
 	
 	@Override
 	public String toString() {
-		String ceil = "";
+		String celda;
 		if(!this.explorable)
-			ceil = "M";
+			celda = "M";
 		else {
-			ceil = "+";
-			if(this.explored) {
-				ceil = "0";
+			if(!this.explored) {
+				celda = "+";				
+			}else {
+				celda = "0";
 			}
 		}
-		return ceil;
+		return celda;
 	}
 }

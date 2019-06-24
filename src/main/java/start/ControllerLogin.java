@@ -1,6 +1,5 @@
 package start;
 
-import start.ControllerGame;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -28,6 +27,9 @@ import javafx.stage.Stage;
 
 public class ControllerLogin implements Initializable{
 
+	private final int MINNAMELENGTH = 4;
+	private final int MAXNAMELENGTH = 10;
+	
     @FXML
     private TextField nombre;
 	
@@ -49,21 +51,21 @@ public class ControllerLogin implements Initializable{
     @FXML
     void handleStart(ActionEvent event) {
     	//Se comprueba si hay algun problema con el nombre y/o clase
-    	if(nombre.getText().trim().length() < 4 || nombre.getText().trim().length() > 10 || clase.getValue() == null) {
+    	if(nombre.getText().trim().length() < MINNAMELENGTH || nombre.getText().trim().length() > MAXNAMELENGTH || clase.getValue() == null) {
     		error.setVisible(true);
     		if(clase.getValue() == null) {
     			errorClase.setVisible(true);
-    			if(nombre.getText().trim().length() < 4 ) {
+    			if(nombre.getText().trim().length() < MINNAMELENGTH ) {
     				errorNombreCorto.setVisible(true);
         			errorNombreLargo.setVisible(false);
-    			}else if(nombre.getText().trim().length() > 9 ) {
+    			}else if(nombre.getText().trim().length() > MAXNAMELENGTH ) {
     				errorNombreCorto.setVisible(false);
         			errorNombreLargo.setVisible(true);
     			}else {
     				errorNombreCorto.setVisible(false);
         			errorNombreLargo.setVisible(false);
     			}
-    		}else if(nombre.getText().length() < 4) {
+    		}else if(nombre.getText().length() < MINNAMELENGTH) {
     			errorClase.setVisible(false);
     			errorNombreCorto.setVisible(true);
     			errorNombreLargo.setVisible(false);

@@ -10,14 +10,14 @@ public class EnemyType1 extends Enemy {
 	
 	@Override
 	public Damage fight(Character character) {
-		if( (this.failProb+Math.random())<0.5) {
-			this.damage.setDamagePoints(0);
+		if( (this.failProb + Math.random()) < MEDIUMPROB) {
+			this.damage.setDamageAmmount(0);
 		}
-		else if (this.critProb+Math.random()<0.5) {
-			damage.setDamagePoints(damage.getBasicDamagePoints()*2);
+		else if (this.critProb + Math.random() < MEDIUMPROB) {
+			damage.setDamageAmmount(damage.getBasicDamageAmmount() * 2);
 		}
 		else {
-			damage.setDamagePoints(damage.getBasicDamagePoints());
+			damage.setDamageAmmount(damage.getBasicDamageAmmount());
 		}
 		return damage;
 	}
