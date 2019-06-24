@@ -16,11 +16,11 @@ public class Duel {
 		return this.character;
 	}
 	
-	public boolean characterAttack(Skill skill) throws IllegalStateException {
+	public boolean characterAttack() throws IllegalStateException {
 		if(this.isCharacterNext) {
 			this.isCharacterNext = false;
 
-			this.character.getCharaClass().setActiveSkill(skill);
+//			this.character.getCharaClass().setActiveSkill(skill);
 			this.enemy.receiveDamage(this.enemy.calculateRecievedDamage(this.character.fight()));
 				if(enemy.getHp()>0)
 				return true;

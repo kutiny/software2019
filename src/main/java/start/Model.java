@@ -1,6 +1,7 @@
 package start;
 
 import game.Map;
+import game.Skill;
 import game.Duel;
 
 public class Model {
@@ -16,19 +17,14 @@ public class Model {
 	}
 	
 	
-	
 	public String moveUp() {
 		this.map.moveCharacterUp();
 		return this.map.toString();
 	}
-	public void startDuel() {
-		this.inDuel=true;
 
-		this.fightTurn(this.duel.getCharacter().getCharaClass().getActiveSkill());
-	}
-	
-	public void fightTurn(Skill skill) {
-		if(!duel.characterAttack(skill)) {
+	public void fightTurn() {
+		inDuel=true;
+		if(!duel.characterAttack()) {
 			inDuel=false;
 			}
 		else if(!duel.EnemyAttack()) {
