@@ -1,10 +1,5 @@
 package game;
 
-import game.Character;
-import game.Damage;
-import game.DamageType;
-import game.Enemy;
-
 public class EnemyType2 extends Enemy {
 
 	static double MEDIUMPROBABILITY = 0.5;
@@ -15,14 +10,14 @@ public class EnemyType2 extends Enemy {
 	
 	@Override
 	public Damage fight(Character character) {
-		if( (this.failProb+Math.random())<0.5) {
-			damage.setDamagePoints(0);
+		if( (this.failProb + Math.random()) < MEDIUMPROB) {
+			damage.setDamageAmmount(0);
 		}
-		else if (this.critProb+Math.random()<0.5) {
-			damage.setDamagePoints(damage.getBasicDamagePoints()*2);
+		else if (this.critProb + Math.random() < MEDIUMPROB) {
+			damage.setDamageAmmount(damage.getBasicDamageAmmount() * 2);
 		}
 		else {
-			damage.setDamagePoints(damage.getBasicDamagePoints());
+			damage.setDamageAmmount(damage.getBasicDamageAmmount());
 		}
 		return damage;
 	}

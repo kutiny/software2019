@@ -3,6 +3,7 @@ package game;
 import lib.Observer;
 
 public abstract class Enemy implements Observer{
+	protected static final double MEDIUMPROB = 0.5;
 	protected String enemyName;
 	protected int level;
 	protected int hp;
@@ -61,7 +62,7 @@ public abstract class Enemy implements Observer{
 	}
 	
 	public void setMagicResist(int mr) {
-		this.magicResist=mr;
+		this.magicResist = mr;
 	}
 	
 	public boolean receiveDamage(int damage) {

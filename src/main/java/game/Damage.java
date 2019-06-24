@@ -1,28 +1,38 @@
 package game;
 
 public class Damage {
-	private DamageType dmgType;
-	private int dmgAmmount;
-	private int basicDmgAmmount;
+	private DamageType damageType;
+	private int damageAmmount;
+	private int basicDamageAmmount;
 	
 	public Damage(DamageType type, int ammount, int basicAmmount) {
-		this.dmgType = type;
-		this.dmgAmmount = ammount;
-		this.basicDmgAmmount = basicAmmount;
+		this.damageType = type;
+		this.damageAmmount = ammount;
+		this.basicDamageAmmount = basicAmmount;
 	}
 	
-	public int getDamagePoints() {
-		return this.dmgAmmount;
+	public int getDamageAmmount() {
+		return this.damageAmmount;
 	}
 	
 	public DamageType getDamageType() {
-		return this.dmgType;
+		return this.damageType;
 	}
-	public void setDamagePoints(int damage) {
-		this.dmgAmmount=damage;
+	
+	public void setDamageType(DamageType d) {
+		this.damageType = d;
 	}
-	public int getBasicDamagePoints() {
-		return this.basicDmgAmmount;
+	
+	public void setDamageAmmount(int damage) {
+		this.damageAmmount = damage;
+	}
+	
+	public int getBasicDamageAmmount() {
+		return this.basicDamageAmmount;
+	}
+	
+	public void setBasicDamageAmmount(int dmg) {
+		this.basicDamageAmmount = dmg;
 	}
 	
 }
