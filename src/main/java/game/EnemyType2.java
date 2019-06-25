@@ -1,5 +1,6 @@
 package game;
 
+
 public class EnemyType2 extends Enemy {
 
 	static double MEDIUMPROBABILITY = 0.5;
@@ -9,12 +10,14 @@ public class EnemyType2 extends Enemy {
 	}
 	
 	@Override
-	public Damage fight(Character character) {
+
+	public Damage fight() {
 		if( (this.failProb + Math.random()) < MEDIUMPROB) {
 			damage.setDamageAmmount(0);
 		}
 		else if (this.critProb + Math.random() < MEDIUMPROB) {
 			damage.setDamageAmmount(damage.getBasicDamageAmmount() * 2);
+
 		}
 		else {
 			damage.setDamageAmmount(damage.getBasicDamageAmmount());

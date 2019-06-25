@@ -18,4 +18,14 @@ public class Archer extends CharacterClass {
 	  public Damage fight(){
 	    return this.activeSkill.use();
 	  }
+
+	@SuppressWarnings("unlikely-arg-type")
+	@Override
+	public int calculateRecievedDamage(Damage damage) {
+		if ((damage.getDamageType()).equals("physical")){
+			return (damage.getDamageAmmount()/(this.armor/100));
+		}
+		else
+			return damage.getDamageAmmount()/(this.magicResist/100);
 	}
+}

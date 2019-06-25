@@ -6,12 +6,16 @@ public class EnemyType1 extends Enemy {
 
 	public EnemyType1() {
 		super("Enemy1", 1, 100, new Damage(new DamageType("physical"), 12, 12), 1, 0.0, 0.3, 1, 100);
+		
 	}
 	
 	@Override
-	public Damage fight(Character character) {
+
+
+	public Damage fight() {
 		if( (this.failProb + Math.random()) < MEDIUMPROB) {
 			this.damage.setDamageAmmount(0);
+			
 		}
 		else if (this.critProb + Math.random() < MEDIUMPROB) {
 			damage.setDamageAmmount(damage.getBasicDamageAmmount() * 2);

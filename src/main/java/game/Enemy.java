@@ -26,7 +26,7 @@ public abstract class Enemy implements Observer{
 		this.failProb = failProb;
 	}
 	
-	public abstract Damage fight(Character character);
+	public abstract Damage fight();
 	
 	public void levelUp() {
 		level++;
@@ -64,6 +64,9 @@ public abstract class Enemy implements Observer{
 	public void setMagicResist(int mr) {
 		this.magicResist = mr;
 	}
+	public int getExpKilled() {
+		return this.expKilled;
+	}
 	
 	public boolean receiveDamage(int damage) {
 		if(this.hp > damage) {
@@ -74,7 +77,18 @@ public abstract class Enemy implements Observer{
 			return false;
 		}
 	}
+
+	@SuppressWarnings("unlikely-arg-type")
+	public int calculateRecievedDamage(Damage damage) {
+		if ((damage.getDamageType()).equals("physical")){
+			return (damage.getDamageAmmount()/(this.armor/100));
+		}
+		else
+			return damage.getDamageAmmount()/(this.magicResist/100);
+	}
+
 	
 	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
+
 
 }

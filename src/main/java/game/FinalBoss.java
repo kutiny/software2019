@@ -1,18 +1,18 @@
 package game;
 
-public class EnemyType3 extends Enemy {
+public class FinalBoss extends Enemy {
 
-	static double MEDIUMPROBABILITY = 0.5;
-
-	public EnemyType3() {
-		super("Enemy1", 1, 100, new Damage(new DamageType("physical"), 50, 50), 1, 0.0, 0.3, 1, 100);
+	public FinalBoss(String name, int lv, int hp, Damage damage, int armor, double critProb, double failProb, int magicResist, int expKilled) {
+		super("FinalBoss", 1, 200, new Damage(new DamageType("magical"), 50, 50), 150, 0.3, 0.1, 150, 10000);
+		// TODO Auto-generated constructor stub
 	}
-	
-	@Override
 
+	@Override
 	public Damage fight() {
+		
 		if( (this.failProb + Math.random()) < MEDIUMPROB) {
-			damage.setDamageAmmount(0);
+			this.damage.setDamageAmmount(0);
+			
 		}
 		else if (this.critProb + Math.random() < MEDIUMPROB) {
 			damage.setDamageAmmount(damage.getBasicDamageAmmount() * 2);
@@ -21,7 +21,6 @@ public class EnemyType3 extends Enemy {
 			damage.setDamageAmmount(damage.getBasicDamageAmmount());
 		}
 		return damage;
-
 	}
 	
 	public void notifyHandler(Object value) throws IllegalArgumentException {
@@ -31,5 +30,5 @@ public class EnemyType3 extends Enemy {
 			throw new IllegalArgumentException();
 		}
 	}
-
 }
+	

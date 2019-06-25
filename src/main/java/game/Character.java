@@ -29,15 +29,34 @@ public class Character {
 
 	public void rest(){
 		double rand = Math.random();
+		int toAddHp;
+		int toDecreaseHp;
 		if(rand > MEDIUMPROB) {
-			int toAddHp = (int) Math.floor(Math.random() * this.hp / 2);
+			if(this.hp<this.maxHp*0.3) {
+				toAddHp=this.hp/2;
+			}
+			else if(this.hp<this.maxHp*0.6){
+				toAddHp=this.hp/4;
+			}
+			else {
+				toAddHp=this.hp/8;
+			}
 			if(this.hp + toAddHp > this.maxHp)
 				this.hp = this.maxHp;
 			else
 				this.hp += toAddHp;
 		}
 		else if (rand > MEDIUMPROB / 2){
-			int toDecreaseHp = (int) Math.floor(Math.random() * this.hp / 2);
+			if(this.hp<this.maxHp*0.3) {
+				toDecreaseHp=this.hp/20;
+			}
+			else if(this.hp<this.maxHp*0.5){
+				toDecreaseHp=this.hp/15;
+			}
+			else {
+				toDecreaseHp=this.hp/10;
+				
+			}
 			if(this.hp - toDecreaseHp <= 0)
 				this.hp = 1;
 			else
@@ -59,8 +78,14 @@ public class Character {
 		}else {
 			throw new IllegalArgumentException("La experiencia no puede ser negativa.");
 		}
+		if(exp>=1000*(this.level*0.5)) {
+			exp+=1000*this.level;
+			this.levelUp();
+		}
 
 	}
+	
+	
 	
 	public boolean receiveDamage(int dm){
 		if(dm < 0) {
@@ -116,6 +141,10 @@ public class Character {
 	public void setExperience(int experience){
 		this.experience = experience;
 	}
+	public CharacterClass getCharaClass(){
+		return this.charaClass;
+	}
+	
 	
 	public void setMaxHp(int hp) {
 		this.maxHp = hp;
