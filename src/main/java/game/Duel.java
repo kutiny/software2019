@@ -25,6 +25,7 @@ public class Duel {
 				if(enemy.getHp()>0)
 				return true;
 				else {
+						character.setActiveEnemy(null);
 						character.addExp(this.enemy.getExpKilled());
 					return false;
 				}

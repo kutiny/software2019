@@ -93,7 +93,7 @@ public class ControllerLogin implements Initializable{
     	}
     }
     
-    ObservableList<String> list = FXCollections.observableArrayList("Mago", "Maga", "Guerrero", "Guerrera", "Arquero", "Arquera");
+    ObservableList<String> list = FXCollections.observableArrayList( "Maga", "Guerrero", "Arquera");
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -64,10 +64,13 @@ public class Character {
 		}
 	}
 
-	public void runAway(){
+	public boolean runAway(){
+		if(Math.random()<0.5) {
 		this.setActiveEnemy(null);
+		return true;
 	}
-
+	else return false;	
+	}
 	public void levelUp(){
 		this.setLevel(this.getLevel() + 1);
 	}

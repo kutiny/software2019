@@ -131,10 +131,12 @@ public class ControllerGame {
     public void setNombreAndClase(String nombre, String clase) {
     	CharacterName.setText(nombre);
     	characterClass.setText(clase);
+    	app.setcharaClass(clase);
+    	app.setcharaName(nombre);
     	this.update();
     	
-    	
     }
+    
     //Supondremos que S1: Escapar, S2: Descanzar, S3:No Escapar H1,H2,H3 Skill
     public void updateButtons() {
     	switch (app.getStatus()) {
