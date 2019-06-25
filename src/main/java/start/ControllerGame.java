@@ -1,6 +1,7 @@
 
 package start;
 
+import game.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -21,18 +22,49 @@ import javafx.scene.text.Text;
 public class ControllerGame {
 
     private Model model = new Model();
+    private App app = new App();
 
     @FXML
     private TextArea History;
 
     @FXML
     private TextArea Map;
-    
+
     @FXML
     private Text CharacterName;
 
     @FXML
     private Text characterClass;
+
+    @FXML
+    private Button buttonUp;
+
+    @FXML
+    private Button buttonDown;
+
+    @FXML
+    private Button buttonRight;
+
+    @FXML
+    private Button buttonLeft;
+
+    @FXML
+    private Button buttonH3;
+
+    @FXML
+    private Button buttonS3;
+
+    @FXML
+    private Button buttonH2;
+
+    @FXML
+    private Button buttonS2;
+
+    @FXML
+    private Button buttonH1;
+
+    @FXML
+    private Button buttonS1;
 
 
     @FXML
@@ -82,14 +114,82 @@ public class ControllerGame {
 
     @FXML
     void handleMoveUp(ActionEvent event) {
-        Map.setText(model.moveUp());
+        //Map.setText(model.moveUp());
+    	app.moveUp();
+    	Map.setText(app.getMap());
 
+    }
+    
+    private void update() {
+    	History.setText(app.getHistory());
+    	Map.setText(app.getMap());
+    	this.updateButtons();
+    	Map.setWrapText(true);
+    	
     }
     
     public void setNombreAndClase(String nombre, String clase) {
     	CharacterName.setText(nombre);
     	characterClass.setText(clase);
+    	this.update();
     	
+    	
+    }
+    //Supondremos que S1: Escapar, S2: Descanzar, S3:No Escapar H1,H2,H3 Skill
+    public void updateButtons() {
+    	switch (app.getStatus()) {
+    		case "Libre":
+    			buttonUp.setDisable(false);
+    			buttonDown.setDisable(false);
+    			buttonRight.setDisable(false);
+    			buttonLeft.setDisable(false);
+    			buttonH1.setDisable(true);
+    			buttonH2.setDisable(true);
+    			buttonH3.setDisable(true);
+    			buttonS1.setDisable(true);
+    			buttonS2.setDisable(false);
+    			buttonS3.setDisable(true);
+    			break;
+    			
+    		case "Descanso":
+    			buttonUp.setDisable(false);
+    			buttonDown.setDisable(false);
+    			buttonRight.setDisable(false);
+    			buttonLeft.setDisable(false);
+    			buttonH1.setDisable(true);
+    			buttonH2.setDisable(true);
+    			buttonH3.setDisable(true);
+    			buttonS1.setDisable(true);
+    			buttonS2.setDisable(true);
+    			buttonS3.setDisable(true);
+    			break;
+    			
+    		case "PreDuelo":
+    			buttonUp.setDisable(true);
+    			buttonDown.setDisable(true);
+    			buttonRight.setDisable(true);
+    			buttonLeft.setDisable(true);
+    			buttonH1.setDisable(true);
+    			buttonH2.setDisable(true);
+    			buttonH3.setDisable(true);
+    			buttonS1.setDisable(false);
+    			buttonS2.setDisable(true);
+    			buttonS3.setDisable(false);
+    			break;
+    			
+    		case "Duelo":
+    			buttonUp.setDisable(true);
+    			buttonDown.setDisable(true);
+    			buttonRight.setDisable(true);
+    			buttonLeft.setDisable(true);
+    			buttonH1.setDisable(false);
+    			buttonH2.setDisable(false);
+    			buttonH3.setDisable(false);
+    			buttonS1.setDisable(true);
+    			buttonS2.setDisable(true);
+    			buttonS3.setDisable(true);
+    			break;
+    	}
     }
 
 }

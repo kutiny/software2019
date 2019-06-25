@@ -15,10 +15,14 @@ public class App {
   public App() {
 	  m = new Map();
 	  c = new Character();
+	  
+	  history = "Bienvenido";
+	  map = m.toString();
+	  status = "Libre";
+	  
 	}
   public static void main(String[] args){
 	  Map m = new Map();
-	  
 	  Character c = new Character();
 	  System.out.println(c.getLevel());
 	  
@@ -71,7 +75,7 @@ public class App {
 		  this.enemy = m.getPosition(m.getXPos(), m.getYPos() - 1).getEnemy();
 		  if(this.enemy.getHp() > 0) {
 			  if(this.huir) {
-				  setStatus("Preduelo");
+				  setStatus("PreDuelo");
 				  this.huir = false;
 				  addHistory("Has encontrado un enemigo. Parece que el aun no te a visto. Puedes intentar huir");
 			  }else {
@@ -98,7 +102,17 @@ public class App {
 			  addHistory("Mas vacio que el amor de ella");
 		  }
 	  }
-	  setMap(c.toString());
+	  setMap(m.toString());
+  }
+  
+  public void skill1() {
+	  //Cambiar habilidad
+	  if(duel.characterAttack(null)) {//cambiar null
+		  addHistory("Tu enemigo aun sigue en pie");
+	  }else {
+		  addHistory("Has matado a tu enemigo");
+		  setStatus("Duelo");
+	  }
   }
   
   //public void pelear
