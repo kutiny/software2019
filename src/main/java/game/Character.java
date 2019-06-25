@@ -29,15 +29,34 @@ public class Character {
 
 	public void rest(){
 		double rand = Math.random();
+		int toAddHp;
+		int toDecreaseHp;
 		if(rand > MEDIUMPROB) {
-			int toAddHp = (int) Math.floor(Math.random() * this.hp / 2);
+			if(this.hp<this.maxHp*0.3) {
+				toAddHp=this.hp/2;
+			}
+			else if(this.hp<this.maxHp*0.6){
+				toAddHp=this.hp/4;
+			}
+			else {
+				toAddHp=this.hp/8;
+			}
 			if(this.hp + toAddHp > this.maxHp)
 				this.hp = this.maxHp;
 			else
 				this.hp += toAddHp;
 		}
 		else if (rand > MEDIUMPROB / 2){
-			int toDecreaseHp = (int) Math.floor(Math.random() * this.hp / 2);
+			if(this.hp<this.maxHp*0.3) {
+				toDecreaseHp=this.hp/20;
+			}
+			else if(this.hp<this.maxHp*0.5){
+				toDecreaseHp=this.hp/15;
+			}
+			else {
+				toDecreaseHp=this.hp/10;
+				
+			}
 			if(this.hp - toDecreaseHp <= 0)
 				this.hp = 1;
 			else
