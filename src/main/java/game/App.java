@@ -15,6 +15,7 @@ public class App {
 	private Duel duel;
 	private CharacterClass charaClass;
 	private CharacterLevelObserver characterLevelObserver;
+	private CharacterLifeObserver characterLifeObserver;
 	MapPosition pos;
   
 	// Constructor
@@ -28,6 +29,7 @@ public class App {
 		this.huir = true;
 	  
 		this.characterLevelObserver = new CharacterLevelObserver(c);
+		this.characterLifeObserver = new CharacterLifeObserver();
 		
 		// suscripcion de los enemigos al character (level)
 		ArrayList<Enemy> enemies = m.getEnemies();
@@ -217,5 +219,9 @@ public class App {
   
   	public int getNivelPersonaje() {
   		return this.characterLevelObserver.getLastValue();
+  	}
+  	
+  	public int getVidaPersonaje() {
+  		return this.characterLifeObserver.getLastValue();
   	}
 }

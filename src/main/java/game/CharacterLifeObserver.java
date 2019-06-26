@@ -6,8 +6,8 @@ public class CharacterLifeObserver implements Observer {
 
 	private int lastValue;
 	
-	public CharacterLifeObserver(Character c) {
-		c.levelObservable.subscribe(this);
+	public CharacterLifeObserver() {
+//		c.levelObservable.subscribe(this);
 	}
 	
 	@Override
