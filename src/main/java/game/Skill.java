@@ -15,6 +15,7 @@ public abstract class Skill {
   
   public void setSkillName(String sk) {
 	  this.skillName = sk;
+	  }
   public Damage getDamage() {
 	  return this.damage;
   }
