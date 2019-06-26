@@ -28,6 +28,17 @@ dependencies {
 }
 apply plugin: 'javafx-gradle-plugin'
 
+sourceSets {
+	main {
+		java {
+			srcDirs= ["src/main/java"]
+		}
+		resources {
+			srcDirs= ["src/main/resources"]
+		}
+	}
+}
+
 test {
     useJUnit()
     maxHeapSize = '1G'
@@ -44,7 +55,7 @@ jfx {
     verbose = true
     mainClass = "start.Start"
     jfxAppOutputDir = "build/jfx/app"
-    jfxMainAppJarName = "project-jfx.jar"
+    jfxMainAppJarName = "TalesOfEuphona.jar"
     deployDir = "src/main/deploy"
     useEnvironmentRelativeExecutables = true
     libFolderName = "lib"
