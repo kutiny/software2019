@@ -29,10 +29,10 @@ public abstract class CharacterClass  {
   public void statsLevelUp() {
 		double toIncreaseArmor;
 		double toIncreaseMagicResist;
-		toIncreaseArmor= this.getArmor()/10;
+		toIncreaseArmor = this.getArmor() / 10;
 		this.setArmor( Math.round(this.getArmor() + toIncreaseArmor));
 		
-		toIncreaseMagicResist= this.getMagicResist()/10;
+		toIncreaseMagicResist = this.getMagicResist() / 10;
 		this.setMagicResist( (int) (this.getMagicResist() + toIncreaseMagicResist) );
   }
   
@@ -40,7 +40,7 @@ public abstract class CharacterClass  {
   
   public void SkillsLevelUp() {
 	  int toIncreaseBasicDmg;
-	  for(int i=0; i<skills.size(); i++) {
+	  for(int i = 0; i < skills.size(); i++) {
 		  
 		 toIncreaseBasicDmg = Math.round(( skills.get(i).getDamage().getBasicDamageAmmount() )/10);
 		 skills.get(i).getDamage().setBasicDamageAmmount( skills.get(i).getDamage().getBasicDamageAmmount() + toIncreaseBasicDmg);

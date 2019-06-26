@@ -145,7 +145,6 @@ public class App {
 			this.trap = this.pos.getTrap();
   		  
   		  	if(enemy != null && enemy.getHp() > 0) {
-  		  		this.enemy = enemy;
 				if(this.huir) {
 					setStatus("PreDuelo");
 					this.huir = false;
@@ -181,7 +180,6 @@ public class App {
   		CharacterClass clase = c.getCharaClass();
 	  	clase.setActiveSkill(clase.getSkills().get(skNumber - 1));
 	  	
-		
 	  	if(!duel.characterAttack()) {
 			this.setStatus("Libre");
 			this.addHistory("Has matado a tu enemigo");

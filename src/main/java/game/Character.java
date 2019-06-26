@@ -80,6 +80,7 @@ public class Character {
 	else return false;	
 	}
 	public void levelUp(){
+		System.out.println("NIVEL UP");
 		this.setLevel( this.getLevel() + 1);
 		int toIncreaseMaxHp;
 
@@ -98,8 +99,8 @@ public class Character {
 		}else {
 			throw new IllegalArgumentException("La experiencia no puede ser negativa.");
 		}
-		if(exp>=1000*(this.level*0.5)) {
-			exp-=1000*this.level;
+		if(this.experience >= 300 * (this.level * 0.5)) {
+			this.setExperience(this.experience - (300 * this.level / 2));
 			this.levelUp();
 		}
 
@@ -162,11 +163,7 @@ public class Character {
 	}
 
 	public void setExperience(int experience){
-		this.experience += experience;
-		boolean levelUp = (this.experience / 300 > 0);
-		this.experience = this.experience % 300;
-		if(levelUp)
-			this.levelUp();
+		this.experience = experience;
 	}
 	
 	public CharacterClass getCharaClass(){

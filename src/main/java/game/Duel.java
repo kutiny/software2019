@@ -27,10 +27,8 @@ public class Duel {
 	public boolean characterAttack() throws IllegalStateException {
 		if(this.isCharacterNext) {
 			this.isCharacterNext = false;
-			System.out.println(enemy.getHp());
 			this.enemy.receiveDamage(this.enemy.calculateRecievedDamage(this.character.fight()));
-			System.out.println(enemy.getHp());
-			if(enemy.getHp()>0)
+			if(enemy.getHp() > 0)
 				return true;
 			else {
 				character.setActiveEnemy(null);

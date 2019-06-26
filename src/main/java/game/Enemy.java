@@ -112,7 +112,13 @@ public abstract class Enemy implements Observer{
 	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
 
 
-
-
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Enemy: { life: ");
+		sb.append(this.hp);
+		sb.append("}");
+		return sb.toString();
+	}
 
 }

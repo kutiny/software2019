@@ -29,7 +29,7 @@ public class EnemyType1 extends Enemy {
 	}
 	
 	public void notifyHandler(Object value) throws IllegalArgumentException {
-		if(value instanceof Integer) {
+		if(value instanceof Integer && (this.hp > 0)) {
 			this.setLevel((int)value);
 			this.damage.setBasicDamageAmmount( 12 * ( 1 + ( this.getLevel() / 10 ) ) );
 			this.setHp( 60 * ( 1 + this.getLevel() / 100 ) );
