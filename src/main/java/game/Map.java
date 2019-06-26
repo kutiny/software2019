@@ -80,6 +80,8 @@ public class Map {
 	  		  	break;
 		}
 		this.getPosition(getXPos(), getYPos()).toggleExplored();
+	}
+	
 	public ArrayList<Enemy> getEnemies(){
 		return this.enemies;
 	}
