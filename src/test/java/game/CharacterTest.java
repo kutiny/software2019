@@ -46,5 +46,14 @@ public class CharacterTest {
 //	duel.characterAttack();
 //	duel.characterAttack();
 //}
+  
+  @Test
+  public void nameTest() {
+	  Character character = new Character();
+	  character.setName("Ellie");
+	  assertEquals(character.getName(), "Ellie");
+  }
+  
+  
  
 }
