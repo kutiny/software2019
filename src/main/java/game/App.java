@@ -90,7 +90,7 @@ public class App {
   	}
   	
   	private void addHistoryPared() {
-  		addHistory("Sos o no ves la pared?");
+  		addHistory("Te has topado con un elemento que bloquea el paso.");
   	}
   
   	private void setStatus(String status) {
