@@ -5,7 +5,7 @@ public class Damage {
 	private int damageAmmount;
 	private int basicDamageAmmount;
 	
-	public Damage(DamageType type, int ammount, int basicAmmount) {
+	public Damage(DamageType type, int ammount, int basicAmmount) throws IllegalArgumentException {
 		this.damageType = type;
 		this.damageAmmount = ammount;
 		this.basicDamageAmmount = basicAmmount;
@@ -23,7 +23,10 @@ public class Damage {
 		this.damageType = d;
 	}
 	
-	public void setDamageAmmount(int damage) {
+	public void setDamageAmmount(int damage){
+		if(damage<0) {
+			throw new IllegalArgumentException("El daño de un ataque no puede ser negativo");
+		}
 		this.damageAmmount = damage;
 	}
 	
@@ -31,7 +34,10 @@ public class Damage {
 		return this.basicDamageAmmount;
 	}
 	
-	public void setBasicDamageAmmount(int dmg) {
+	public void setBasicDamageAmmount(int dmg){
+		if(dmg<0) {
+			throw new IllegalArgumentException("El daño de un ataque no puede ser negativo");
+		}
 		this.basicDamageAmmount = dmg;
 	}
 	

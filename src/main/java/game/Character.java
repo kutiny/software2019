@@ -24,6 +24,9 @@ public class Character {
 	}
 
 	public Damage fight(){
+		if(this.activeEnemy==null) {
+			throw new IllegalStateException("No hay un enemigo al cual atacar");
+		}
 		return charaClass.fight();
 	}
 
@@ -82,7 +85,7 @@ public class Character {
 			throw new IllegalArgumentException("La experiencia no puede ser negativa.");
 		}
 		if(exp>=1000*(this.level*0.5)) {
-			exp+=1000*this.level;
+			exp-=1000*this.level;
 			this.levelUp();
 		}
 
@@ -147,7 +150,9 @@ public class Character {
 	public CharacterClass getCharaClass(){
 		return this.charaClass;
 	}
-	
+	public void setCharaClass(CharacterClass charaClass){
+		this.charaClass=charaClass;
+	}
 	
 	public void setMaxHp(int hp) {
 		this.maxHp = hp;
