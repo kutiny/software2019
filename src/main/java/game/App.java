@@ -1,6 +1,6 @@
 package game;
 
-import game.CharacterClass;
+import java.util.ArrayList;
 
 public class App {
 	private Character c;
@@ -21,7 +21,12 @@ public class App {
 		history = "Bienvenido";
 		map = m.toString();
 		status = "Libre";
-	  
+		
+		// suscripcion de los enemigos al character (level)
+		ArrayList<Enemy> enemies = m.getEnemies();
+		for(Enemy e : enemies) {
+			this.c.levelObservable.subscribe(e);
+		}
 	}
   
   	public CharacterClass getcharaClass() {
