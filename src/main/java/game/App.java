@@ -98,9 +98,7 @@ public class App {
   	}
   	
   	public void rest() {
-  		System.out.println("Vida actual: " + c.getHp());
   		c.rest();
-  		System.out.println("Vida despues: " + c.getHp());
   	}
 
   	public void move(String lastMove) {
@@ -148,7 +146,8 @@ public class App {
 				if(this.huir) {
 					setStatus("PreDuelo");
 					this.huir = false;
-					addHistory("Has encontrado un enemigo. Parece que el aun no te ha visto. Puedes intentar huir");
+					addHistory("Has encontrado un enemigo que aun no te ha visto.");
+					addHistory("Puedes intentar huir.");
 				}else {
 					m.move(lastMove);
 					setStatus("Duelo");
@@ -163,12 +162,10 @@ public class App {
 						addHistory("Has pisado una trampa");
 						c.trapDamage();
 						trap.setDeactivated();
-					}else {
-						addHistory("Mas vacio que el amor de ella");
 					}
 				}  		  	
   		}catch(IndexOutOfBoundsException e) {
-  			addHistory("Sos o no ves la pared?");
+  			addHistory("Has dado contra un objeto que no permite el paso.");
   		}catch(NullPointerException e){
   			m.move(lastMove);
   		}finally {
@@ -199,7 +196,7 @@ public class App {
   	public void runAway() {
 		  if(this.c.runAway()) {
 			  this.status = "Libre";
-			  this.addHistory("Has logrado huir de tu enemigo");
+			  this.addHistory("Has logrado huir de tu enemigo.");
 		  }
 		  else {
 			  this.c.setActiveEnemy(this.enemy);
@@ -214,10 +211,9 @@ public class App {
   	public void fight() {
   		this.c.setActiveEnemy(this.enemy);
 		  this.status = "Duelo";
-		  this.addHistory("Buena desicion. No siempre es bueno escapar");
+		  this.addHistory("Buena decisión. No siempre es bueno huir.");
 		  this.duel = new Duel (this.c, this.enemy);
 		  m.move(this.lastMove);
-		  System.out.println("Me movi");
 		  setMap(m.toString());
   	}
   

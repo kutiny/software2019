@@ -80,7 +80,6 @@ public class Character {
 	else return false;	
 	}
 	public void levelUp(){
-		System.out.println("NIVEL UP");
 		this.setLevel( this.getLevel() + 1);
 		int toIncreaseMaxHp;
 
