@@ -7,14 +7,14 @@ public abstract class Enemy implements Observer{
 	protected String enemyName;
 	protected int level;
 	protected int hp;
-	protected int armor;
+	protected double armor;
 	protected double critProb;
 	protected double failProb;
-	protected int magicResist;
+	protected double magicResist;
 	protected int expKilled;
 	protected Damage damage;
 	
-	public Enemy(String name, int lv, int hp, Damage damage, int armor, double critProb, double failProb, int magicResist, int expKilled) {
+	public Enemy(String name, int lv, int hp, Damage damage, double armor, double critProb, double failProb, double magicResist, int expKilled) {
 		this.enemyName = name;
 		this.level = lv;
 		this.critProb = critProb;
@@ -48,8 +48,11 @@ public abstract class Enemy implements Observer{
 	public int getHp() {
 		return this.hp;
 	}
-	public int getArmor() {
+	public double getArmor() {
 		return this.armor;
+	}
+	public void setArmor(double armor) {
+		this.armor = armor;
 	}
 	public double getCritProb() {
 		return this.critProb;
@@ -57,11 +60,11 @@ public abstract class Enemy implements Observer{
 	public double getFailProb() {
 		return this.failProb;
 	}
-	public int getMagicResist() {
+	public double getMagicResist() {
 		return this.magicResist;
 	}
 	
-	public void setMagicResist(int mr) {
+	public void setMagicResist(double mr) {
 		this.magicResist = mr;
 	}
 	public int getExpKilled() {
@@ -82,13 +85,23 @@ public abstract class Enemy implements Observer{
 		}
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	public int calculateRecievedDamage(Damage damage) {
-		if ((damage.getDamageType()).equals("physical")){
-			return (damage.getDamageAmmount()/(this.armor/100));
+		System.out.println("Daño a recibir base:" + damage.getDamageAmmount());
+		int danio = damage.getDamageAmmount();
+		System.out.println("MR" + this.magicResist);
+		String type = damage.getDamageType().toString();
+		if (type.equals("physical")){
+			int danioARecibir = (int)(danio * (1.0 - this.armor));
+			System.out.println("daño a recivir:" + danioARecibir);
+			return danioARecibir;
 		}
-		else
-			return damage.getDamageAmmount()/(this.magicResist/100);
+		else {
+			int danioARecibir = (int)(danio * (1.0 - this.magicResist));
+			double multiplier = 1 - this.magicResist;
+			System.out.println("multip:" + multiplier);
+			System.out.println("daño a recibir:" + danioARecibir);
+			return danioARecibir;			
+		}
 	}
 
 	

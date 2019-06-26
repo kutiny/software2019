@@ -78,6 +78,13 @@ public abstract class CharacterClass  {
     return this.magicResist;
   }
 
+  public ArrayList<Skill> getSkills() {
+	  return this.skills;
+  }
+  
+  public void setSkills(ArrayList<Skill> skills) {
+	  this.skills = skills;
+  }
   
   
   

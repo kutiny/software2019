@@ -1,5 +1,6 @@
 package game;
 
+import game.CharacterClass;
 
 public class App {
 	private Character c;
@@ -7,199 +8,202 @@ public class App {
 	private String history;
 	private String map;
 	private String status;
+	private String lastMove;
 	private Enemy enemy;
+	private Trap trap;
 	private boolean huir; //true si puedo
 	private Duel duel;
-	private String charaClass;
-	private String charaName;
+	private CharacterClass charaClass;
+	MapPosition pos;
   
-  // Constructor
-  public App() {
-	  m = new Map();
-	  c = new Character();
+	// Constructor
+	public App() {
+		m = new Map();
+		c = new Character();
 	  
-	  history = "Bienvenido";
-	  map = m.toString();
-	  status = "Libre";
+		history = "Bienvenido";
+		map = m.toString();
+		status = "Libre";
+		this.huir = true;
 	  
 	}
-  public static void main(String[] args){
-	  Map m = new Map();
-	  Character c = new Character();
-	  System.out.println(c.getLevel());
-	  
-	  Enemy en1 = new EnemyType1();
-	  Enemy en2 = new EnemyType2();
-	  Enemy en3 = new EnemyType3();
-	  
-	  c.levelObservable.subscribe(en1);
-	  c.levelObservable.subscribe(en2);
-	  c.levelObservable.subscribe(en3);
-	  
-	  System.out.println("Enemy1 Level:" + en1.getLevel());
-	  c.levelUp();
-	  System.out.println("Enemy1 Level:" + en1.getLevel());
-	  c.levelUp();
-	  System.out.println("Enemy1 Level:" + en1.getLevel());
-	  System.out.println("Enemy2 Level:" + en2.getLevel());
-	  System.out.println("Enemy3 Level:" + en3.getLevel());
-	  
-	  System.out.print(c.toString());
-	  
-  }
   
-  public String getcharaClass() {
+  	public CharacterClass getcharaClass() {
 	  return this.charaClass;
-  }
+  	}
   
-  public String getcharaName() {
-	  return this.charaName;
-  }
+  	public void setcharaClass(String charaClass) {
+  		switch(charaClass) {
+		  	case "Maga":
+		  		this.charaClass = new Mage();
+		  		break;
+		  	case "Guerrero":
+		  		this.charaClass = new Warrior();
+		  		break;
+		  	case "Arquera":
+		  		this.charaClass = new Archer();
+		  		break;
+		  	default:
+		  		this.charaClass = new Warrior();
+  		}
+	  	this.c.setCharaClass(this.charaClass);
+  	}
   
-  public void setcharaClass(String charaClass) {
-	  this.charaClass = charaClass;
-  }
+  	public void setcharaName(String charaName) {
+	  	this.c.setName(charaName);
+  	}
   
-  public void setcharaName(String charaName) {
-	  this.charaName = charaName;
-  }
+  	public String getHistory() {
+  		return this.history;
+  	}
   
-  public String getHistory() {
-	  return this.history;
-  }
+  	public String getMap() {
+	  	return this.map;
+  	}
   
-  public String getMap() {
-	  return this.map;
-  }
+  	public String getStatus() {
+  		return this.status;
+  	}
   
-  public String getStatus() {
-	  return this.status;
-  }
+  	private void setMap(String map) {
+  		this.map = map;
+  	}
   
-  private void setMap(String map) {
-	  this.map = map;
-  }
+  	private void addHistory(String h) {
+  		this.history = this.history + "\n" + h;
+  	}
+  	
+  	private void addHistoryPared() {
+  		addHistory("Sos o no ves la pared?");
+  	}
   
-  private void addHistory(String h) {
-	  this.history = this.history + "\n" + h;
-  }
-  
-  private void setStatus(String status) {
-	  this.status = status;
-  }
-    
-  public void moveUp() {
-	  if(m.getPosition(m.getXPos(), m.getYPos() - 1).getEnemy() != null) {
-		  this.enemy = m.getPosition(m.getXPos(), m.getYPos() - 1).getEnemy();
-		  if(this.enemy.getHp() > 0) {
-			  if(this.huir) {
-				  setStatus("PreDuelo");
-				  this.huir = false;
-				  addHistory("Has encontrado un enemigo. Parece que el aun no te ha visto. Puedes intentar huir");
-			  }else {
-				  m.moveCharacterUp();
-				  setStatus("Duelo");
-				  //INICIAR DUELO, PEGA PJ PRIMERO
-				  this.c.setActiveEnemy(this.enemy);
-				  duel = new Duel(this.c, this.enemy);
-				  addHistory("Has encontrado un enemigo. Debes empezar a pelear");
-			  }
-		  }else {
-				  m.moveCharacterUp();
-				  addHistory("Has pisado el cadaver de un enemigo");
-		  }
-	  }else {
-		  m.moveCharacterUp();
-		  if(m.getPosition(m.getXPos(), m.getYPos()).getTrap() != null) {
-			  if(m.getPosition(m.getXPos(), m.getYPos()).getTrap().getActive()) {
-				  addHistory("Has pisado una trampa");
-				  m.getPosition(m.getXPos(), m.getYPos()).getTrap().setDeactivated();
-			  }else {
-				  addHistory("Has pisado una trampa desactivada, ten cuidado que la proxima podria no estarlo");
-			  }
-		  }else {
-			  addHistory("Mas vacio que el amor de ella");
-		  }
-	  }
-	  setMap(m.toString());
-  }
-  
-  public void skill1() {
-	  switch(this.charaClass) {
-	  	case "Maga":
-	  		c.getCharaClass().setActiveSkill(new MageSkill1());
-	  	case "Guerrero":
-	  		c.getCharaClass().setActiveSkill(new WarriorSkill1());
-	  	case "Arquera":
-	  		c.getCharaClass().setActiveSkill(new ArcherSkill1());
-	  }
-		if(!duel.characterAttack()) {
-			this.status = "Libre";
-			 addHistory("Has matado a tu enemigo");
-			}
-		else if(!duel.EnemyAttack()) {
-			this.status = "GameOver";
-			 addHistory("Mejor juga al minecraft");
-		} else {
-			 addHistory("Has atacado pero tu enemigo tambien");
-		}
-  }
-  
-  public void skill2() {
-	  switch(this.charaClass) {
-	  	case "Maga":
-	  		c.getCharaClass().setActiveSkill(new MageSkill2());
-	  	case "Guerrero":
-	  		c.getCharaClass().setActiveSkill(new WarriorSkill2());
-	  	case "Arquera":
-	  		c.getCharaClass().setActiveSkill(new ArcherSkill2());
-	  }
-		if(!duel.characterAttack()) {
-			this.status = "Libre";
-			 addHistory("Has matado a tu enemigo");
-			}
-		else if(!duel.EnemyAttack()) {
-			this.status = "GameOver";
-			 addHistory("Mejor juga al minecraft");
-		} else {
-			 addHistory("Has atacado pero tu enemigo tambien");
-		}
-  }
-  
-  public void skill3() {
-	  switch(this.charaClass) {
-	  	case "Maga":
-	  		c.getCharaClass().setActiveSkill(new MageSkill3());
-	  	case "Guerrero":
-	  		c.getCharaClass().setActiveSkill(new WarriorSkill3());
-	  	case "Arquera":
-	  		c.getCharaClass().setActiveSkill(new ArcherSkill3());
-	  }
-		if(!duel.characterAttack()) {
-			this.status = "Libre";
-			 addHistory("Has matado a tu enemigo");
-			}
-		else if(!duel.EnemyAttack()) {
-			this.status = "GameOver";
-			 addHistory("Mejor juga al minecraft");
-		} else {
-			 addHistory("Has atacado pero tu enemigo tambien");
-		}
-  }
+  	private void setStatus(String status) {
+  		this.status = status;
+  	}
+  	
+  	public void rest() {
+  		System.out.println("Vida actual: " + c.getHp());
+  		c.rest();
+  		System.out.println("Vida despues: " + c.getHp());
+  	}
 
-  public void rest() {
-	  c.rest();
-  }
+  	public void move(String lastMove) {
+  		this.lastMove = lastMove;
+  		
+  		try {
+  			switch(lastMove) {
+  			case "Up":
+  				this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() - 1);
+  	  		  	if(!this.pos.isExplorable() || (m.getYPos() - 1 < 0)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}  				
+  				break;
+  			
+  			case "Down":
+  				this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() + 1);
+  	  		  	if(!this.pos.isExplorable() || (m.getYPos() + 1 > 14)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}
+  	  		  	break;
+  			
+  			case "Left":
+  				this.pos = m.getPosition(this.m.getXPos() - 1, this.m.getYPos());
+  	  		  	if(!this.pos.isExplorable() || (m.getXPos() - 1 < 0)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}  				
+  				break;
+  			
+  			case "Right":
+  				this.pos = m.getPosition(this.m.getXPos() + 1, this.m.getYPos());
+  	  		  	if(!this.pos.isExplorable() || (m.getXPos() + 1 > 14)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}
+  	  		  	break;
+  			}
+  			
+  		  	this.enemy = this.pos.getEnemy();
+			this.trap = this.pos.getTrap();
+  		  
+  		  	if(enemy != null && enemy.getHp() > 0) {
+  		  		this.enemy = enemy;
+				if(this.huir) {
+					setStatus("PreDuelo");
+					this.huir = false;
+					addHistory("Has encontrado un enemigo. Parece que el aun no te ha visto. Puedes intentar huir");
+				}else {
+					m.move(lastMove);
+					setStatus("Duelo");
+					//INICIAR DUELO, PEGA PJ PRIMERO
+					this.c.setActiveEnemy(this.enemy);
+					duel = new Duel(this.c, this.enemy);
+					addHistory("Has encontrado un enemigo. Debes empezar a pelear");
+				  	}
+				}else {
+					m.move(lastMove);
+					if(trap != null && trap.getActive()) {
+						addHistory("Has pisado una trampa");
+						trap.setDeactivated();
+					}else {
+						addHistory("Mas vacio que el amor de ella");
+					}
+				}  		  	
+  		}catch(IndexOutOfBoundsException e) {
+  			addHistory("Sos o no ves la pared?");
+  		}catch(NullPointerException e){
+  			m.move(lastMove);
+  		}finally {
+  			setMap(m.toString());
+  		}
+  	}
+  	
+  	public void skill(int skNumber) {
+  		CharacterClass clase = c.getCharaClass();
+	  	clase.setActiveSkill(clase.getSkills().get(skNumber - 1));
+	  	
+		
+	  	if(!duel.characterAttack()) {
+			this.setStatus("Libre");
+			this.addHistory("Has matado a tu enemigo");
+			this.huir = true;
+			return;
+		}
+	  	addHistory("Has aplicado " + this.charaClass.getActiveSkill().getSkillName() + " a tu enemigo.");
+		
+	  	if(!duel.enemyAttack()) {
+			this.setStatus("GameOver");
+			this.addHistory("Te han matado!");
+			return;
+		}
+	  	this.addHistory("El enemigo ha contraatacado");
+  	}
   
-  public void runAway() {
-	  if(this.c.runAway()) {
-		  this.status = "Libre";
-	  }
-	  else {
-		  this.c.setActiveEnemy(this.enemy);
+  	public void runAway() {
+		  if(this.c.runAway()) {
+			  this.status = "Libre";
+			  this.addHistory("Has logrado huir de tu enemigo");
+		  }
+		  else {
+			  this.c.setActiveEnemy(this.enemy);
+			  this.status = "Duelo";
+			  this.addHistory("El enemigo te ha acorralado, no puedes escapar!");
+			  this.duel = new Duel (this.c, this.enemy);
+			  m.move(lastMove);
+			  setMap(m.toString());
+		  }
+  	}
+  	
+  	public void fight() {
+  		this.c.setActiveEnemy(this.enemy);
 		  this.status = "Duelo";
+		  this.addHistory("Buena desicion. No siempre es bueno escapar");
 		  this.duel = new Duel (this.c, this.enemy);
-	  }
-  }
+		  m.move(this.lastMove);
+		  System.out.println("Me movi");
+		  setMap(m.toString());
+  	}
   
 }

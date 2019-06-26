@@ -13,6 +13,13 @@ public abstract class Skill {
   }
   public void setDamage (Damage damage) {
 	  this.damage=damage;
+  
+  public String getSkillName() {
+	  return this.skillName;
+  }
+  
+  public void setSkillName(String sk) {
+	  this.skillName = sk;
   }
 
 }
