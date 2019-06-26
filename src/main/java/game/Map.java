@@ -118,7 +118,6 @@ public class Map {
 	
 	@Override
 	public String toString() {
-		System.out.println("COLUMNA: " + this.xPos + " FILA: " + this.yPos);
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < ROWS ; i++) {
 			for(int j = 0 ; j < COLUMNS ; j++) {
