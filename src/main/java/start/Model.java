@@ -27,7 +27,7 @@ public class Model {
 		if(!duel.characterAttack()) {
 			inDuel=false;
 			}
-		else if(!duel.EnemyAttack()) {
+		else if(!duel.enemyAttack()) {
 			inDuel=false;
 		}		
 	}

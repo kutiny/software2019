@@ -71,15 +71,22 @@ public class ControllerGame {
     void handleMoveDown(ActionEvent event) {
 
     }
+    @FXML
+    void handleMoveH1(ActionEvent event) {
+    	app.skill(1);
+    	this.update();
+    }
 
     @FXML
     void handleMoveH2(ActionEvent event) {
-
+    	app.skill(2);
+    	this.update();
     }
 
     @FXML
     void handleMoveH3(ActionEvent event) {
-
+    	app.skill(3);
+    	this.update();
     }
 
     @FXML
@@ -108,12 +115,6 @@ public class ControllerGame {
     }
 
     @FXML
-    void handleMoveH1(ActionEvent event) {
-    	app.runAway();
-    	this.update();
-    }
-
-    @FXML
     void handleMoveUp(ActionEvent event) {
         //Map.setText(model.moveUp());
     	app.moveUp();
@@ -127,7 +128,8 @@ public class ControllerGame {
     	Map.setText(app.getMap());
     	this.updateButtons();
     	Map.setWrapText(true);
-    	
+    	Map.setStyle("-fx-fit-to-width: true;");
+    	Map.setStyle("-fx-fit-to-height: true;");
     }
     
     public void setNombreAndClase(String nombre, String clase) {
@@ -197,7 +199,7 @@ public class ControllerGame {
     			buttonS3.setDisable(true);
     			break;
     		case "GameOver":
-    			throw new IllegalStateException();
+    			System.out.println("");
     	}
     }
 

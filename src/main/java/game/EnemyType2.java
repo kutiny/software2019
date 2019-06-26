@@ -6,7 +6,7 @@ public class EnemyType2 extends Enemy {
 	static double MEDIUMPROBABILITY = 0.5;
 
 	public EnemyType2() {
-		super("Enemy1", 1, 100, new Damage(new DamageType("magical"), 20, 20), 1, 0.0, 0.3, 1, 100);
+		super("Enemy1", 1, 8, new Damage(new DamageType("magical"), 20, 20), 0.1, 0.0, 0.1, 1, 100);
 	}
 	
 	@Override

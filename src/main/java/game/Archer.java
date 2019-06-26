@@ -16,7 +16,9 @@ public class Archer extends CharacterClass {
 	  }
 
 	  public Damage fight(){
-	    return this.activeSkill.use();
+		  Damage d = this.activeSkill.use();
+		  System.out.println(d.getDamageAmmount());
+		  return d;
 	  }
 
 	@SuppressWarnings("unlikely-arg-type")

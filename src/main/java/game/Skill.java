@@ -8,5 +8,13 @@ public abstract class Skill {
   protected static final double MEDIUMPROB = 0.5;
   
   public abstract Damage use();
+  
+  public String getSkillName() {
+	  return this.skillName;
+  }
+  
+  public void setSkillName(String sk) {
+	  this.skillName = sk;
+  }
 
 }

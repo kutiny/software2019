@@ -16,32 +16,40 @@ public class Duel {
 		return this.character;
 	}
 	
+	/**
+	 * 
+	 * @return true id enemy still alive
+	 * @throws IllegalStateException
+	 */
 	public boolean characterAttack() throws IllegalStateException {
 		if(this.isCharacterNext) {
 			this.isCharacterNext = false;
-
-//			this.character.getCharaClass().setActiveSkill(skill);
+			System.out.println(enemy.getHp());
 			this.enemy.receiveDamage(this.enemy.calculateRecievedDamage(this.character.fight()));
-				if(enemy.getHp()>0)
+			System.out.println(enemy.getHp());
+			if(enemy.getHp()>0)
 				return true;
-				else {
-						character.setActiveEnemy(null);
-						character.addExp(this.enemy.getExpKilled());
-					return false;
-				}
+			else {
+				character.setActiveEnemy(null);
+				character.addExp(this.enemy.getExpKilled());
+				return false;
+			}
 		}else {
 			throw new IllegalStateException("No puedes atacar durante el turno del enemigo");
 		}
 		
 	}
-	public boolean EnemyAttack() throws IllegalStateException{
+	/**
+	 * 
+	 * @return 
+	 * @throws IllegalStateException
+	 */
+	public boolean enemyAttack() throws IllegalStateException{
 		if(!this.isCharacterNext) {
 			this.isCharacterNext = true;
 			
 			this.character.receiveDamage(this.character.getCharaClass().calculateRecievedDamage(this.enemy.fight()));
-			if(character.getHp()>0) 
-				return true;
-			else return false;
+			return character.getHp() > 0;
 		}
 		else {
 			throw new IllegalStateException("Enemigo atacando en turno de personaje");

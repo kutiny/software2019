@@ -144,10 +144,14 @@ public class Character {
 	public void setExperience(int experience){
 		this.experience = experience;
 	}
+	
 	public CharacterClass getCharaClass(){
 		return this.charaClass;
 	}
 	
+	public void setCharaClass(CharacterClass clase) {
+		this.charaClass = clase;
+	}
 	
 	public void setMaxHp(int hp) {
 		this.maxHp = hp;
