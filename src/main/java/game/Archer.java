@@ -10,8 +10,8 @@ public class Archer extends CharacterClass {
 		  this.skills.add(new ArcherSkill2());
 		  this.skills.add(new ArcherSkill3());
 		  maxHealth=200;
-		  armor=150;
-		  magicResist=100;
+		  armor=0.15;
+		  magicResist=0.15;
 
 	  }
 
@@ -21,13 +21,22 @@ public class Archer extends CharacterClass {
 		  return d;
 	  }
 
-	@SuppressWarnings("unlikely-arg-type")
-	@Override
 	public int calculateRecievedDamage(Damage damage) {
-		if ((damage.getDamageType()).equals("physical")){
-			return (damage.getDamageAmmount()/(this.armor/100));
+		System.out.println("Daño a recibir base:" + damage.getDamageAmmount());
+		int danio = damage.getDamageAmmount();
+		System.out.println("MR" + this.magicResist);
+		String type = damage.getDamageType().toString();
+		if (type.equals("physical")){
+			int danioARecibir = (int)(danio * (1.0 - this.armor));
+			System.out.println("daño a recibir:" + danioARecibir);
+			return danioARecibir;
 		}
-		else
-			return damage.getDamageAmmount()/(this.magicResist/100);
+		else {
+			int danioARecibir = (int)(danio * (1.0 - this.magicResist));
+			double multiplier = 1 - this.magicResist;
+			System.out.println("multip:" + multiplier);
+			System.out.println("daño a recibir:" + danioARecibir);
+			return danioARecibir;			
+		}
 	}
 }
