@@ -22,5 +22,9 @@ public class MageSkill1 extends Skill{
 		}
 		return damage;
 	}
+	
+	public void setDamage(Damage dmg) {
+		this.damage=dmg;
+	}
 }
 

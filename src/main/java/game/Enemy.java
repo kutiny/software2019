@@ -71,6 +71,10 @@ public abstract class Enemy implements Observer{
 		return this.expKilled;
 	}
 	
+	public void setDamage(Damage dmg) {
+		this.damage=dmg;
+	}
+	
 	public boolean receiveDamage(int damage) {
 		if(this.hp > damage) {
 			this.hp -= damage;
@@ -102,6 +106,9 @@ public abstract class Enemy implements Observer{
 
 	
 	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
+
+
+
 
 
 }

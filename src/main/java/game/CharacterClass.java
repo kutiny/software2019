@@ -2,7 +2,7 @@ package game;
 
 import java.util.ArrayList;
 
-public abstract class CharacterClass {
+public abstract class CharacterClass  {
   protected String className;
   protected ArrayList<Skill> skills;
   protected Skill activeSkill;
@@ -22,7 +22,10 @@ public abstract class CharacterClass {
     return this.activeSkill;
   }
 
-  public void setMaxHealth(int hp){
+  public void setMaxHealth(int hp) throws IllegalArgumentException{
+	  if(hp<0) {
+		  throw new IllegalArgumentException("Los HP maximos no pueden ser negativos");
+	  }
     this.maxHealth = hp;
   }
 

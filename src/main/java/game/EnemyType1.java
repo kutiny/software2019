@@ -9,6 +9,8 @@ public class EnemyType1 extends Enemy {
 		
 	}
 	
+
+	
 	@Override
 
 
