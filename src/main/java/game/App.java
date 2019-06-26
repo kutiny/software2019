@@ -151,6 +151,7 @@ public class App {
 					m.move(lastMove);
 					if(trap != null && trap.getActive()) {
 						addHistory("Has pisado una trampa");
+						c.trapDamage();
 						trap.setDeactivated();
 					}else {
 						addHistory("Mas vacio que el amor de ella");
