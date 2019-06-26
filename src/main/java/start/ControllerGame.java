@@ -64,6 +64,12 @@ public class ControllerGame {
 
     @FXML
     private Button buttonS1;
+    
+    @FXML
+    private Text Life;
+
+    @FXML
+    private Text Level;
 
 
     @FXML
@@ -135,6 +141,9 @@ public class ControllerGame {
     	Map.setStyle("-fx-fit-to-width: true;");
     	Map.setStyle("-fx-fit-to-height: true;");
     	History.setScrollTop(5000);
+    	System.out.println(app.getVidaPersonaje());
+    	Life.setText(new Integer(app.getVidaPersonaje()).toString());
+    	Level.setText(new Integer(app.getNivelPersonaje()).toString());
     }
     
     public void setNombreAndClase(String nombre, String clase) {

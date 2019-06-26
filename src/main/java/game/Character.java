@@ -15,6 +15,7 @@ public class Character {
 		this.levelObservable = new CharacterLevelObservable();
 		this.experience = 0;
 		this.level = 1;
+		this.hp = 100;
 	}
 
 	public void move(String direction){
