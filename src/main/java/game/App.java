@@ -8,10 +8,13 @@ public class App {
 	private String history;
 	private String map;
 	private String status;
+	private String lastMove;
 	private Enemy enemy;
+	private Trap trap;
 	private boolean huir; //true si puedo
 	private Duel duel;
 	private CharacterClass charaClass;
+	MapPosition pos;
   
 	// Constructor
 	public App() {
@@ -21,6 +24,7 @@ public class App {
 		history = "Bienvenido";
 		map = m.toString();
 		status = "Libre";
+		this.huir = true;
 	  
 	}
   
@@ -68,48 +72,92 @@ public class App {
   	private void addHistory(String h) {
   		this.history = this.history + "\n" + h;
   	}
+  	
+  	private void addHistoryPared() {
+  		addHistory("Sos o no ves la pared?");
+  	}
   
   	private void setStatus(String status) {
   		this.status = status;
   	}
+  	
+  	public void rest() {
+  		System.out.println("Vida actual: " + c.getHp());
+  		c.rest();
+  		System.out.println("Vida despues: " + c.getHp());
+  	}
 
-  	public void moveUp() {
-  		System.out.println(this.charaClass);
-  		MapPosition pos = m.getPosition(m.getXPos(), m.getYPos() - 1);
-	 	// ver cuando son null
-  		Enemy enemy = pos.getEnemy();
-  		Trap trap = pos.getTrap();
-	  
-	  	if(!pos.isExplorable() || (m.getYPos() - 1 < 0)) {
-		  	addHistory("Sos o no ves la pared?");
-		  	return;
-	  	}
-	  
-	  	if(enemy != null && enemy.getHp() > 0) {
-			  this.enemy = enemy;
-			  if(this.huir) {
-				  setStatus("PreDuelo");
-				  this.huir = false;
-				  addHistory("Has encontrado un enemigo. Parece que el aun no te ha visto. Puedes intentar huir");
-		  	}else {
-				  m.moveCharacterUp();
-				  setStatus("Duelo");
-				  //INICIAR DUELO, PEGA PJ PRIMERO
-				  this.c.setActiveEnemy(this.enemy);
-				  duel = new Duel(this.c, this.enemy);
-				  addHistory("Has encontrado un enemigo. Debes empezar a pelear");
-		  	}
-	  	}else {
-			  m.moveCharacterUp();
-			  if(trap != null && trap.getActive()) {
-				  addHistory("Has pisado una trampa");
-				  trap.setDeactivated();
-			  }else {
-				  addHistory("Mas vacio que el amor de ella");
-			  }
-	  	}
-	  
-	  	setMap(m.toString());
+  	public void move(String lastMove) {
+  		this.lastMove = lastMove;
+  		
+  		try {
+  			switch(lastMove) {
+  			case "Up":
+  				this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() - 1);
+  	  		  	if(!this.pos.isExplorable() || (m.getYPos() - 1 < 0)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}  				
+  				break;
+  			
+  			case "Down":
+  				this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() + 1);
+  	  		  	if(!this.pos.isExplorable() || (m.getYPos() + 1 > 14)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}
+  	  		  	break;
+  			
+  			case "Left":
+  				this.pos = m.getPosition(this.m.getXPos() - 1, this.m.getYPos());
+  	  		  	if(!this.pos.isExplorable() || (m.getXPos() - 1 < 0)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}  				
+  				break;
+  			
+  			case "Right":
+  				this.pos = m.getPosition(this.m.getXPos() + 1, this.m.getYPos());
+  	  		  	if(!this.pos.isExplorable() || (m.getXPos() + 1 > 14)) {
+  	  		  		addHistoryPared();
+  	  			  	return;
+  	  		  	}
+  	  		  	break;
+  			}
+  			
+  		  	this.enemy = this.pos.getEnemy();
+			this.trap = this.pos.getTrap();
+  		  
+  		  	if(enemy != null && enemy.getHp() > 0) {
+  		  		this.enemy = enemy;
+				if(this.huir) {
+					setStatus("PreDuelo");
+					this.huir = false;
+					addHistory("Has encontrado un enemigo. Parece que el aun no te ha visto. Puedes intentar huir");
+				}else {
+					m.move(lastMove);
+					setStatus("Duelo");
+					//INICIAR DUELO, PEGA PJ PRIMERO
+					this.c.setActiveEnemy(this.enemy);
+					duel = new Duel(this.c, this.enemy);
+					addHistory("Has encontrado un enemigo. Debes empezar a pelear");
+				  	}
+				}else {
+					m.move(lastMove);
+					if(trap != null && trap.getActive()) {
+						addHistory("Has pisado una trampa");
+						trap.setDeactivated();
+					}else {
+						addHistory("Mas vacio que el amor de ella");
+					}
+				}  		  	
+  		}catch(IndexOutOfBoundsException e) {
+  			addHistory("Sos o no ves la pared?");
+  		}catch(NullPointerException e){
+  			m.move(lastMove);
+  		}finally {
+  			setMap(m.toString());
+  		}
   	}
   	
   	public void skill(int skNumber) {
@@ -120,6 +168,7 @@ public class App {
 	  	if(!duel.characterAttack()) {
 			this.setStatus("Libre");
 			this.addHistory("Has matado a tu enemigo");
+			this.huir = true;
 			return;
 		}
 	  	addHistory("Has aplicado " + this.charaClass.getActiveSkill().getSkillName() + " a tu enemigo.");
@@ -131,21 +180,30 @@ public class App {
 		}
 	  	this.addHistory("El enemigo ha contraatacado");
   	}
-
-  	public void rest() {
-  		c.rest();
-  	}
   
   	public void runAway() {
 		  if(this.c.runAway()) {
 			  this.status = "Libre";
+			  this.addHistory("Has logrado huir de tu enemigo");
 		  }
 		  else {
 			  this.c.setActiveEnemy(this.enemy);
 			  this.status = "Duelo";
 			  this.addHistory("El enemigo te ha acorralado, no puedes escapar!");
 			  this.duel = new Duel (this.c, this.enemy);
+			  m.move(lastMove);
+			  setMap(m.toString());
 		  }
+  	}
+  	
+  	public void fight() {
+  		this.c.setActiveEnemy(this.enemy);
+		  this.status = "Duelo";
+		  this.addHistory("Buena desicion. No siempre es bueno escapar");
+		  this.duel = new Duel (this.c, this.enemy);
+		  m.move(this.lastMove);
+		  System.out.println("Me movi");
+		  setMap(m.toString());
   	}
   
 }

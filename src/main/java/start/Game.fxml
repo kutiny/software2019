@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="start.ControllerGame">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="start.ControllerGame">
    <children>
       <TextArea fx:id="History" editable="false" layoutX="401.0" layoutY="58.0" pickOnBounds="false" prefHeight="484.0" prefWidth="324.0" text="KNZKNGVBD&#10;D&#10;A&#10;A&#10;A&#10;A&#10;FASFS&#10;AC&#10;FAF&#10;SD&#10;ASD&#10;AS&#10;FAS&#10;FA&#10;FAS&#10;FAS&#10;FAS&#10;FAS&#10;DAS&#10;D&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;AS&#10;FAS&#10;FGAS&#10;FDA&#10;SF&#10;ASF&#10;ASF&#10;ASF&#10;ASF&#10;ASF" />
       <Text layoutX="517.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historia" wrappingWidth="92.13671875">
@@ -14,44 +14,34 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Text layoutX="848.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Referencias:" wrappingWidth="166.99999618530273">
+      <Text layoutX="837.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Referencias:" wrappingWidth="166.99999618530273">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Text layoutX="887.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X -&gt; Espacio sin exprorar" wrappingWidth="265.99999618530273">
+      <Text layoutX="876.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+ -&gt; Terrreno sin exprorar" wrappingWidth="265.99999618530273">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="887.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A -&gt; Posicion actual" wrappingWidth="265.99999618530273">
+      <Text layoutX="876.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 -&gt; Terreno explorado vacio" wrappingWidth="265.99999618530273">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="887.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E -&gt; Enemigo vivo" wrappingWidth="265.99999618530273">
+      <Text layoutX="876.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M -&gt; Terreno no accesible" wrappingWidth="265.99999618530273">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="887.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M -&gt; Enemigo muerto" wrappingWidth="265.99999618530273">
+      <Text layoutX="876.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X -&gt; Posicion actual" wrappingWidth="265.99999618530273">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="887.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 -&gt; Espacio explorado vacio" wrappingWidth="265.99999618530273">
+      <TextArea fx:id="Map" editable="false" layoutX="836.0" layoutY="52.0" pickOnBounds="false" prefHeight="431.0" prefWidth="411.0" text="M M M + + M + + + + + + + + M &#10;M M M + + M + + + + + + + + M &#10;M + + + + M + + M M + + + + M &#10;+ + + + + M + + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;M X + + + M M M M + + + + + + &#10;M + + + + M + + + + + + + + M &#10;+ + + + + + + + + + + + + + M &#10;+ + + + + + M + + + + + M M M &#10;+ + + + + + M + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;M + + M + + + M M + + + + + M &#10;+ + + M + + + + + + + + + + M &#10;+ + + M + + + + + + M M M M M &#10;">
          <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="887.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" text="F -&gt; Enemigo final" wrappingWidth="265.99999618530273">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <TextArea fx:id="Map" editable="false" layoutX="848.0" layoutY="58.0" pickOnBounds="false" prefHeight="370.0" prefWidth="450.0" text="X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X&#10;X X X X X X X X X X">
-         <font>
-            <Font name="Monospaced Regular" size="20.0" />
+            <Font name="Monospaced Regular" size="21.0" />
          </font>
       </TextArea>
       <Text fx:id="CharacterName" layoutX="32.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aleisas" wrappingWidth="350.0">
@@ -64,7 +54,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="988.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mapa" wrappingWidth="64.13671875">
+      <Text layoutX="1009.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mapa" wrappingWidth="64.13671875">
          <font>
             <Font size="25.0" />
          </font>
@@ -74,10 +64,10 @@
       <Button fx:id="buttonRight" layoutX="507.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveRight" prefHeight="52.0" prefWidth="52.0" text="Der" />
       <Button fx:id="buttonLeft" layoutX="399.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveLeft" prefHeight="52.0" prefWidth="52.0" text="Izq" />
       <Button fx:id="buttonH3" layoutX="673.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleMoveH3" prefHeight="52.0" prefWidth="52.0" text="H3" />
-      <Button fx:id="buttonS3" layoutX="673.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveS3" prefHeight="52.0" prefWidth="52.0" text="S3" />
+      <Button fx:id="buttonS3" layoutX="673.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveS3" prefHeight="52.0" prefWidth="52.0" text="Pelear" />
       <Button fx:id="buttonH2" layoutX="621.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleMoveH2" prefHeight="52.0" prefWidth="52.0" text="H2" />
-      <Button fx:id="buttonS2" layoutX="621.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveS2" prefHeight="52.0" prefWidth="52.0" text="S2" />
+      <Button fx:id="buttonS2" layoutX="621.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveS2" prefHeight="52.0" prefWidth="52.0" text="Desc" />
       <Button fx:id="buttonH1" layoutX="570.0" layoutY="552.0" mnemonicParsing="false" onAction="#handleMoveH1" prefHeight="52.0" prefWidth="52.0" text="H1" />
-      <Button fx:id="buttonS1" layoutX="570.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveS1" prefHeight="52.0" prefWidth="52.0" text="S1" />
+      <Button fx:id="buttonS1" layoutX="570.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleMoveS1" prefHeight="52.0" prefWidth="52.0" text="Esc" />
    </children>
 </Pane>

@@ -23,29 +23,29 @@ public class Map {
 	}
 	
 	public MapPosition getPosition(int x , int y) {
-		return this.positions[x][y];
+		return this.positions[y][x];
 	}
 	
-	public void moveCharacterUp() {
-		if(this.yPos > 1) {
+	private void moveCharacterUp() {
+		if(this.yPos > 0) {
 			this.setCharacterPosition(this.xPos, this.yPos - 1);
 		}
 	}
 	
-	public void moveCharacterDown() {
-		if(this.yPos < 13) {
+	private void moveCharacterDown() {
+		if(this.yPos < 14) {
 			this.setCharacterPosition(this.xPos, this.yPos + 1);
 		}
 	}
 	
-	public void moveCharacterLeft() {
-		if(this.xPos > 1) {
+	private void moveCharacterLeft() {
+		if(this.xPos > 0) {
 			this.setCharacterPosition(this.xPos - 1, this.yPos);
 		}
 	}
 	
-	public void moveCharacterRight() {
-		if(this.xPos < 13) {
+	private void moveCharacterRight() {
+		if(this.xPos < 14) {
 			this.setCharacterPosition(this.xPos + 1, this.yPos);
 		}
 	}
@@ -53,6 +53,28 @@ public class Map {
 	private void setCharacterPosition(int x, int y) {
 		this.xPos = x;
 		this.yPos = y;
+	}
+	
+	public void move(String lastMove) {
+		this.getPosition(getXPos(), getYPos()).toggleExplored();
+		switch(lastMove) {
+			case "Up":
+				this.moveCharacterUp();
+				break;
+				
+			case "Down":
+				this.moveCharacterDown();
+	  		  	break;
+			
+			case "Left":
+				this.moveCharacterLeft();
+				break;
+			
+			case "Right":
+				this.moveCharacterRight();
+	  		  	break;
+		}
+		this.getPosition(getXPos(), getYPos()).toggleExplored();
 	}
 
 	

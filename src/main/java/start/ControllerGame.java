@@ -69,7 +69,8 @@ public class ControllerGame {
 
     @FXML
     void handleMoveDown(ActionEvent event) {
-
+    	app.move("Down");
+    	this.update();
     }
     @FXML
     void handleMoveH1(ActionEvent event) {
@@ -91,35 +92,39 @@ public class ControllerGame {
 
     @FXML
     void handleMoveLeft(ActionEvent event) {
-
+    	app.move("Left");
+    	this.update();
     }
 
     @FXML
     void handleMoveRight(ActionEvent event) {
-
+    	app.move("Right");
+    	this.update();
     }
 
     @FXML
     void handleMoveS1(ActionEvent event) {
+    	app.runAway();
+    	this.update();
 
     }
 
     @FXML
     void handleMoveS2(ActionEvent event) {
-
+    	app.rest();
+    	this.update();
     }
 
     @FXML
     void handleMoveS3(ActionEvent event) {
-
+    	app.fight();
+    	this.update();
     }
 
     @FXML
     void handleMoveUp(ActionEvent event) {
         //Map.setText(model.moveUp());
-    	app.moveUp();
-    	Map.setText(app.getMap());
-    	History.setText(app.getHistory());
+    	app.move("Up");
     	this.update();
     }
     
@@ -172,7 +177,7 @@ public class ControllerGame {
     			buttonS3.setDisable(true);
     			break;
     			
-    		case "Preduelo":
+    		case "PreDuelo":
     			System.out.println("lalal");
     			buttonUp.setDisable(true);
     			buttonDown.setDisable(true);
