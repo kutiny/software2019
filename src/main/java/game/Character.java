@@ -1,5 +1,7 @@
 package game;
 
+import observer.*;
+
 public class Character {
 	private static final double MEDIUMPROB = 0.5;
 	private String name;
@@ -12,10 +14,13 @@ public class Character {
 	private CharacterClass charaClass;
 
 	public Character(){
+		this.lifePointsObservable = new CharacterLifePointsObservable();
 		this.levelObservable = new CharacterLevelObservable();
 		this.experience = 0;
 		this.level = 1;
 		this.hp = 100;
+		this.lifePointsObservable.next(this.hp);
+		this.levelObservable.next(this.level);
 	}
 
 	public void move(String direction){
@@ -64,6 +69,7 @@ public class Character {
 			else
 				this.hp -= toDecreaseHp;
 		}
+		this.lifePointsObservable.next(this.hp);
 	}
 
 	public boolean runAway(){
@@ -74,15 +80,17 @@ public class Character {
 	else return false;	
 	}
 	public void levelUp(){
+		System.out.println("NIVEL UP");
 		this.setLevel( this.getLevel() + 1);
 		int toIncreaseMaxHp;
 
-		
 		toIncreaseMaxHp= Math.round ( ( this.charaClass.getMaxHealth() / 100 ) );
 		this.charaClass.setMaxHealth( this.charaClass.getMaxHealth() + toIncreaseMaxHp );
 		
 		this.charaClass.statsLevelUp();
 		this.charaClass.SkillsLevelUp();
+		
+		this.levelObservable.next(this.level);
 	}
 
 	public void addExp(int exp){

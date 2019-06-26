@@ -1,5 +1,6 @@
-package game;
+package observer;
 
+import game.Character;
 import lib.Observer;
 
 public class CharacterLifeObserver implements Observer {
@@ -7,15 +8,17 @@ public class CharacterLifeObserver implements Observer {
 	private int lastValue;
 	
 	public CharacterLifeObserver() {
-//		c.levelObservable.subscribe(this);
+		
 	}
 	
 	@Override
 	public void notifyHandler(Object value) {
-		if(value instanceof Integer) {
-			this.lastValue = (int) value;
+		try {
+			Integer entero = new Integer((int)value);
+			this.lastValue = entero;
+		}catch(Exception e) {
+			System.out.println(e);
 		}
-		
 	}
 
 	public int getLastValue() {

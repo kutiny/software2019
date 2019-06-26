@@ -12,7 +12,7 @@ public class CharacterLifePointsObservable implements Observable {
   }
 
   public void subscribe(Observer obj){
-    this.observersList.add(obj);
+	  this.observersList.add(obj);
   }
 
   public boolean unsubscribe(Observer obj){

@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 
 public class ControllerGame {
 
-    private App app = new App();
+    private App app = new App();;
 
     @FXML
     private TextArea History;
@@ -133,7 +133,7 @@ public class ControllerGame {
     	this.update();
     }
     
-    private void update() {
+    public void update() {
     	History.setText(app.getHistory());
     	Map.setText(app.getMap());
     	this.updateButtons();
@@ -142,8 +142,8 @@ public class ControllerGame {
     	Map.setStyle("-fx-fit-to-height: true;");
     	History.setScrollTop(5000);
     	System.out.println(app.getVidaPersonaje());
-    	Life.setText(new Integer(app.getVidaPersonaje()).toString());
-    	Level.setText(new Integer(app.getNivelPersonaje()).toString());
+    	Life.setText("" + app.getVidaPersonaje());
+    	Level.setText("" + app.getNivelPersonaje());
     }
     
     public void setNombreAndClase(String nombre, String clase) {

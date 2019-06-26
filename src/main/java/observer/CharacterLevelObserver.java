@@ -1,19 +1,23 @@
-package game;
+package observer;
 
+import game.Character;
 import lib.Observer;
 
 public class CharacterLevelObserver implements Observer {
 
 	private int lastValue;
 	
-	public CharacterLevelObserver(Character c) {
-		c.levelObservable.subscribe(this);
+	public CharacterLevelObserver() {
+		
 	}
 	
 	@Override
 	public void notifyHandler(Object value) {
-		if(value instanceof Integer) {
-			this.lastValue = (int) value;
+		try {
+			Integer entero = new Integer((int)value);
+			this.lastValue = entero;
+		}catch(Exception e) {
+			System.out.println(e);
 		}
 	}
 	

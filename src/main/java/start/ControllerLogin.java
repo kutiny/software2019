@@ -81,7 +81,6 @@ public class ControllerLogin implements Initializable{
 	            Parent root = loader.load(getClass().getResource("Game.fxml").openStream());
 	            ControllerGame controllNewWindows = (ControllerGame)loader.getController();
 	            controllNewWindows.setNombreAndClase(nombre.getText().trim() , clase.getValue());
-	            
 	            Scene escena = new Scene(root);
 	            stage.setScene(escena);
 	            stage.setTitle("Tales of Euphona");

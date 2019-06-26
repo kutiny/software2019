@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import observer.*;
 
 public class App {
 	private Character c;
@@ -28,10 +29,15 @@ public class App {
 		status = "Libre";
 		this.huir = true;
 	  
-		this.characterLevelObserver = new CharacterLevelObserver(c);
+		this.characterLevelObserver = new CharacterLevelObserver();
 		this.characterLifeObserver = new CharacterLifeObserver();
 		
-		// suscripcion de los enemigos al character (level)
+		this.c.levelObservable.subscribe(this.characterLevelObserver);
+		this.c.lifePointsObservable.subscribe(this.characterLifeObserver);
+
+		this.c.setHp(this.c.getHp());
+		this.c.setLevel(this.c.getLevel());
+		
 		ArrayList<Enemy> enemies = m.getEnemies();
 		for(Enemy e : enemies) {
 			this.c.levelObservable.subscribe(e);
