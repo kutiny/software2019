@@ -23,6 +23,10 @@ public class MapPosition {
 		this.explorable = explorable;
 	}
 	
+	public boolean isExplorable() {
+		return this.explorable;
+	}
+	
 	public void setTrap(Trap t) {
 		this.trap = t;
 	}

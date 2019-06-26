@@ -108,8 +108,9 @@ public class ControllerGame {
     }
 
     @FXML
-    void handleMoveUH1(ActionEvent event) {
-
+    void handleMoveH1(ActionEvent event) {
+    	app.runAway();
+    	this.update();
     }
 
     @FXML
@@ -117,7 +118,8 @@ public class ControllerGame {
         //Map.setText(model.moveUp());
     	app.moveUp();
     	Map.setText(app.getMap());
-
+    	History.setText(app.getHistory());
+    	this.update();
     }
     
     private void update() {
@@ -137,9 +139,11 @@ public class ControllerGame {
     	
     }
     
-    //Supondremos que S1: Escapar, S2: Descanzar, S3:No Escapar H1,H2,H3 Skill
+    //Supondremos que S1: Escapar, S2: Descansar, S3:No Escapar H1,H2,H3 Skill
     public void updateButtons() {
-    	switch (app.getStatus()) {
+    	String status = app.getStatus();
+    	System.out.println("status = " + status);
+    	switch (status) {
     		case "Libre":
     			buttonUp.setDisable(false);
     			buttonDown.setDisable(false);
@@ -166,7 +170,8 @@ public class ControllerGame {
     			buttonS3.setDisable(true);
     			break;
     			
-    		case "PreDuelo":
+    		case "Preduelo":
+    			System.out.println("lalal");
     			buttonUp.setDisable(true);
     			buttonDown.setDisable(true);
     			buttonRight.setDisable(true);
@@ -191,6 +196,8 @@ public class ControllerGame {
     			buttonS2.setDisable(true);
     			buttonS3.setDisable(true);
     			break;
+    		case "GameOver":
+    			throw new IllegalStateException();
     	}
     }
 

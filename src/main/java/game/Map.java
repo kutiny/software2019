@@ -8,10 +8,10 @@ public class Map {
 	private int yPos;
 	
 	public Map() {
-		this.positions = new MapPosition[COLUMNS][ROWS];
+		this.positions = new MapPosition[ROWS][COLUMNS];
 		this.initializeMap();
-		this.xPos = 5;
-		this.yPos = 8;
+		this.xPos = 4;
+		this.yPos = 7;
 	}
 	
 	public int getXPos() {
@@ -58,10 +58,11 @@ public class Map {
 	
 	@Override
 	public String toString() {
+		System.out.println("COLUMNA: " + this.xPos + " FILA: " + this.yPos);
 		StringBuilder sb = new StringBuilder();
-		for(int i = 0 ; i < COLUMNS ; i++) {
-			for(int j = 0 ; j < ROWS ; j++) {
-				if(i == this.xPos && j == this.yPos) {
+		for(int i = 0 ; i < ROWS ; i++) {
+			for(int j = 0 ; j < COLUMNS ; j++) {
+				if(j == this.xPos && i == this.yPos) {
 					sb.append("X");
 				}else {
 					sb.append(this.positions[i][j]);					
@@ -70,20 +71,18 @@ public class Map {
 					sb.append(" ");
 				}
 			}
-			sb.append("\n");
+			if(i < ROWS)
+				sb.append("\n");
 		}
 		return sb.toString();
 	}
 	
 	private void initializeMap() {
-		for(int i = 0 ; i < COLUMNS ; i++) {
-			for(int j = 0 ; j < ROWS ; j++) {
+		for(int i = 0 ; i < ROWS ; i++) {
+			for(int j = 0 ; j < COLUMNS ; j++) {
 				this.positions[i][j] = new MapPosition(true);
 			}
 		}
-
-
-
 		
 		this.positions[0][0].setExplorable(false);
 		this.positions[0][1].setExplorable(false);
