@@ -7,6 +7,7 @@ public class Character {
 	private int hp;
 	private int level;
 	public transient CharacterLevelObservable levelObservable;
+	public transient CharacterLifePointsObservable lifePointsObservable;
 	private Enemy activeEnemy;
 	private CharacterClass charaClass;
 
@@ -105,9 +106,11 @@ public class Character {
 		}
 		if(this.hp > dm) {
 			this.hp -= dm;
+			this.lifePointsObservable.next(this.hp);
 			return true;
 		}else {
 			this.hp = 0;
+			this.lifePointsObservable.next(this.hp);
 			return false;
 		}
 	}
@@ -144,6 +147,7 @@ public class Character {
 
 	public void setHp(int hp){
 		this.hp = hp;
+		this.lifePointsObservable.next(this.hp);
 	}
 
 	public int getExperience(){
@@ -166,6 +170,7 @@ public class Character {
 	public void trapDamage(){
 		int damage = (int) Math.ceil(0.1 * this.hp);
 		this.hp = (damage > this.hp + 1) ? 1 : this.hp - damage;
+		this.lifePointsObservable.next(this.hp);
 	}
 
 }
