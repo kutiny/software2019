@@ -130,6 +130,7 @@ public class ControllerGame {
     	Map.setWrapText(true);
     	Map.setStyle("-fx-fit-to-width: true;");
     	Map.setStyle("-fx-fit-to-height: true;");
+    	History.setScrollTop(5000);
     }
     
     public void setNombreAndClase(String nombre, String clase) {
@@ -172,7 +173,7 @@ public class ControllerGame {
     			buttonS3.setDisable(true);
     			break;
     			
-    		case "Preduelo":
+    		case "PreDuelo":
     			System.out.println("lalal");
     			buttonUp.setDisable(true);
     			buttonDown.setDisable(true);
