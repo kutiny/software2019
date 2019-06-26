@@ -1,5 +1,6 @@
 package game;
 import game.Character;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -35,20 +36,26 @@ public class CharacterTest {
   }
 
   
-//  @Test (expected = IllegalStateException.class)
-//  public void notCharacterTurnTest() {
-//	Character character = new Character();
-//	Enemy enemy = new EnemyType1();
-//	Duel duel = new Duel(character, enemy);
-//
-//	character.setCharaClass(new Archer());
-//	character.setActiveEnemy(enemy);
-//	character.getCharaClass().setActiveSkill(character.getCharaClass().getSkills().get(0));
-//	
-//	duel.characterAttack();
-//	duel.characterAttack();
-//}
-//  
+  @Test
+  public void notCharacterTurnTest() {
+	  boolean thrown = false;
+	  try {
+		  Character character = new Character();
+		  Enemy enemy = new EnemyType1();
+		  Duel duel = new Duel(character, enemy);
+		  
+		  character.setCharaClass(new Archer());
+		  character.setActiveEnemy(enemy);
+		  character.getCharaClass().setActiveSkill(character.getCharaClass().getSkills().get(0));
+		  
+		  duel.characterAttack();
+		  duel.characterAttack();	  
+	  }catch(IllegalStateException e) {
+		  thrown = true;
+	  }
+	  assertEquals(true, thrown);
+  }
+  
   @Test
   public void nameTest() {
 	  Character character = new Character();
