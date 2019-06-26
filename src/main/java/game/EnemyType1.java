@@ -30,7 +30,7 @@ public class EnemyType1 extends Enemy {
 	
 	public void notifyHandler(Object value) throws IllegalArgumentException {
 		if(value instanceof Integer) {
-			this.setLevel((int)value);			
+			this.setLevel((int)value);
 		}else {
 			throw new IllegalArgumentException();
 		}
