@@ -14,6 +14,7 @@ public class App {
 	private boolean huir; //true si puedo
 	private Duel duel;
 	private CharacterClass charaClass;
+	private CharacterLevelObserver characterLevelObserver;
 	MapPosition pos;
   
 	// Constructor
@@ -26,6 +27,8 @@ public class App {
 		status = "Libre";
 		this.huir = true;
 	  
+		this.characterLevelObserver = new CharacterLevelObserver(c);
+		
 		// suscripcion de los enemigos al character (level)
 		ArrayList<Enemy> enemies = m.getEnemies();
 		for(Enemy e : enemies) {
@@ -211,4 +214,7 @@ public class App {
 		  setMap(m.toString());
   	}
   
+  	public int getNivelPersonaje() {
+  		return this.characterLevelObserver.getLastValue();
+  	}
 }
