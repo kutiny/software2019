@@ -8,6 +8,7 @@ public class CharacterTest {
   @Test
   public void levelUpTest(){
     Character uc = new Character();
+    uc.setCharaClass(new Mage());
     uc.levelUp();
     assertEquals(2, uc.getLevel());
   }
@@ -21,6 +22,7 @@ public class CharacterTest {
   @Test 
   public void addExpAndLevelUpTest() {
 	  Character character = new Character();
+	  character.setCharaClass(new Archer());
 	  character.addExp(1200);
 	  assertEquals(2, character.getLevel());
   }
@@ -33,7 +35,7 @@ public class CharacterTest {
   }
 
   
-//  @Test(expected = IllegalStateException.class)	
+//  @Test (expected = IllegalStateException.class)
 //  public void notCharacterTurnTest() {
 //	Character character = new Character();
 //	Enemy enemy = new EnemyType1();
@@ -41,12 +43,12 @@ public class CharacterTest {
 //
 //	character.setCharaClass(new Archer());
 //	character.setActiveEnemy(enemy);
-//	character.getCharaClass().setActiveSkill(new ArcherSkill1());
+//	character.getCharaClass().setActiveSkill(character.getCharaClass().getSkills().get(0));
 //	
 //	duel.characterAttack();
 //	duel.characterAttack();
 //}
-  
+//  
   @Test
   public void nameTest() {
 	  Character character = new Character();
@@ -54,6 +56,24 @@ public class CharacterTest {
 	  assertEquals(character.getName(), "Ellie");
   }
   
+  @Test
+  public void characterClassTest() {
+	  Character character = new Character();
+	  character.setCharaClass(new Warrior());
+	  assertEquals(character.getCharaClass().getClassName(), "Warrior");
+  }
   
+  @Test
+  public void skillLevelUpTest(){
+    Character uc = new Character();
+    uc.setCharaClass(new Warrior());
+    Skill activeSkill = uc.getCharaClass().getSkills().get(0); 
+    uc.getCharaClass().setActiveSkill(activeSkill);
+    int actualSkillDamage = uc.getCharaClass().getActiveSkill().getDamage().getBasicDamageAmmount();
+    uc.levelUp();
+    int newSkillDamage = uc.getCharaClass().getActiveSkill().getDamage().getBasicDamageAmmount();
+    assertTrue(newSkillDamage > actualSkillDamage);
+  }
+    
  
 }
