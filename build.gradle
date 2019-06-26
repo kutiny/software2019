@@ -5,7 +5,6 @@ plugins {
 }
 
 repositories {
-    // Use jcenter for resolving your dependencies.
     jcenter()
 }
 
@@ -15,7 +14,6 @@ dependencies {
     testCompile "junit:junit:4.12"
     testImplementation 'junit:junit:4.12'
 }
-
 
 
 test {
@@ -31,4 +29,4 @@ pmd {
 }
 
 // Define the main class for the application
-mainClassName = 'src.game.App'
+mainClassName = 'game.App'

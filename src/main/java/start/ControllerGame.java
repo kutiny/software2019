@@ -134,6 +134,7 @@ public class ControllerGame {
     	Map.setWrapText(true);
     	Map.setStyle("-fx-fit-to-width: true;");
     	Map.setStyle("-fx-fit-to-height: true;");
+    	History.setScrollTop(5000);
     }
     
     public void setNombreAndClase(String nombre, String clase) {
