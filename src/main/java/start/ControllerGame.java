@@ -141,6 +141,8 @@ public class ControllerGame {
     	Map.setStyle("-fx-fit-to-width: true;");
     	Map.setStyle("-fx-fit-to-height: true;");
     	History.setScrollTop(5000);
+    	History.selectEnd();
+    	History.deselect();
     	Life.setText("" + app.getVidaPersonaje());
     	Level.setText("" + app.getNivelPersonaje());
     }
