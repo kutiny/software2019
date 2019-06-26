@@ -8,5 +8,11 @@ public abstract class Skill {
   protected static final double MEDIUMPROB = 0.5;
   
   public abstract Damage use();
+  public Damage getDamage() {
+	  return this.damage;
+  }
+  public void setDamage (Damage damage) {
+	  this.damage=damage;
+  }
 
 }

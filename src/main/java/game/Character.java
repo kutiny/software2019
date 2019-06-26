@@ -3,10 +3,8 @@ package game;
 public class Character {
 	private static final double MEDIUMPROB = 0.5;
 	private String name;
-	private String gender;
 	private int experience;
 	private int hp;
-	private int maxHp;
 	private int level;
 	public transient CharacterLevelObservable levelObservable;
 	private Enemy activeEnemy;
@@ -16,7 +14,6 @@ public class Character {
 		this.levelObservable = new CharacterLevelObservable();
 		this.experience = 0;
 		this.level = 1;
-		this.maxHp = 100;
 	}
 
 	public void move(String direction){
@@ -35,25 +32,25 @@ public class Character {
 		int toAddHp;
 		int toDecreaseHp;
 		if(rand > MEDIUMPROB) {
-			if(this.hp<this.maxHp*0.3) {
+			if(this.hp<this.charaClass.getMaxHealth()*0.3) {
 				toAddHp=this.hp/2;
 			}
-			else if(this.hp<this.maxHp*0.6){
+			else if(this.hp<this.charaClass.getMaxHealth()*0.6){
 				toAddHp=this.hp/4;
 			}
 			else {
 				toAddHp=this.hp/8;
 			}
-			if(this.hp + toAddHp > this.maxHp)
-				this.hp = this.maxHp;
+			if(this.hp + toAddHp > this.charaClass.getMaxHealth())
+				this.hp = this.charaClass.getMaxHealth();
 			else
 				this.hp += toAddHp;
 		}
 		else if (rand > MEDIUMPROB / 2){
-			if(this.hp<this.maxHp*0.3) {
+			if(this.hp<this.charaClass.getMaxHealth()*0.3) {
 				toDecreaseHp=this.hp/20;
 			}
-			else if(this.hp<this.maxHp*0.5){
+			else if(this.hp<this.charaClass.getMaxHealth()*0.5){
 				toDecreaseHp=this.hp/15;
 			}
 			else {
@@ -75,7 +72,15 @@ public class Character {
 	else return false;	
 	}
 	public void levelUp(){
-		this.setLevel(this.getLevel() + 1);
+		this.setLevel( this.getLevel() + 1);
+		int toIncreaseMaxHp;
+
+		
+		toIncreaseMaxHp= Math.round ( ( this.charaClass.getMaxHealth() / 100 ) );
+		this.charaClass.setMaxHealth( this.charaClass.getMaxHealth() + toIncreaseMaxHp );
+		
+		this.charaClass.statsLevelUp();
+		this.charaClass.SkillsLevelUp();
 	}
 
 	public void addExp(int exp){
@@ -154,13 +159,7 @@ public class Character {
 		this.charaClass=charaClass;
 	}
 	
-	public void setMaxHp(int hp) {
-		this.maxHp = hp;
-	}
-	
-	public int getMaxHp() {
-		return this.maxHp;
-	}
+
 	
 	public void trapDamage(){
 		int damage = (int) Math.ceil(0.1 * this.hp);
