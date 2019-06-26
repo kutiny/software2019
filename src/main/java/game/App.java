@@ -211,7 +211,7 @@ public class App {
   	public void fight() {
   		this.c.setActiveEnemy(this.enemy);
 		  this.status = "Duelo";
-		  this.addHistory("Buena decisión. No siempre es bueno huir.");
+		  this.addHistory("Buena decision. No siempre es bueno huir.");
 		  this.duel = new Duel (this.c, this.enemy);
 		  m.move(this.lastMove);
 		  setMap(m.toString());
