@@ -33,7 +33,7 @@ public class CharacterTest {
   }
 
   
-//  @Test(expected = IllegalStateException.class)	
+//  @Test
 //  public void notCharacterTurnTest() {
 //	Character character = new Character();
 //	Enemy enemy = new EnemyType1();
@@ -43,8 +43,11 @@ public class CharacterTest {
 //	character.setActiveEnemy(enemy);
 //	character.getCharaClass().setActiveSkill(new ArcherSkill1());
 //	
-//	duel.characterAttack();
-//	duel.characterAttack();
+////	duel.characterAttack();
+//	assertFalse(duel.characterAttack());
+////	duel.characterAttack();
+//
+//	
 //}
   
   @Test
@@ -52,6 +55,13 @@ public class CharacterTest {
 	  Character character = new Character();
 	  character.setName("Ellie");
 	  assertEquals(character.getName(), "Ellie");
+  }
+  
+  @Test
+  public void characterClassTest() {
+	  Character character = new Character();
+	  character.setCharaClass(new Warrior());
+	  assertEquals(character.getCharaClass().getClassName(), "Warrior");
   }
   
   

@@ -6,6 +6,9 @@ public class Damage {
 	private int basicDamageAmmount;
 	
 	public Damage(DamageType type, int ammount, int basicAmmount) throws IllegalArgumentException {
+		if(ammount < 0 || basicAmmount < 0) {
+			throw new IllegalArgumentException("El daño de un ataque no puede ser negativo");
+		}
 		this.damageType = type;
 		this.damageAmmount = ammount;
 		this.basicDamageAmmount = basicAmmount;

@@ -12,6 +12,9 @@ public class Duel {
 		this.isCharacterNext = true;
 
 	}
+	public boolean getIsCharacterNext() {
+		return this.isCharacterNext;
+	}
 	public Character getCharacter() {
 		return this.character;
 	}

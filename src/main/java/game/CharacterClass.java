@@ -14,6 +14,9 @@ public abstract class CharacterClass  {
   public abstract Damage fight();
   public abstract int calculateRecievedDamage(Damage damage);
   
+  public String getClassName() {
+	  return this.className;
+  }
   public void setActiveSkill(Skill skill){
     this.activeSkill = skill;
   }
