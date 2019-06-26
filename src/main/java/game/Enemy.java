@@ -96,7 +96,7 @@ public abstract class Enemy implements Observer{
 		String type = damage.getDamageType().toString();
 		if (type.equals("physical")){
 			int danioARecibir = (int)(danio * (1.0 - this.armor));
-			System.out.println("daño a recivir:" + danioARecibir);
+			System.out.println("daño a recibir:" + danioARecibir);
 			return danioARecibir;
 		}
 		else {

@@ -7,8 +7,8 @@ public abstract class CharacterClass  {
   protected ArrayList<Skill> skills;
   protected Skill activeSkill;
   protected int maxHealth;
-  protected int armor;
-  protected int magicResist;
+  protected double armor;
+  protected double magicResist;
   protected Damage damage;
 
   public abstract Damage fight();
@@ -27,12 +27,12 @@ public abstract class CharacterClass  {
   
   
   public void statsLevelUp() {
-		int toIncreaseArmor;
+		double toIncreaseArmor;
 		double toIncreaseMagicResist;
-		toIncreaseArmor= this.getArmor();
+		toIncreaseArmor= this.getArmor()/10;
 		this.setArmor( Math.round(this.getArmor() + toIncreaseArmor));
 		
-		toIncreaseMagicResist= Math.round( ( this.getMagicResist() / 10 ) );
+		toIncreaseMagicResist= this.getMagicResist()/10;
 		this.setMagicResist( (int) (this.getMagicResist() + toIncreaseMagicResist) );
   }
   
@@ -62,19 +62,19 @@ public abstract class CharacterClass  {
     return this.maxHealth;
   }
 
-  public void setArmor(int ap){
+  public void setArmor(double ap){
     this.armor = ap;
   }
 
-  public int getArmor(){
+  public double getArmor(){
     return this.armor;
   }
 
-  public void setMagicResist(int mr){
+  public void setMagicResist(double mr){
     this.magicResist = mr;
   }
 
-  public int getMagicResist(){
+  public double getMagicResist(){
     return this.magicResist;
   }
 
