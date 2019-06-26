@@ -100,7 +100,7 @@ public class Character {
 	
 	public boolean receiveDamage(int dm){
 		if(dm < 0) {
-			throw new IllegalArgumentException("El daño recibido no puede ser negativo.");
+			throw new IllegalArgumentException("El daï¿½o recibido no puede ser negativo.");
 		}
 		if(this.hp > dm) {
 			this.hp -= dm;
@@ -152,11 +152,12 @@ public class Character {
 	public void setExperience(int experience){
 		this.experience = experience;
 	}
+	
 	public CharacterClass getCharaClass(){
 		return this.charaClass;
 	}
 	public void setCharaClass(CharacterClass charaClass){
-		this.charaClass=charaClass;
+		this.charaClass = charaClass;
 	}
 	
 

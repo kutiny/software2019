@@ -18,7 +18,7 @@ public class NegativeDamageTest {
 		character.getCharaClass().setActiveSkill(skill);
 		
 		duel.characterAttack();
-		duel.EnemyAttack();
+		duel.enemyAttack();
 	}	
 
 	  
@@ -35,7 +35,7 @@ public class NegativeDamageTest {
 		Duel duel = new Duel(character, enemy);
 	
 		duel.characterAttack();
-		duel.EnemyAttack();
+		duel.enemyAttack();
 		}	
 	
 }

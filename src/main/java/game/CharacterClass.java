@@ -79,6 +79,10 @@ public abstract class CharacterClass  {
   }
 
   
+  public void setSkills(ArrayList<Skill> skills) {
+	  this.skills = skills;
+  }
+  
   
   
 }

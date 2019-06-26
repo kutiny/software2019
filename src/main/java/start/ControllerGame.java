@@ -21,7 +21,6 @@ import javafx.scene.text.Text;
 
 public class ControllerGame {
 
-    private Model model = new Model();
     private App app = new App();
 
     @FXML
@@ -69,55 +68,63 @@ public class ControllerGame {
 
     @FXML
     void handleMoveDown(ActionEvent event) {
-
+    	app.move("Down");
+    	this.update();
+    }
+    @FXML
+    void handleMoveH1(ActionEvent event) {
+    	app.skill(1);
+    	this.update();
     }
 
     @FXML
     void handleMoveH2(ActionEvent event) {
-
+    	app.skill(2);
+    	this.update();
     }
 
     @FXML
     void handleMoveH3(ActionEvent event) {
-
+    	app.skill(3);
+    	this.update();
     }
 
     @FXML
     void handleMoveLeft(ActionEvent event) {
-
+    	app.move("Left");
+    	this.update();
     }
 
     @FXML
     void handleMoveRight(ActionEvent event) {
-
+    	app.move("Right");
+    	this.update();
     }
 
     @FXML
     void handleMoveS1(ActionEvent event) {
+    	app.runAway();
+    	this.update();
 
     }
 
     @FXML
     void handleMoveS2(ActionEvent event) {
-
+    	app.rest();
+    	this.update();
     }
 
     @FXML
     void handleMoveS3(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleMoveUH1(ActionEvent event) {
-
+    	app.fight();
+    	this.update();
     }
 
     @FXML
     void handleMoveUp(ActionEvent event) {
         //Map.setText(model.moveUp());
-    	app.moveUp();
-    	Map.setText(app.getMap());
-
+    	app.move("Up");
+    	this.update();
     }
     
     private void update() {
@@ -125,7 +132,9 @@ public class ControllerGame {
     	Map.setText(app.getMap());
     	this.updateButtons();
     	Map.setWrapText(true);
-    	
+    	Map.setStyle("-fx-fit-to-width: true;");
+    	Map.setStyle("-fx-fit-to-height: true;");
+    	History.setScrollTop(5000);
     }
     
     public void setNombreAndClase(String nombre, String clase) {
@@ -137,9 +146,10 @@ public class ControllerGame {
     	
     }
     
-    //Supondremos que S1: Escapar, S2: Descanzar, S3:No Escapar H1,H2,H3 Skill
+    //Supondremos que S1: Escapar, S2: Descansar, S3:No Escapar H1,H2,H3 Skill
     public void updateButtons() {
-    	switch (app.getStatus()) {
+    	String status = app.getStatus();
+    	switch (status) {
     		case "Libre":
     			buttonUp.setDisable(false);
     			buttonDown.setDisable(false);
@@ -167,6 +177,7 @@ public class ControllerGame {
     			break;
     			
     		case "PreDuelo":
+    			System.out.println("lalal");
     			buttonUp.setDisable(true);
     			buttonDown.setDisable(true);
     			buttonRight.setDisable(true);
@@ -191,6 +202,8 @@ public class ControllerGame {
     			buttonS2.setDisable(true);
     			buttonS3.setDisable(true);
     			break;
+    		case "GameOver":
+    			System.out.println("");
     	}
     }
 
