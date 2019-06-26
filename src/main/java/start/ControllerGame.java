@@ -21,7 +21,6 @@ import javafx.scene.text.Text;
 
 public class ControllerGame {
 
-    private Model model = new Model();
     private App app = new App();
 
     @FXML
@@ -149,7 +148,6 @@ public class ControllerGame {
     //Supondremos que S1: Escapar, S2: Descansar, S3:No Escapar H1,H2,H3 Skill
     public void updateButtons() {
     	String status = app.getStatus();
-    	System.out.println("status = " + status);
     	switch (status) {
     		case "Libre":
     			buttonUp.setDisable(false);
