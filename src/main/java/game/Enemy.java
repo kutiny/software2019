@@ -98,22 +98,11 @@ public abstract class Enemy implements Observer{
 		}
 		else {
 			int danioARecibir = (int)(danio * (1.0 - this.magicResist));
-			double multiplier = 1 - this.magicResist;
 			return danioARecibir;			
 		}
 	}
 
 	
 	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
-
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Enemy: { life: ");
-		sb.append(this.hp);
-		sb.append("}");
-		return sb.toString();
-	}
 
 }
