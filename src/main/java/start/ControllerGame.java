@@ -120,10 +120,13 @@ public class ControllerGame {
     				this.handleMoveH2(null);
     			break;
     			
-    		case "ENTER":
+    		case "E":
     			if(!this.buttonH3.isDisable())
     				this.handleMoveH3(null);
-    			else if(this.buttonGameOver.isVisible())
+    			break;
+    			
+    		case "ENTER":
+    			if(this.buttonGameOver.isVisible())
     				this.handleGameOver(null);
     			break;
     			
