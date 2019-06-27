@@ -1,6 +1,5 @@
 package observer;
 
-import game.Character;
 import lib.Observer;
 
 public class CharacterLevelObserver implements Observer {

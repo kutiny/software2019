@@ -1,7 +1,5 @@
 package game;
 
-import observer.*;
-
 public class Character {
 	private static final double MEDIUMPROB = 0.5;
 	private String name;
