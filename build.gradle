@@ -14,6 +14,7 @@ plugins {
     id 'java'
     id 'application'
     id 'pmd'
+    id 'jacoco'
 }
 
 repositories {
@@ -39,6 +40,19 @@ sourceSets {
 	}
 }
 
+jacoco {
+    toolVersion = "0.8.3"
+    reportsDir = file("$buildDir/Jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/JacocoHtml")
+    }
+}
+
 jar {
     manifest {
         attributes "Main-Class": "start.Start"
@@ -48,6 +62,8 @@ jar {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
+check.dependsOn jacocoTestReport
+build.dependsOn jacocoTestReport
 
 test {
     useJUnit()
