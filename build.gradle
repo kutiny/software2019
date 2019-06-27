@@ -39,6 +39,16 @@ sourceSets {
 	}
 }
 
+jar {
+    manifest {
+        attributes "Main-Class": "start.Start"
+    }
+ 
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 test {
     useJUnit()
     maxHeapSize = '1G'
