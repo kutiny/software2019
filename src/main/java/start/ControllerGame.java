@@ -215,7 +215,8 @@ public class ControllerGame {
     	Map.setStyle("-fx-fit-to-width: true;");
     	Map.setStyle("-fx-fit-to-height: true;");
     	History.setScrollTop(5000);
-    	System.out.println(app.getVidaPersonaje());
+    	History.selectEnd();
+    	History.deselect();
     	Life.setText("" + app.getVidaPersonaje());
     	Level.setText("" + app.getNivelPersonaje());
     }
@@ -263,7 +264,6 @@ public class ControllerGame {
     			break;
     			
     		case "PreDuelo":
-    			System.out.println("lalal");
     			buttonUp.setDisable(true);
     			buttonDown.setDisable(true);
     			buttonRight.setDisable(true);

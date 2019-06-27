@@ -90,7 +90,7 @@ public class App {
   	}
   	
   	private void addHistoryPared() {
-  		addHistory("Sos o no ves la pared?");
+  		addHistory("Te has topado con un elemento que bloquea el paso.");
   	}
   
   	private void setStatus(String status) {
@@ -211,7 +211,7 @@ public class App {
   	public void fight() {
   		this.c.setActiveEnemy(this.enemy);
 		  this.status = "Duelo";
-		  this.addHistory("Buena decisión. No siempre es bueno huir.");
+		  this.addHistory("Buena decision. No siempre es bueno huir.");
 		  this.duel = new Duel (this.c, this.enemy);
 		  m.move(this.lastMove);
 		  setMap(m.toString());
