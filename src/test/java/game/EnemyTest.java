@@ -27,4 +27,22 @@ public class EnemyTest {
 				uc.levelUp();
 				assertTrue(actualHp<enemy.getHp());
 		}
+		
+		@Test
+		public void calculateReceivedPhysicalDamageTest() {
+			int danioBase = 100;
+			Damage d = new Damage(new DamageType("physical"), danioBase, danioBase);
+			Enemy e = new EnemyType1();
+			int danioRecibe = e.calculateRecievedDamage(d);
+			assertTrue(danioRecibe < danioBase);
+		}
+		
+		@Test
+		public void calculateReceivedMagicalDamageTest() {
+			int danioBase = 100;
+			Damage d = new Damage(new DamageType("magical"), danioBase, danioBase);
+			Enemy e = new EnemyType1();
+			int danioRecibe = e.calculateRecievedDamage(d);
+			assertTrue(danioRecibe < danioBase);
+		}
 }
