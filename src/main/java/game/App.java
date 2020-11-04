@@ -18,36 +18,36 @@ public class App {
 	private CharacterLevelObserver characterLevelObserver;
 	private CharacterLifeObserver characterLifeObserver;
 	MapPosition pos;
-  
+
 	// Constructor
 	public App() {
 		m = new Map();
 		c = new Character();
-	  
+
 		history = "Bienvenido";
 		map = m.toString();
 		status = "Libre";
 		this.huir = true;
-	  
+
 		this.characterLevelObserver = new CharacterLevelObserver();
 		this.characterLifeObserver = new CharacterLifeObserver();
-		
+
 		this.c.levelObservable.subscribe(this.characterLevelObserver);
 		this.c.lifePointsObservable.subscribe(this.characterLifeObserver);
 
 		this.c.setHp(this.c.getHp());
 		this.c.setLevel(this.c.getLevel());
-		
+
 		ArrayList<Enemy> enemies = m.getEnemies();
 		for(Enemy e : enemies) {
 			this.c.levelObservable.subscribe(e);
 		}
 	}
-  
+
   	public CharacterClass getcharaClass() {
 	  return this.charaClass;
   	}
-  
+
   	public void setcharaClass(String charaClass) {
   		switch(charaClass) {
 		  	case "Maga":
@@ -60,50 +60,51 @@ public class App {
 		  		this.charaClass = new Archer();
 		  		break;
 		  	default:
-		  		this.charaClass = new Warrior();
+				this.charaClass = new Warrior();
+				break;
   		}
 	  	this.c.setCharaClass(this.charaClass);
   	}
-  
+
   	public void setcharaName(String charaName) {
 	  	this.c.setName(charaName);
   	}
-  
+
   	public String getHistory() {
   		return this.history;
   	}
-  
+
   	public String getMap() {
 	  	return this.map;
   	}
-  
+
   	public String getStatus() {
   		return this.status;
   	}
-  
+
   	private void setMap(String map) {
   		this.map = map;
   	}
-  
+
   	private void addHistory(String h) {
   		this.history = this.history + "\n" + h;
   	}
-  	
+
   	private void addHistoryPared() {
   		addHistory("Te has topado con un elemento que bloquea el paso.");
   	}
-  
+
   	private void setStatus(String status) {
   		this.status = status;
   	}
-  	
+
   	public void rest() {
   		c.rest();
   	}
 
   	public void move(String lastMove) {
   		this.lastMove = lastMove;
-  		
+
   		try {
   			switch(lastMove) {
   			case "Up":
@@ -111,9 +112,9 @@ public class App {
   	  		  	if(!this.pos.isExplorable() || (m.getYPos() - 1 < 0)) {
   	  		  		addHistoryPared();
   	  			  	return;
-  	  		  	}  				
+  	  		  	}
   				break;
-  			
+
   			case "Down":
   				this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() + 1);
   	  		  	if(!this.pos.isExplorable() || (m.getYPos() + 1 > 14)) {
@@ -121,15 +122,15 @@ public class App {
   	  			  	return;
   	  		  	}
   	  		  	break;
-  			
+
   			case "Left":
   				this.pos = m.getPosition(this.m.getXPos() - 1, this.m.getYPos());
   	  		  	if(!this.pos.isExplorable() || (m.getXPos() - 1 < 0)) {
   	  		  		addHistoryPared();
   	  			  	return;
-  	  		  	}  				
+  	  		  	}
   				break;
-  			
+
   			case "Right":
   				this.pos = m.getPosition(this.m.getXPos() + 1, this.m.getYPos());
   	  		  	if(!this.pos.isExplorable() || (m.getXPos() + 1 > 14)) {
@@ -138,10 +139,10 @@ public class App {
   	  		  	}
   	  		  	break;
   			}
-  			
+
   		  	this.enemy = this.pos.getEnemy();
 			this.trap = this.pos.getTrap();
-  		  
+
   		  	if(enemy != null && enemy.getHp() > 0) {
 				if(this.huir) {
 					setStatus("PreDuelo");
@@ -163,7 +164,7 @@ public class App {
 						c.trapDamage();
 						trap.setDeactivated();
 					}
-				}  		  	
+				}
   		}catch(IndexOutOfBoundsException e) {
   			addHistory("Has dado contra un objeto que no permite el paso.");
   		}catch(NullPointerException e){
@@ -172,11 +173,11 @@ public class App {
   			setMap(m.toString());
   		}
   	}
-  	
+
   	public void skill(int skNumber) {
   		CharacterClass clase = c.getCharaClass();
 	  	clase.setActiveSkill(clase.getSkills().get(skNumber - 1));
-	  	
+
 	  	if(!duel.characterAttack()) {
 			this.setStatus("Libre");
 			this.addHistory("Has matado a tu enemigo");
@@ -184,7 +185,7 @@ public class App {
 			return;
 		}
 	  	addHistory("Has aplicado " + this.charaClass.getActiveSkill().getSkillName() + " a tu enemigo.");
-		
+
 	  	if(!duel.enemyAttack()) {
 			this.setStatus("GameOver");
 			this.addHistory("Te han matado!");
@@ -192,7 +193,7 @@ public class App {
 		}
 	  	this.addHistory("El enemigo ha contraatacado");
   	}
-  
+
   	public void runAway() {
 		  if(this.c.runAway()) {
 			  this.status = "Libre";
@@ -207,7 +208,7 @@ public class App {
 			  setMap(m.toString());
 		  }
   	}
-  	
+
   	public void fight() {
   		this.c.setActiveEnemy(this.enemy);
 		  this.status = "Duelo";
@@ -216,12 +217,16 @@ public class App {
 		  m.move(this.lastMove);
 		  setMap(m.toString());
   	}
-  
+
   	public int getNivelPersonaje() {
   		return this.characterLevelObserver.getLastValue();
   	}
-  	
+
   	public int getVidaPersonaje() {
   		return this.characterLifeObserver.getLastValue();
-  	}
+	  }
+
+	public Map getMapa() {
+		return this.m;
+	}
 }

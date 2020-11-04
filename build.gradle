@@ -2,7 +2,7 @@ buildscript {
     dependencies {
         classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
     }
-    
+
     repositories {
         mavenLocal()
         mavenCentral()
@@ -15,6 +15,7 @@ plugins {
     id 'application'
     id 'pmd'
     id 'jacoco'
+    id "org.sonarqube" version "2.7"
 }
 
 repositories {
@@ -36,6 +37,7 @@ sourceSets {
 		}
 		resources {
 			srcDirs= ["src/main/resources"]
+			includes= ["**/*.fxml"]
 		}
 	}
 }
@@ -57,7 +59,7 @@ jar {
     manifest {
         attributes "Main-Class": "start.Start"
     }
- 
+
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
@@ -74,7 +76,7 @@ pmd {
     ignoreFailures = true
     sourceSets = [sourceSets.main]
     reportsDir = file("$project.buildDir/reports/pmd")
-    
+
 }
 
 jfx {
@@ -85,7 +87,7 @@ jfx {
     deployDir = "src/main/deploy"
     useEnvironmentRelativeExecutables = true
     libFolderName = "lib"
-    
+
     // gradle jfxJar
     css2bin = false
     preLoader = null // String
@@ -127,7 +129,7 @@ jfx {
     skipNativeVersionNumberSanitizing = false // anything than numbers or dots are removed
     additionalJarsignerParameters = null // List<String>
     skipMainClassScanning = false // set to true might increase build-speed
-    
+
     skipNativeLauncherWorkaround124 = false
     skipNativeLauncherWorkaround167 = false
     skipNativeLauncherWorkaround205 = false
@@ -135,20 +137,20 @@ jfx {
     skipSigningJarFilesJNLP185 = false
     skipSizeRecalculationForJNLP185 = false
     skipMacBundlerWorkaround = false
-    
+
     // gradle jfxRun
     runJavaParameter = null // String
     runAppParameter = null // String
 
     // per default the outcome of the gradle "jarTask" will be used, set this to specify otherwise (like proguard-output)
     alternativePathToJarFile = null // String
-    
+
     // to disable patching of ant-javafx.jar, set this to false
     usePatchedJFXAntLib = true
-    
+
     // making it able to support absolute paths, defaults to "false" for maintaining old behaviour
     checkForAbsolutePaths = false
-    
+
     // gradle jfxGenerateKeyStore
     keyStore = "src/main/deploy/keystore.jks"
     keyStoreAlias = null
@@ -156,7 +158,7 @@ jfx {
     keyPassword = null // will default to keyStorePassword
     keyStoreType = "jks"
     overwriteKeyStore = false
-    
+
     certDomain = null // required
     certOrgUnit = null // defaults to "none"
     certOrg = null // required

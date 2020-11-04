@@ -9,6 +9,7 @@ notifications:
 
     email:
         - alex08lta@gmail.com
+        - juanfernandez@alumnos.unc.edu.ar
 
 script:
     - ./gradlew clean build

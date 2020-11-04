@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Archer extends CharacterClass {
 	  public Archer(){
 		  this.className="Archer";
-		  this.skills= new ArrayList<Skill>();
+		  this.skills = new ArrayList<Skill>();
 		  this.skills.add(new ArcherSkill1());
 		  this.skills.add(new ArcherSkill2());
 		  this.skills.add(new ArcherSkill3());
@@ -29,7 +29,7 @@ public class Archer extends CharacterClass {
 		}
 		else {
 			int danioARecibir = (int)(danio * (1.0 - this.magicResist));
-			return danioARecibir;			
+			return danioARecibir;
 		}
 	}
 }

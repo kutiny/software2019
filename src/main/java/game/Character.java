@@ -60,7 +60,7 @@ public class Character {
 			}
 			else {
 				toDecreaseHp=this.hp/10;
-				
+
 			}
 			if(this.hp - toDecreaseHp <= 0)
 				this.hp = 1;
@@ -75,7 +75,7 @@ public class Character {
 		this.setActiveEnemy(null);
 		return true;
 	}
-	else return false;	
+	else return false;
 	}
 	public void levelUp(){
 		this.setLevel( this.getLevel() + 1);
@@ -83,10 +83,10 @@ public class Character {
 
 		toIncreaseMaxHp= Math.round ( ( this.charaClass.getMaxHealth() / 100 ) );
 		this.charaClass.setMaxHealth( this.charaClass.getMaxHealth() + toIncreaseMaxHp );
-		
+
 		this.charaClass.statsLevelUp();
 		this.charaClass.SkillsLevelUp();
-		
+
 		this.levelObservable.next(this.level);
 	}
 
@@ -102,9 +102,9 @@ public class Character {
 		}
 
 	}
-	
-	
-	
+
+
+
 	public boolean receiveDamage(int dm){
 		if(dm < 0) {
 			throw new IllegalArgumentException("El da�o recibido no puede ser negativo.");
@@ -162,16 +162,16 @@ public class Character {
 	public void setExperience(int experience){
 		this.experience = experience;
 	}
-	
+
 	public CharacterClass getCharaClass(){
 		return this.charaClass;
 	}
 	public void setCharaClass(CharacterClass charaClass){
 		this.charaClass = charaClass;
 	}
-	
 
-	
+
+
 	public void trapDamage(){
 		int damage = (int) Math.ceil(0.1 * this.hp);
 		this.hp = (damage > this.hp + 1) ? 1 : this.hp - damage;
