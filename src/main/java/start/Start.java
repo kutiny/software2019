@@ -28,7 +28,7 @@ public class Start extends Application {
             stage.setTitle("Tales of Euphona");
             stage.show();
 
-    	}catch(Exception e) {
+    	} catch(Exception e) {
     		System.out.print(e.getMessage());
     		System.out.print("Falla");
     		return;
