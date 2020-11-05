@@ -21,19 +21,19 @@ public class Start extends Application {
     @Override
     public void start(Stage stage) throws Exception {
     	try {
-    		Parent root = FXMLLoader.load(getClass().getResource("/start/Login.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene scene = new Scene(root);
 
             stage.setScene(scene);
             stage.setTitle("Tales of Euphona");
             stage.show();
- 
+
     	}catch(Exception e) {
     		System.out.print(e.getMessage());
     		System.out.print("Falla");
     		return;
     	}
-        
+
 
 
 //        Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));

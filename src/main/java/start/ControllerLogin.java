@@ -29,13 +29,13 @@ public class ControllerLogin implements Initializable{
 
 	private final int MINNAMELENGTH = 4;
 	private final int MAXNAMELENGTH = 10;
-	
+
     @FXML
     private TextField nombre;
-	
+
     @FXML
     private ComboBox<String> clase;
-    
+
     @FXML
     private Label error;
 
@@ -87,13 +87,13 @@ public class ControllerLogin implements Initializable{
 	            stage.show();
 	            ( (Node) (event.getSource() ) ).getScene().getWindow().hide();
 	        }catch(IOException e){
-	           return;		
+	           return;
     		}
     	}
     }
-    
+
     ObservableList<String> list = FXCollections.observableArrayList( "Maga", "Guerrero", "Arquera");
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     	clase.setItems(list);
