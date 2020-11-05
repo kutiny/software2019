@@ -90,54 +90,63 @@ public class App {
   		this.history = this.history + "\n" + h;
   	}
 
-  	private void addHistoryPared() {
-  		addHistory("Te has topado con un elemento que bloquea el paso.");
-  	}
-
   	private void setStatus(String status) {
   		this.status = status;
   	}
 
   	public void rest() {
   		c.rest();
-  	}
+	}
+
+	private void moveUp() throws IndexOutOfBoundsException {
+		this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() - 1);
+		System.out.println(this.pos.isExplorable());
+		if(!this.pos.isExplorable() || (m.getYPos() - 1 < 0)) {
+			throw new IndexOutOfBoundsException();
+		}
+	}
+	private void moveLeft() throws IndexOutOfBoundsException {
+		this.pos = m.getPosition(this.m.getXPos() - 1, this.m.getYPos());
+		System.out.println(this.pos.isExplorable());
+		if(!this.pos.isExplorable() || (m.getXPos() - 1 < 0)) {
+			throw new IndexOutOfBoundsException();
+		}
+	}
+	private void moveDown() throws IndexOutOfBoundsException {
+		this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() + 1);
+		System.out.println(this.pos.isExplorable());
+		if(!this.pos.isExplorable() || (m.getYPos() + 1 > 14)) {
+			throw new IndexOutOfBoundsException();
+		}
+	}
+
+	private void moveRight() throws IndexOutOfBoundsException {
+		this.pos = m.getPosition(this.m.getXPos() + 1, this.m.getYPos());
+		System.out.println(this.pos.isExplorable());
+		if(!this.pos.isExplorable() || (m.getXPos() + 1 > 14)) {
+			throw new IndexOutOfBoundsException();
+		}
+	}
 
   	public void move(String lastMove) {
   		this.lastMove = lastMove;
-
   		try {
   			switch(lastMove) {
-  			case "Up":
-  				this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() - 1);
-  	  		  	if(!this.pos.isExplorable() || (m.getYPos() - 1 < 0)) {
-  	  		  		addHistoryPared();
-  	  			  	return;
-  	  		  	}
-  				break;
+				case "Up":
+					this.moveUp();
+					break;
 
-  			case "Down":
-  				this.pos = m.getPosition(this.m.getXPos(), this.m.getYPos() + 1);
-  	  		  	if(!this.pos.isExplorable() || (m.getYPos() + 1 > 14)) {
-  	  		  		addHistoryPared();
-  	  			  	return;
-  	  		  	}
-  	  		  	break;
+				case "Down":
+					this.moveDown();
+					break;
 
-  			case "Left":
-  				this.pos = m.getPosition(this.m.getXPos() - 1, this.m.getYPos());
-  	  		  	if(!this.pos.isExplorable() || (m.getXPos() - 1 < 0)) {
-  	  		  		addHistoryPared();
-  	  			  	return;
-  	  		  	}
-  				break;
+				case "Left":
+					this.moveLeft();
+					break;
 
-  			case "Right":
-  				this.pos = m.getPosition(this.m.getXPos() + 1, this.m.getYPos());
-  	  		  	if(!this.pos.isExplorable() || (m.getXPos() + 1 > 14)) {
-  	  		  		addHistoryPared();
-  	  			  	return;
-  	  		  	}
-  	  		  	break;
+				case "Right":
+					this.moveRight();
+					break;
   			}
 
   		  	this.enemy = this.pos.getEnemy();
@@ -156,15 +165,15 @@ public class App {
 					this.c.setActiveEnemy(this.enemy);
 					duel = new Duel(this.c, this.enemy);
 					addHistory("Has encontrado un enemigo. Debes empezar a pelear");
-				  	}
-				}else {
-					m.move(lastMove);
-					if(trap != null && trap.getActive()) {
-						addHistory("Has pisado una trampa");
-						c.trapDamage();
-						trap.setDeactivated();
-					}
 				}
+			}else {
+				m.move(lastMove);
+				if(trap != null && trap.getActive()) {
+					addHistory("Has pisado una trampa");
+					c.trapDamage();
+					trap.setDeactivated();
+				}
+			}
   		}catch(IndexOutOfBoundsException e) {
   			addHistory("Has dado contra un objeto que no permite el paso.");
   		}catch(NullPointerException e){
@@ -178,7 +187,7 @@ public class App {
   		CharacterClass clase = c.getCharaClass();
 	  	clase.setActiveSkill(clase.getSkills().get(skNumber - 1));
 
-	  	if(!duel.characterAttack()) {
+	  	if (!duel.characterAttack()) {
 			this.setStatus("Libre");
 			this.addHistory("Has matado a tu enemigo");
 			this.huir = true;
@@ -186,7 +195,7 @@ public class App {
 		}
 	  	addHistory("Has aplicado " + this.charaClass.getActiveSkill().getSkillName() + " a tu enemigo.");
 
-	  	if(!duel.enemyAttack()) {
+	  	if (!duel.enemyAttack()) {
 			this.setStatus("GameOver");
 			this.addHistory("Te han matado!");
 			return;
@@ -228,5 +237,17 @@ public class App {
 
 	public Map getMapa() {
 		return this.m;
+	}
+
+	public void setHuir(boolean huir) {
+		this.huir = huir;
+	}
+
+	public boolean getHuir() {
+		return this.huir;
+	}
+
+	public Duel getDuel() {
+		return this.duel;
 	}
 }

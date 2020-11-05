@@ -5,7 +5,7 @@ public class Duel {
 	private Enemy enemy;
 	private boolean isCharacterNext;
 
-	
+
 	public Duel(Character c, Enemy e) {
 		this.character = c;
 		this.enemy = e;
@@ -18,9 +18,9 @@ public class Duel {
 	public Character getCharacter() {
 		return this.character;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return true id enemy still alive
 	 * @throws IllegalStateException
 	 */
@@ -38,24 +38,28 @@ public class Duel {
 		}else {
 			throw new IllegalStateException("No puedes atacar durante el turno del enemigo");
 		}
-		
+
 	}
 	/**
-	 * 
-	 * @return 
+	 *
+	 * @return
 	 * @throws IllegalStateException
 	 */
 	public boolean enemyAttack() throws IllegalStateException{
 		if(!this.isCharacterNext) {
 			this.isCharacterNext = true;
-			
+
 			this.character.receiveDamage(this.character.getCharaClass().calculateRecievedDamage(this.enemy.fight()));
 			return character.getHp() > 0;
 		}
 		else {
 			throw new IllegalStateException("Enemigo atacando en turno de personaje");
 		}
-		
+
 	}
-	
+
+	public Enemy getEnemy() {
+		return this.enemy;
+	}
+
 }
