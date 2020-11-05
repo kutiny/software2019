@@ -78,7 +78,7 @@ public class ControllerLogin implements Initializable{
     		try{
     			Stage stage = new Stage();
 	            FXMLLoader loader = new FXMLLoader();
-	            Parent root = loader.load(getClass().getResource("Game.fxml").openStream());
+	            Parent root = loader.load(getClass().getClassLoader().getResource("./Game.fxml").openStream());
 	            ControllerGame controllNewWindows = (ControllerGame)loader.getController();
 	            controllNewWindows.setNombreAndClase(nombre.getText().trim() , clase.getValue());
 	            Scene escena = new Scene(root);
