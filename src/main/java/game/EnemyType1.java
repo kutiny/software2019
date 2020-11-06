@@ -6,18 +6,18 @@ public class EnemyType1 extends Enemy {
 
 	public EnemyType1() {
 		super("Enemy1", 1, 5, new Damage(new DamageType("physical"), 12, 12), 0.1, 0.0, 0.2, 0.12, 100);
-		
-	}
-	
 
-	
+	}
+
+
+
 	@Override
 
 
 	public Damage fight() {
 		if( (this.failProb + Math.random()) < MEDIUMPROB) {
 			this.damage.setDamageAmmount(0);
-			
+
 		}
 		else if (this.critProb + Math.random() < MEDIUMPROB) {
 			damage.setDamageAmmount(damage.getBasicDamageAmmount() * 2);
@@ -27,7 +27,7 @@ public class EnemyType1 extends Enemy {
 		}
 		return damage;
 	}
-	
+
 	public void notifyHandler(Object value) throws IllegalArgumentException {
 		if(value instanceof Integer && (this.hp > 0)) {
 			this.setLevel((int)value);
@@ -39,6 +39,6 @@ public class EnemyType1 extends Enemy {
 			throw new IllegalArgumentException();
 		}
 	}
-	
+
 
 }

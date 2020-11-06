@@ -13,7 +13,7 @@ public abstract class Enemy implements Observer{
 	protected double magicResist;
 	protected int expKilled;
 	protected Damage damage;
-	
+
 	public Enemy(String name, int lv, int hp, Damage damage, double armor, double critProb, double failProb, double magicResist, int expKilled) {
 		this.enemyName = name;
 		this.level = lv;
@@ -25,9 +25,9 @@ public abstract class Enemy implements Observer{
 		this.armor = armor;
 		this.failProb = failProb;
 	}
-	
+
 	public abstract Damage fight();
-	
+
 	public void levelUp() {
 		level++;
 	}
@@ -48,7 +48,7 @@ public abstract class Enemy implements Observer{
 	public int getHp() {
 		return this.hp;
 	}
-	
+
 	public void setHp(int hp) {
 		this.hp=hp;
 	}
@@ -67,26 +67,25 @@ public abstract class Enemy implements Observer{
 	public double getMagicResist() {
 		return this.magicResist;
 	}
-	
+
 	public void setMagicResist(double mr) {
 		this.magicResist = mr;
 	}
 	public int getExpKilled() {
 		return this.expKilled;
 	}
-	
+
 	public void setDamage(Damage dmg) {
 		this.damage=dmg;
 	}
-	
+
+	public Damage getDamage() {
+		return this.damage;
+	}
+
 	public boolean receiveDamage(int damage) {
-		if(this.hp > damage) {
-			this.hp -= damage;
-			return true;
-		}else {
-			this.hp = 0;
-			return false;
-		}
+		this.hp = Math.max(0, this.hp - damage);
+		return this.hp > damage;
 	}
 
 	public int calculateRecievedDamage(Damage damage) {
@@ -98,11 +97,11 @@ public abstract class Enemy implements Observer{
 		}
 		else {
 			int danioARecibir = (int)(danio * (1.0 - this.magicResist));
-			return danioARecibir;			
+			return danioARecibir;
 		}
 	}
 
-	
+
 	public abstract void notifyHandler(Object value) throws IllegalArgumentException;
 
 }
