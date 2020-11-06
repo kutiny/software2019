@@ -25,128 +25,169 @@ import javafx.scene.input.KeyEvent;
 
 public class ControllerGame {
 
-    private App app = new App();
-    private String nombre;
-    private String clase;
+    public App app = new App();
+    public String nombre;
+	public String clase;
 
     @FXML
-    private TextArea History;
+    public TextArea History;
 
     @FXML
-    private TextArea Map;
+    public TextArea Map;
 
     @FXML
-    private Text CharacterName;
+    public Text CharacterName;
 
     @FXML
-    private Text characterClass;
+    public Text characterClass;
 
     @FXML
-    private Button buttonUp;
+    public Button buttonUp;
 
     @FXML
-    private Button buttonDown;
+    public Button buttonDown;
 
     @FXML
-    private Button buttonRight;
+    public Button buttonRight;
 
     @FXML
-    private Button buttonLeft;
+    public Button buttonLeft;
 
     @FXML
-    private Button buttonH3;
+    public Button buttonH3;
 
     @FXML
-    private Button buttonS3;
+    public Button buttonS3;
 
     @FXML
-    private Button buttonH2;
+    public Button buttonH2;
 
     @FXML
-    private Button buttonS2;
+    public Button buttonS2;
 
     @FXML
-    private Button buttonH1;
+    public Button buttonH1;
 
     @FXML
-    private Button buttonS1;
+    public Button buttonS1;
 
     @FXML
-    private Text Life;
+    public Text Life;
 
     @FXML
-    private Text Level;
+    public Text Level;
 
     @FXML
-    private Button buttonGameOver;
+    public Button buttonGameOver;
 
     @FXML
     void handleGameOver(ActionEvent event) {
     	this.app = new App();
     	this.setNombreAndClase(this.nombre, this.clase);
-    }
+	}
+
+	private void moveUp() {
+		if(!this.buttonUp.isDisable())
+		this.handleMoveUp(null);
+	}
+
+	private void moveDown() {
+		if(!this.buttonDown.isDisable())
+		this.handleMoveDown(null);
+	}
+
+	private void moveRight() {
+		if(!this.buttonRight.isDisable())
+		this.handleMoveRight(null);
+	}
+
+	private void moveLeft() {
+		if(!this.buttonLeft.isDisable())
+			this.handleMoveLeft(null);
+	}
+
+	private void runQ() {
+		if(!this.buttonH1.isDisable())
+			this.handleMoveH1(null);
+	}
+
+	private void runW() {
+		if(!this.buttonH2.isDisable())
+			this.handleMoveH2(null);
+	}
+
+	private void runE() {
+		if(!this.buttonH3.isDisable())
+			this.handleMoveH3(null);
+	}
+
+	private void runR() {
+		if(!this.buttonS3.isDisable())
+			this.handleMoveS3(null);
+	}
+
+	private void runEnter() {
+		if(this.buttonGameOver.isVisible())
+			this.handleGameOver(null);
+	}
+	private void runEscape() {
+		if(!this.buttonS1.isDisable())
+			this.handleMoveS1(null);
+	}
+	private void runSpace() {
+		if(!this.buttonS2.isDisable())
+			this.handleMoveS2(null);
+	}
 
     @FXML
     void handleKeyReleseased(KeyEvent event) {
     	String key = event.getCode().toString();
     	switch(key) {
     		case "UP":
-    			if(!this.buttonUp.isDisable())
-    				this.handleMoveUp(null);
+    			this.moveUp();
     			break;
 
     		case "DOWN":
-    			if(!this.buttonDown.isDisable())
-    				this.handleMoveDown(null);
+    			this.moveDown();
     			break;
 
     		case "RIGHT":
-    			if(!this.buttonRight.isDisable())
-    				this.handleMoveRight(null);
+    			this.moveRight();
     			break;
 
     		case "LEFT":
-    			if(!this.buttonLeft.isDisable())
-    				this.handleMoveLeft(null);
+    			this.moveLeft();
     			break;
 
     		case "Q":
-    			if(!this.buttonH1.isDisable())
-    				this.handleMoveH1(null);
+    			this.runQ();
     			break;
 
     		case "W":
-    			if(!this.buttonH2.isDisable())
-    				this.handleMoveH2(null);
+    			this.runW();
     			break;
 
     		case "E":
-    			if(!this.buttonH3.isDisable())
-    				this.handleMoveH3(null);
+    			this.runE();
     			break;
 
     		case "ENTER":
-    			if(this.buttonGameOver.isVisible())
-    				this.handleGameOver(null);
+    			this.runEnter();
     			break;
 
     		case "ESCAPE":
-    			if(!this.buttonS1.isDisable())
-    				this.handleMoveS1(null);
+    			this.runEscape();
     			break;
 
     		case "SPACE":
-    			if(!this.buttonS2.isDisable())
-    				this.handleMoveS2(null);
+    			this.runSpace();
     			break;
 
     		case "R":
-    			if(!this.buttonS3.isDisable())
-    				this.handleMoveS3(null);
+    			this.runR();
     			break;
     			//barra descanso; habilidades qwe; huir esq; atacar R
     	}
-
     }
 
     @FXML
