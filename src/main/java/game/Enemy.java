@@ -85,7 +85,7 @@ public abstract class Enemy implements Observer{
 
 	public boolean receiveDamage(int damage) {
 		this.hp = Math.max(0, this.hp - damage);
-		return this.hp > damage;
+		return this.hp > 0;
 	}
 
 	public int calculateRecievedDamage(Damage damage) {
