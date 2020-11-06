@@ -95,7 +95,7 @@ public class App {
   	}
 
   	public void rest() {
-  		c.rest();
+		addHistory(c.rest());
 	}
 
 	private void moveUp() throws IndexOutOfBoundsException {

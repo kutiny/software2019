@@ -28,11 +28,12 @@ public class Character {
 		return charaClass.fight();
 	}
 
-	public void rest(){
+	public String rest() {
 		double rand = Math.random();
 		int toAddHp;
 		int toDecreaseHp;
-		if(rand > MEDIUMPROB) {
+		String msg = "No siempre se encuentra un buen lugar para descansar.\nTu personaje se encuentra confundido.";
+		if (rand > MEDIUMPROB) {
 			if (this.hp < this.charaClass.getMaxHealth() * 0.3) {
 				toAddHp = this.hp / 2;
 			}
@@ -43,6 +44,7 @@ public class Character {
 				toAddHp = this.hp / 8;
 			}
 			this.hp = Math.min(this.hp + toAddHp, this.charaClass.getMaxHealth());
+			msg = "Un buen descanso siempre es revitalizador";
 
 		} else if (rand > MEDIUMPROB / 2) {
 			if (this.hp < this.charaClass.getMaxHealth() * 0.3) {
@@ -53,8 +55,10 @@ public class Character {
 				toDecreaseHp = this.hp / 10;
 			}
 			this.hp = Math.max(1, this.hp - toDecreaseHp);
+			msg = "Has hecho enfadar a la hormiga reina al sentarte sobre su hormiguero.";
 		}
 		this.lifePointsObservable.next(this.hp);
+		return msg;
 	}
 
 	public boolean runAway() {
