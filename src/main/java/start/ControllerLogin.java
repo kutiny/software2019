@@ -51,31 +51,31 @@ public class ControllerLogin implements Initializable{
     @FXML
     void handleStart(ActionEvent event) {
     	//Se comprueba si hay algun problema con el nombre y/o clase
-    	if(nombre.getText().trim().length() < MINNAMELENGTH || nombre.getText().trim().length() > MAXNAMELENGTH || clase.getValue() == null) {
+    	if (nombre.getText().trim().length() < MINNAMELENGTH || nombre.getText().trim().length() > MAXNAMELENGTH || clase.getValue() == null) {
     		error.setVisible(true);
-    		if(clase.getValue() == null) {
+    		if (clase.getValue() == null) {
     			errorClase.setVisible(true);
-    			if(nombre.getText().trim().length() < MINNAMELENGTH ) {
+    			if (nombre.getText().trim().length() < MINNAMELENGTH ) {
     				errorNombreCorto.setVisible(true);
         			errorNombreLargo.setVisible(false);
-    			}else if(nombre.getText().trim().length() > MAXNAMELENGTH ) {
+    			} else if (nombre.getText().trim().length() > MAXNAMELENGTH ) {
     				errorNombreCorto.setVisible(false);
         			errorNombreLargo.setVisible(true);
-    			}else {
+    			} else {
     				errorNombreCorto.setVisible(false);
         			errorNombreLargo.setVisible(false);
     			}
-    		}else if(nombre.getText().length() < MINNAMELENGTH) {
+    		} else if (nombre.getText().length() < MINNAMELENGTH) {
     			errorClase.setVisible(false);
     			errorNombreCorto.setVisible(true);
     			errorNombreLargo.setVisible(false);
-    		}else{
+    		} else {
     			errorClase.setVisible(false);
     			errorNombreCorto.setVisible(false);
     			errorNombreLargo.setVisible(true);
     		}
-    	}else {
-    		try{
+    	} else {
+    		try {
     			Stage stage = new Stage();
 	            FXMLLoader loader = new FXMLLoader();
 	            Parent root = loader.load(getClass().getClassLoader().getResource("./Game.fxml").openStream());
@@ -86,7 +86,7 @@ public class ControllerLogin implements Initializable{
 	            stage.setTitle("Tales of Euphona");
 	            stage.show();
 	            ( (Node) (event.getSource() ) ).getScene().getWindow().hide();
-	        }catch(IOException e){
+	        } catch(IOException e){
 	           return;
     		}
     	}
