@@ -174,11 +174,9 @@ public class App {
 					trap.setDeactivated();
 				}
 			}
-  		}catch(IndexOutOfBoundsException e) {
+  		} catch(IndexOutOfBoundsException e) {
   			addHistory("Has dado contra un objeto que no permite el paso.");
-  		}catch(NullPointerException e){
-  			m.move(lastMove);
-  		}finally {
+  		} finally {
   			setMap(m.toString());
   		}
   	}

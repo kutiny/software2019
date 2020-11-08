@@ -13,3 +13,6 @@ notifications:
 
 script:
     - ./gradlew clean build
+
+git:
+    quiet: true

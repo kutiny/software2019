@@ -15,11 +15,12 @@ plugins {
     id 'application'
     id 'pmd'
     id 'jacoco'
-    id "org.sonarqube" version "2.7"
+    id 'checkstyle'
 }
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -31,6 +32,18 @@ dependencies {
 
 apply plugin: 'javafx-gradle-plugin'
 
+apply plugin: 'checkstyle'
+checkstyle {
+    toolVersion '7.8.1'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source ='src/main/java'
+}
+checkstyleTest {
+    source ='src/test/java'
+}
+
 sourceSets {
 	main {
 		java {
@@ -38,7 +51,6 @@ sourceSets {
 		}
 		resources {
 			srcDirs= ["src/main/resources"]
-			includes= ["**/*.fxml"]
 		}
 	}
 }
@@ -65,6 +77,7 @@ jar {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
+
 check.dependsOn jacocoTestReport
 build.dependsOn jacocoTestReport
 
@@ -77,7 +90,6 @@ pmd {
     ignoreFailures = true
     sourceSets = [sourceSets.main]
     reportsDir = file("$project.buildDir/reports/pmd")
-
 }
 
 jfx {
