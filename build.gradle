@@ -16,6 +16,7 @@ plugins {
     id 'pmd'
     id 'jacoco'
     id 'checkstyle'
+    id 'de.aaschmid.cpd' version '2.0'
 }
 
 repositories {
@@ -46,6 +47,9 @@ checkstyleMain {
 
 checkstyleTest {
     source ='src/test/java'
+}
+cpdCheck {
+    ignoreFailures = true
 }
 
 sourceSets {
