@@ -4,6 +4,7 @@ dist: trusty
 
 before_install:
     - chmod +x gradlew
+    - chmod +x after_script.sh
 
 notifications:
 
@@ -11,5 +12,11 @@ notifications:
         - alex08lta@gmail.com
         - juanfernandez@alumnos.unc.edu.ar
 
-script:
+before_script:
     - ./gradlew clean build
+
+script:
+    - ./after_script.sh
+
+git:
+    quiet: true
