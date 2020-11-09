@@ -6,7 +6,7 @@ cs=`cat cs.txt`;
 rm cs.txt;
 if [[ "$cs" != "OK" ]]; then
     echo "CHECKSTYLE FAILED!";
-    wait 300000;
+    sleep 300000;
     exit 0;
 else
     echo "CHECKSTYLE OK!";
@@ -19,7 +19,7 @@ pmd=`cat pmd.txt`;
 rm pmd.txt;
 if [[ "$pmd" != "OK" ]]; then
     echo "PMD FAILED!";
-    wait 300000;
+    sleep 300000;
     exit 0;
 else
     echo "PMD OK!";
