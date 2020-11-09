@@ -32,5 +32,16 @@ if [[ "$cpd" != "OK" ]]; then
     exit 1;
 else
     echo "CPD OK!";
+fi
+
+findbugsErrors=`cat build/reports/findbugs/main.xml | grep -e '<BugInstance' | wc -l`;
+curl -X POST -H "Content-Type: application/json" -d "{\"percentage\": $findbugsErrors}" http://gcsw.alexaguirre.com.ar/findbugs > findbugs.txt;
+findbugs=`cat findbugs.txt`;
+rm findbugs.txt;
+if [[ "$findbugs" != "OK" ]]; then
+    echo "FINDBUGS FAILED!";
+    exit 1;
+else
+    echo "FINDBUGS OK!";
     exit 0;
 fi
