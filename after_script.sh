@@ -21,5 +21,16 @@ if [[ "$pmd" != "OK" ]]; then
     exit 1;
 else
     echo "PMD OK!";
+fi
+
+cpdErrors=`cat build/reports/cpd/cpdCheck.xml | grep -e '<duplication' | wc -l`;
+curl -X POST -H "Content-Type: application/json" -d "{\"percentage\": $cpdErrors}" http://gcsw.alexaguirre.com.ar/cpd > cpd.txt;
+cpd=`cat cpd.txt`;
+rm cpd.txt;
+if [[ "$cpd" != "OK" ]]; then
+    echo "CPD FAILED!";
+    exit 1;
+else
+    echo "CPD OK!";
     exit 0;
 fi
