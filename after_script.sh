@@ -18,9 +18,9 @@ pmd=`cat pmd.txt`;
 rm pmd.txt;
 if [[ "$pmd" != "OK" ]]; then
     echo "PMD FAILED!";
+    exit 1;
 else
     echo "PMD OK!";
-    exit 0;
 fi
 
 cpdErrors=`cat build/reports/cpd/cpdCheck.xml | grep -e '<duplication' | wc -l`;
