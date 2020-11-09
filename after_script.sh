@@ -8,6 +8,8 @@ if [[ "$cs" != "OK" ]]; then
     echo "CHECKSTYLE FAILED!";
     wait 300000;
     exit 0;
+else
+    echo "CHECKSTYLE OK!";
 fi
 
 
@@ -19,5 +21,7 @@ if [[ "$pmd" != "OK" ]]; then
     echo "PMD FAILED!";
     wait 300000;
     exit 0;
+else
+    echo "PMD OK!";
 fi
 
