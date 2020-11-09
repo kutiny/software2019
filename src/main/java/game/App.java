@@ -167,7 +167,7 @@ public class App {
 					addHistory("Has encontrado un enemigo. Debes empezar a pelear");
 				}
 			}else {
-				m.move(lastMove)
+				m.move(lastMove);
 				if(trap != null && trap.getActive()) {
 					addHistory("Has pisado una trampa");
 					c.trapDamage();
