@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#handleKeyReleseased" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="start.ControllerGame">
    <children>
-      <TextArea fx:id="History" editable="false" layoutX="369.0" layoutY="58.0" pickOnBounds="false" prefHeight="517.0" prefWidth="395.0" text="KNZKNGVBD&#10;D&#10;A&#10;A&#10;A&#10;A&#10;FASFS&#10;AC&#10;FAF&#10;SD&#10;ASD&#10;AS&#10;FAS&#10;FA&#10;FAS&#10;FAS&#10;FAS&#10;FAS&#10;DAS&#10;D&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;AS&#10;FAS&#10;FGAS&#10;FDA&#10;SF&#10;ASF&#10;ASF&#10;ASF&#10;ASF&#10;ASF" />
+      <TextArea fx:id="history" editable="false" layoutX="369.0" layoutY="58.0" pickOnBounds="false" prefHeight="517.0" prefWidth="395.0" text="KNZKNGVBD&#10;D&#10;A&#10;A&#10;A&#10;A&#10;FASFS&#10;AC&#10;FAF&#10;SD&#10;ASD&#10;AS&#10;FAS&#10;FA&#10;FAS&#10;FAS&#10;FAS&#10;FAS&#10;DAS&#10;D&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;ASD&#10;AS&#10;FAS&#10;FGAS&#10;FDA&#10;SF&#10;ASF&#10;ASF&#10;ASF&#10;ASF&#10;ASF" />
       <Text layoutX="513.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historia" wrappingWidth="92.13671875">
          <font>
             <Font size="25.0" />
@@ -39,12 +39,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextArea fx:id="Map" editable="false" layoutX="836.0" layoutY="52.0" pickOnBounds="false" prefHeight="431.0" prefWidth="411.0" text="M M M + + M + + + + + + + + M &#10;M M M + + M + + + + + + + + M &#10;M + + + + M + + M M + + + + M &#10;+ + + + + M + + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;M X + + + M M M M + + + + + + &#10;M + + + + M + + + + + + + + M &#10;+ + + + + + + + + + + + + + M &#10;+ + + + + + M + + + + + M M M &#10;+ + + + + + M + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;M + + M + + + M M + + + + + M &#10;+ + + M + + + + + + + + + + M &#10;+ + + M + + + + + + M M M M M &#10;">
+      <TextArea fx:id="map" editable="false" layoutX="836.0" layoutY="52.0" pickOnBounds="false" prefHeight="431.0" prefWidth="411.0" text="M M M + + M + + + + + + + + M &#10;M M M + + M + + + + + + + + M &#10;M + + + + M + + M M + + + + M &#10;+ + + + + M + + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;M X + + + M M M M + + + + + + &#10;M + + + + M + + + + + + + + M &#10;+ + + + + + + + + + + + + + M &#10;+ + + + + + M + + + + + M M M &#10;+ + + + + + M + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;+ + + + + + + + + + + + + + + &#10;M + + M + + + M M + + + + + M &#10;+ + + M + + + + + + + + + + M &#10;+ + + M + + + + + + M M M M M &#10;">
          <font>
             <Font name="Monospaced Regular" size="21.0" />
          </font>
       </TextArea>
-      <Text fx:id="CharacterName" layoutX="32.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aleisas" wrappingWidth="350.0">
+      <Text fx:id="characterName" layoutX="32.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aleisas" wrappingWidth="350.0">
          <font>
             <Font size="61.0" />
          </font>
@@ -79,12 +79,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="Life" layoutX="96.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="RIGHT" wrappingWidth="117.13671875">
+      <Text fx:id="life" layoutX="96.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="RIGHT" wrappingWidth="117.13671875">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="Level" layoutX="96.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="RIGHT" wrappingWidth="117.13671875">
+      <Text fx:id="level" layoutX="96.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="RIGHT" wrappingWidth="117.13671875">
          <font>
             <Font size="20.0" />
          </font>
